@@ -33,9 +33,9 @@ public  class Asignatura  {
 	 * Muestra los estudiantes matriculados en la asignatura
 	 * @retunr ArrayList<Estudiantes>
 	 */
-	public ArrayList<Estudiantes> ver_matriculados()
+	public ArrayList<Estudiante> ver_matriculados()
 	{
-		
+		return new ArrayList<Estudiante>();
 	}
 	
 	

@@ -1,7 +1,7 @@
 package Mundo;
 
-public class Encuesta {
-	
+public class Encuesta
+{	
 	/**
 	 * Lista de preguntas Cuantitativas
 	 */

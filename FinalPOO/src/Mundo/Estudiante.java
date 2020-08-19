@@ -2,10 +2,8 @@ package Mundo;
 
 import java.util.ArrayList;
 
-public abstract class Estudiante extends Usuario  {
-	
-	
-	
+public class Estudiante extends Usuario
+{	
 	/**
 	 * Codigo del estudiante
 	 */
@@ -51,8 +49,7 @@ public abstract class Estudiante extends Usuario  {
 	 */
 	public boolean modificar_estudiante(Estudiante p) 
 	{
-		
-		
+		return true;
 	}
 	/**
 	 * Matricula una asignatura 
@@ -60,7 +57,7 @@ public abstract class Estudiante extends Usuario  {
 	 */
 	public 	boolean matricular_asignatura(Asignatura p)
 	{
-		
+		return true;
 	}
 	
 	

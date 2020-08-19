@@ -1,5 +1,7 @@
 package Mundo;
 
+import java.util.ArrayList;
+
 public class Matricula {
 
 	private String  pertenece_a_estudiante;
@@ -31,7 +33,7 @@ public class Matricula {
 	 */
 	public Estudiante obtener_estudiante()
 	{
-		
+		return new Estudiante("", "", "", "", "", "", new ArrayList<Matricula>());
 	}
 	
 	/**
@@ -40,7 +42,7 @@ public class Matricula {
 	 */
 	public Asignatura obtener_asignatura()
 	{
-		
+		return new Asignatura("", "", new ArrayList<Matricula>());
 	}
 	
 	/**
@@ -49,7 +51,7 @@ public class Matricula {
 	 */
 	public boolean hacer_encuesta(Encuesta p)
 	{
-		
+		return true;
 	}
 	
 	

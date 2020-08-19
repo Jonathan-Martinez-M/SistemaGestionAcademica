@@ -1,6 +1,8 @@
 package Mundo;
 
-public abstract class  Administrador extends Usuario {
+import java.util.ArrayList;
+
+public class  Administrador extends Usuario {
 	
 	
 	/**
@@ -9,7 +11,6 @@ public abstract class  Administrador extends Usuario {
 	public Administrador(String codigo, String contraseña) 
 	{
 		super(codigo, contraseña);
-
 	}
 
 	/**
@@ -18,8 +19,7 @@ public abstract class  Administrador extends Usuario {
 	 */
 	public boolean agregar_estudiante(Estudiante p) 
 	{
-		
-		
+		return true;
 	}
 	
 	/**
@@ -28,7 +28,7 @@ public abstract class  Administrador extends Usuario {
 	 */
 	public boolean  modificar_estudiante( Estudiante p) 
 	{
-		
+		return true;
 	}
 	
 	/**
@@ -37,8 +37,7 @@ public abstract class  Administrador extends Usuario {
 	 */
 	public boolean agregar_asignatura(Asignatura p) 
 	{
-		
-		
+		return true;
 	}
 	
 	/**
@@ -47,8 +46,7 @@ public abstract class  Administrador extends Usuario {
 	 */
 	public boolean modificar_asignatura(Asignatura p) 
 	{
-		
-		
+		return true;
 	}
 	
 	/**
@@ -57,7 +55,7 @@ public abstract class  Administrador extends Usuario {
 	 */
 	public ArrayList<Encuesta> ver_encuestas()
 	{
-		
+		return new ArrayList<Encuesta>();
 	}
 	
 	/**
@@ -66,6 +64,6 @@ public abstract class  Administrador extends Usuario {
 	 */
 	public ArrayList<Estudiante> ver_estudiantes()
 	{
-		
+		return new ArrayList<Estudiante>();
 	}
 }

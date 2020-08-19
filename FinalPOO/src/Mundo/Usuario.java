@@ -29,16 +29,16 @@ public abstract class Usuario {
 	 */
 	public boolean modificar_estudiante() 
 	{
-		
+		return true;
 	}
 	
 	/**
 	 * Retorna la lista de asignatura de cada estudiante 
 	 * @return ArrayList<Asignatura>
 	 */
-	public ArrayList ver_asignaturas()
+	public ArrayList<Asignatura> ver_asignaturas()
 	{
-		
+		return new ArrayList<Asignatura>();
 	}	
 
 }
