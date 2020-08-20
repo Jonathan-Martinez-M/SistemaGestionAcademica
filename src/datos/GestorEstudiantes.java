@@ -3,7 +3,7 @@
  */
 package datos;
 
-import Mundo.Estudiante;
+import mundo.Estudiante;
 
 /**
  * @author Rubén

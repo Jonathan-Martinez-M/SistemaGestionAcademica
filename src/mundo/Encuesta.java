@@ -1,4 +1,4 @@
-package Mundo;
+package mundo;
 
 public class Encuesta
 {	

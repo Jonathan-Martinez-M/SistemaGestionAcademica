@@ -1,4 +1,4 @@
-package Mundo;
+package mundo;
 
 import java.util.ArrayList;
 
