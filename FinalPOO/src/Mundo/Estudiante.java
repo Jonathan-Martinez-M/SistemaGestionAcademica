@@ -49,6 +49,7 @@ public class Estudiante extends Usuario
 	 */
 	public boolean modificar_estudiante(Estudiante p) 
 	{
+		this.gestor_Estudiantes.modificar_estudiante(p);
 		return true;
 	}
 	/**

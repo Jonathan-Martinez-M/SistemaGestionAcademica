@@ -2,6 +2,8 @@ package Mundo;
 
 import java.util.ArrayList;
 
+import datos.GestorEstudiantes;
+
 public abstract class Usuario {
 	
 	/**
@@ -17,6 +19,9 @@ public abstract class Usuario {
 	/**
 	 * Constructor de la clase Usuario
 	 */
+	
+	protected GestorEstudiantes gestor_Estudiantes;
+	
 	public Usuario(String codigo, String contraseña)
 	{
 		this.codigo = codigo;
@@ -29,7 +34,7 @@ public abstract class Usuario {
 	 */
 	public boolean modificar_estudiante() 
 	{
-		return true;
+		return false;
 	}
 	
 	/**
