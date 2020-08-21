@@ -21,19 +21,6 @@ public class Ventana_Modificar_Datos extends JDialog {
 	private JPasswordField txtContraseña;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		try {
-			Ventana_Modificar_Datos dialog = new Ventana_Modificar_Datos();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	/**
 	 * Create the dialog.
 	 */
 	public Ventana_Modificar_Datos() {
