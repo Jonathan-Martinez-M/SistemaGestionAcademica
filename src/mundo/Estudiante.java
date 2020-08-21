@@ -49,8 +49,7 @@ public class Estudiante extends Usuario
 	 */
 	public boolean modificar_estudiante(Estudiante p) 
 	{
-		this.gestor_Estudiantes.modificar_estudiante(p);
-		return true;
+		return this.gestor_Estudiantes.modificar_estudiante(p) ;
 	}
 	/**
 	 * Matricula una asignatura 
@@ -58,7 +57,7 @@ public class Estudiante extends Usuario
 	 */
 	public 	boolean matricular_asignatura(Asignatura p)
 	{
-		return true;
+		return this.gestor_Asignatura.agregar_asignatura(p);
 	}
 	
 	

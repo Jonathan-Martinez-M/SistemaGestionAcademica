@@ -2,6 +2,8 @@ package mundo;
 
 import java.util.ArrayList;
 
+import datos.GestorAsignaturas;
+import datos.GestorEncuestas;
 import datos.GestorEstudiantes;
 
 public abstract class Usuario {
@@ -16,16 +18,25 @@ public abstract class Usuario {
 	 */
 	protected String contraseña;
 	
+	protected GestorEstudiantes gestor_Estudiantes;
+	
+	protected GestorAsignaturas gestor_Asignatura;
+	
+	protected GestorEncuestas gestor_Encuestas;
+	
 	/**
 	 * Constructor de la clase Usuario
 	 */
 	
-	protected GestorEstudiantes gestor_Estudiantes;
+	
 	
 	public Usuario(String codigo, String contraseña)
 	{
 		this.codigo = codigo;
 		this.contraseña = contraseña;
+		gestor_Estudiantes = new GestorEstudiantes();
+		gestor_Asignatura = new GestorAsignaturas();
+		gestor_Encuestas = new GestorEncuestas();
 	}
 	
 	/**

@@ -3,6 +3,8 @@
  */
 package datos;
 
+import java.util.ArrayList;
+
 import mundo.Estudiante;
 
 /**
@@ -26,5 +28,9 @@ public class GestorEstudiantes
 	public boolean modificar_estudiante(Estudiante estudiante)
 	{
 		return true;
+	}
+	public ArrayList<Estudiante> ver_estudiante()
+	{
+		return new ArrayList<Estudiante>() ;
 	}
 }
