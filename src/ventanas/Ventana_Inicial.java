@@ -96,5 +96,24 @@ public class Ventana_Inicial extends JFrame {
 		btnIngresar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnIngresar.setBounds(140, 138, 100, 34);
 		contentPane.add(btnIngresar);
+		
+		JButton btnNewButton = new JButton("New button");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e)
+			{
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							Ventana_Administrador frame = new Ventana_Administrador();
+							frame.setVisible(true);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+			}
+		});
+		btnNewButton.setBounds(275, 146, 89, 23);
+		contentPane.add(btnNewButton);
 	}
 }

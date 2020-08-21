@@ -84,7 +84,17 @@ public class Ventana_Usuario extends JFrame
 		
 		JButton btnRealizarEncuestas = new JButton("Realizar Encuestas");
 		btnRealizarEncuestas.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e)
+			{
+				try
+				{
+					Ventana_Encuesta dialog = new Ventana_Encuesta();
+					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+				} catch (Exception e2)
+				{
+					e2.printStackTrace();
+				}
 			}
 		});
 		btnRealizarEncuestas.setFont(new Font("Tahoma", Font.PLAIN, 11));
