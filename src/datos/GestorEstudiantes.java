@@ -33,4 +33,8 @@ public class GestorEstudiantes
 	{
 		return new ArrayList<Estudiante>() ;
 	}
+	public ArrayList<Estudiante> buscar_estudiante()
+	{
+		return new ArrayList<Estudiante>() ;
+	}
 }

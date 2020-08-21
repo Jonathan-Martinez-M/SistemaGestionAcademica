@@ -33,7 +33,7 @@ public class Matricula {
 	 */
 	public Estudiante obtener_estudiante()
 	{
-		return new Estudiante("", "", "", "", "", "", new ArrayList<Matricula>());
+		return new Estudiante(pertenece_a_estudiante, "", "", "", "", "", new ArrayList<Matricula>());
 	}
 	
 	/**
