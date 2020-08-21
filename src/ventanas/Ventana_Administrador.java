@@ -101,13 +101,37 @@ public class Ventana_Administrador extends JFrame {
 		contentPane.add(btnListaDeAsignaturas);
 		
 		JButton btnResultados = new JButton("Resultados de encuesta");
+		btnResultados.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e)
+			{
+				try
+				{
+					Ventana_Resultados_Encuesta dialog = new Ventana_Resultados_Encuesta();
+					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+				} catch (Exception e2)
+				{
+					e2.printStackTrace();
+				}
+			}
+		});
 		btnResultados.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		btnResultados.setBounds(146, 238, 147, 34);
 		contentPane.add(btnResultados);
 		
 		JButton btnListaDeEstudiantes = new JButton("Lista de Estudiantes");
 		btnListaDeEstudiantes.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e)
+			{
+				try
+				{
+					Lista_de_estudiantes dialog = new Lista_de_estudiantes();
+					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+				} catch (Exception e2)
+				{
+					e2.printStackTrace();
+				}
 			}
 		});
 		btnListaDeEstudiantes.setFont(new Font("Tahoma", Font.PLAIN, 11));
