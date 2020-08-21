@@ -30,19 +30,6 @@ public class Ventana_Carga_de_estudiantes extends JDialog {
 	private JTable table;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		try {
-			Ventana_Carga_de_estudiantes dialog = new Ventana_Carga_de_estudiantes();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	/**
 	 * Create the dialog.
 	 */
 	public Ventana_Carga_de_estudiantes() {

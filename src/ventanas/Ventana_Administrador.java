@@ -11,6 +11,8 @@ import javax.swing.ImageIcon;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
+import javax.swing.JDialog;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -23,7 +25,7 @@ public class Ventana_Administrador extends JFrame {
 	 */
 	public Ventana_Administrador() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 450, 322);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -58,26 +60,58 @@ public class Ventana_Administrador extends JFrame {
 		
 		JButton btnCargarDeEstudiante = new JButton("Cargar de Estudiante");
 		btnCargarDeEstudiante.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e)
+			{
+				try
+				{
+					Ventana_Carga_de_estudiantes dialog = new Ventana_Carga_de_estudiantes();
+					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
 			}
 		});
 		btnCargarDeEstudiante.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		btnCargarDeEstudiante.setBounds(49, 144, 147, 34);
+		btnCargarDeEstudiante.setBounds(56, 126, 147, 34);
 		contentPane.add(btnCargarDeEstudiante);
 		
 		JButton btnCargarAsignatura_1 = new JButton("Cargar Asignatura");
 		btnCargarAsignatura_1.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		btnCargarAsignatura_1.setBounds(49, 202, 147, 34);
+		btnCargarAsignatura_1.setBounds(229, 126, 147, 34);
 		contentPane.add(btnCargarAsignatura_1);
 		
 		JButton btnListaDeAsignaturas = new JButton("Lista de Asignaturas");
+		btnListaDeAsignaturas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e)
+			{
+				try
+				{
+					Ventana_Lista_Asignatura_Admin dialog = new Ventana_Lista_Asignatura_Admin();
+					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+				} catch (Exception e2)
+				{
+					e2.printStackTrace();
+				}
+			}
+		});
 		btnListaDeAsignaturas.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		btnListaDeAsignaturas.setBounds(246, 144, 147, 34);
+		btnListaDeAsignaturas.setBounds(10, 181, 147, 34);
 		contentPane.add(btnListaDeAsignaturas);
 		
 		JButton btnResultados = new JButton("Resultados de encuesta");
 		btnResultados.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		btnResultados.setBounds(246, 202, 147, 34);
+		btnResultados.setBounds(146, 238, 147, 34);
 		contentPane.add(btnResultados);
+		
+		JButton btnListaDeEstudiantes = new JButton("Lista de Estudiantes");
+		btnListaDeEstudiantes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnListaDeEstudiantes.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		btnListaDeEstudiantes.setBounds(277, 181, 147, 34);
+		contentPane.add(btnListaDeEstudiantes);
 	}
 }
