@@ -76,44 +76,40 @@ public class Ventana_Inicial extends JFrame {
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				dispose();
-				EventQueue.invokeLater(new Runnable()
+				if(true)
 				{
-					public void run()
+					dispose();
+					EventQueue.invokeLater(new Runnable()
 					{
-						try
+						public void run()
 						{
-							Ventana_Usuario frame = new Ventana_Usuario();
-							frame.setVisible(true);
-						} catch (Exception e)
-						{
-							e.printStackTrace();
+							try
+							{
+								Ventana_Usuario frame = new Ventana_Usuario();
+								frame.setVisible(true);
+							} catch (Exception e)
+							{
+								e.printStackTrace();
+							}
 						}
-					}
-				});
+					});
+				}else{
+					EventQueue.invokeLater(new Runnable() {
+						public void run() {
+							try {
+								Ventana_Administrador frame = new Ventana_Administrador();
+								frame.setVisible(true);
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
+						}
+					});
+				}
+				
 			}
 		});
 		btnIngresar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnIngresar.setBounds(140, 138, 100, 34);
 		contentPane.add(btnIngresar);
-		
-		JButton btnNewButton = new JButton("New button");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e)
-			{
-				EventQueue.invokeLater(new Runnable() {
-					public void run() {
-						try {
-							Ventana_Administrador frame = new Ventana_Administrador();
-							frame.setVisible(true);
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-					}
-				});
-			}
-		});
-		btnNewButton.setBounds(275, 146, 89, 23);
-		contentPane.add(btnNewButton);
 	}
 }
