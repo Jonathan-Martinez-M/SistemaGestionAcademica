@@ -11,6 +11,7 @@ import datos.Constantes;
 import datos.GestorAsignaturas;
 import datos.GestorEncuestas;
 import datos.GestorEstudiantes;
+import mundo.Asignatura;
 
 import javax.swing.JLabel;
 import java.awt.Font;

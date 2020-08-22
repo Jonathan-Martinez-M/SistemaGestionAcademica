@@ -25,36 +25,35 @@ public class GestorAsignaturas {
 		
 		if(archivo.exists())
 		{
-			try {
-				buff.write("El fichero de texto ya estaba creado.");
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			
 		}
 		else {
 			
 			try {
 				buff = new BufferedWriter(new FileWriter(archivo));
-				buff.write("Acabo de crear el fichero de texto.");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
-		}
-		
-		try {
-			buff.close();
-		} catch (IOException e) {
-			
-			e.printStackTrace();
 		}
 
 	}
 	
 	public static boolean agregar_asignatura(Asignatura nuevaAsignatura) 
 	{
+		FileWriter flwriter = null;
+		try {//además de la ruta del archivo recibe un parámetro de tipo boolean, que le indican que se va añadir más registros 
+				flwriter = new FileWriter(Constantes.RUTA + "\\estudiantes.txt", true);
+				BufferedWriter bfwriter = new BufferedWriter(flwriter);
+			
+				//escribe los datos en el archivo
+				bfwriter.write(nuevaAsignatura.getNombre() + "," + nuevaAsignatura.getCodigo() + "\n");
+				bfwriter.close();
+ 
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		return true;
 	}
 	

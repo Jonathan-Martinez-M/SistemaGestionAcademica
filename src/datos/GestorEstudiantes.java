@@ -29,31 +29,19 @@ public class GestorEstudiantes
 		
 		if(archivo.exists())
 		{
-			try {
-				buff.write("El fichero de texto ya estaba creado.");
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			
 		}
 		else {
 			
 			try {
 				buff = new BufferedWriter(new FileWriter(archivo));
-				buff.write("Acabo de crear el fichero de texto.");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
 		}
-		
-		try {
-			buff.close();
-		} catch (IOException e) {
-			
-			e.printStackTrace();
-		}
+	
 	}
 	
 	public static boolean agregar_estudiante(Estudiante nuevoEstudiante)
