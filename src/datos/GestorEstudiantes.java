@@ -3,7 +3,9 @@
  */
 package datos;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,18 +19,40 @@ import mundo.Estudiante;
 public class GestorEstudiantes
 {
 	//objeto para leer archivos
+	private File archivo;
+	
+	private BufferedWriter buff;
 	
 	public GestorEstudiantes()
 	{
-		File archivo = new File("C:\\Users\\user\\Documents\\Universidad\\Programacion\\Java\\SDGDA-GIT\\finalpoo\\finalpoo\\informacion\\estudiantes.txt");
-		if (!archivo.exists()) {
-		    
+		archivo = new File(Constantes.RUTA + "\\estudiantes.txt");
+		
+		if(archivo.exists())
+		{
 			try {
-				FileWriter archivoEstudiantes = new FileWriter("C:\\Users\\user\\Documents\\Universidad\\Programacion\\Java\\SDGDA-GIT\\finalpoo\\finalpoo\\informacion\\estudiantes.txt");
+				buff.write("El fichero de texto ya estaba creado.");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		}
+		else {
+			
+			try {
+				buff = new BufferedWriter(new FileWriter(archivo));
+				buff.write("Acabo de crear el fichero de texto.");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		
+		try {
+			buff.close();
+		} catch (IOException e) {
+			
+			e.printStackTrace();
 		}
 	}
 	

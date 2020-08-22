@@ -18,4 +18,6 @@ public interface Constantes
 	
 	//Constantes de título
 	public static final String TITULO_LOGIN_FALLIDO = "Datos erroneos";
+	
+	public static final String RUTA  = ".\\informacion";
 }

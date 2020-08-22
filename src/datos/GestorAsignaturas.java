@@ -3,9 +3,7 @@
  */
 package datos;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 import mundo.Asignatura;
@@ -16,24 +14,47 @@ import mundo.Asignatura;
  */
 public class GestorAsignaturas {
 	
+	private File archivo;
+	
+	private BufferedWriter buff;
 	//objeto para leer archivos
 	
 	public GestorAsignaturas() {
 		
-		File archivo = new File("C:\\Users\\user\\Documents\\Universidad\\Programacion\\Java\\SDGDA-GIT\\finalpoo\\finalpoo\\informacion\\asignaturas.txt");
-		if (!archivo.exists()) {
-		    
+		archivo = new File(Constantes.RUTA + "\\estudiantes.txt");
+		
+		if(archivo.exists())
+		{
 			try {
-				FileWriter archivoAsignatura = new FileWriter("C:\\Users\\user\\Documents\\Universidad\\Programacion\\Java\\SDGDA-GIT\\finalpoo\\finalpoo\\informacion\\asignaturas.txt");
+				buff.write("El fichero de texto ya estaba creado.");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
+		else {
+			
+			try {
+				buff = new BufferedWriter(new FileWriter(archivo));
+				buff.write("Acabo de crear el fichero de texto.");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		
+		try {
+			buff.close();
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+
 	}
 	
-	public boolean agregar_asignatura(Asignatura nuevaAsignatura) {
-		
+	public boolean agregar_asignatura(Asignatura nuevaAsignatura) 
+	{
 		return true;
 	}
 	
