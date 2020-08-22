@@ -15,6 +15,8 @@ import mundo.Modelador;
 
 /**
  * @author Rubén Fúquene
+ * 
+ * Clase encargada de recibir peticiones y enviar datos al modelador
  *
  */
 public class Controlador implements ActionListener
@@ -61,7 +63,11 @@ public class Controlador implements ActionListener
 		{
 			if(e.getActionCommand().equals(Constantes.COMANDO_BTN_INGRESAR))
 			{
-				if(modelo.iniciarSesion(ventanaLogin.getTxtCod(), ventanaLogin.getTxtPass()).equals(Constantes.USUARIO_ESTUDIANTE))
+				if(ventanaLogin.getTxtCod().equals("") || ventanaLogin.getTxtCod().equals(""))
+				{
+					ventanaLogin.limpiarCampos();
+					JOptionPane.showMessageDialog( ventanaLogin, Constantes.CAMPOS_VACIOS, Constantes.USUARIO_ERRONEO, JOptionPane.INFORMATION_MESSAGE );
+				}else if(modelo.iniciarSesion(ventanaLogin.getTxtCod(), ventanaLogin.getTxtPass()).equals(Constantes.USUARIO_ESTUDIANTE))
 				{
 					ventanaLogin.dispose();
 					EventQueue.invokeLater(new Runnable()
@@ -93,10 +99,10 @@ public class Controlador implements ActionListener
 							}
 						}
 					});
-				}else
+				}else if(modelo.iniciarSesion(ventanaLogin.getTxtCod(), ventanaLogin.getTxtPass()).equals(Constantes.USUARIO_ERRONEO))
 				{
 					ventanaLogin.limpiarCampos();
-					JOptionPane.showMessageDialog( ventanaLogin, Constantes.MENSAJE_LOGIN_FALLIDO, "Ocupación del avión", JOptionPane.INFORMATION_MESSAGE );
+					JOptionPane.showMessageDialog( ventanaLogin, Constantes.MENSAJE_LOGIN_FALLIDO, Constantes.USUARIO_ERRONEO, JOptionPane.INFORMATION_MESSAGE );
 				}
 			}
 		}
