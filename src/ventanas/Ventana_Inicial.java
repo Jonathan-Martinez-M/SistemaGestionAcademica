@@ -76,8 +76,16 @@ public class Ventana_Inicial extends JFrame
 		return txtCod.getText();
 	}
 
-	public String getTxtPass() {
-		return txtPass.getSelectedText();
+	public String getTxtPass()
+	{
+		String contrasenia = "";
+		char [] contraseniaEn = txtPass.getPassword();
+		for(int cadaCar = 0; cadaCar < contraseniaEn.length; cadaCar++)
+		{
+			contrasenia += contraseniaEn[cadaCar];
+		}
+		
+		return contrasenia;
 	}
 	
 	public void limpiarCampos()
