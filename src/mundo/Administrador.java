@@ -14,9 +14,9 @@ public class  Administrador extends Usuario {
 	/**
 	 * Constructor de la clase Administrador
 	 */
-	public Administrador(String codigo, String contraseña) 
+	public Administrador(String codigo, String contrasenia) 
 	{
-		super(codigo, contraseña);
+		super(codigo, contrasenia);
 	}
 
 	/**

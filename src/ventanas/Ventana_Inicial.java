@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import datos.Constantes;
 import datos.GestorAsignaturas;
 import datos.GestorEncuestas;
 import datos.GestorEstudiantes;
@@ -20,38 +21,20 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class Ventana_Inicial extends JFrame {
-
+public class Ventana_Inicial extends JFrame
+{
 	private JPanel contentPane;
 	private JTextField txtCod;
 	private JPasswordField txtPass;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		/*
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Ventana_Inicial frame = new Ventana_Inicial();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});*/
-		GestorEstudiantes g = new GestorEstudiantes();
-		GestorEncuestas l = new GestorEncuestas();
-		GestorAsignaturas s = new GestorAsignaturas();
-		
-	}
-
+	private Controlador control;
+	
 	/**
 	 * Create the frame.
 	 */
-	public Ventana_Inicial()
+	public Ventana_Inicial(Controlador control)
 	{
+		this.control = control;
+		
 		setTitle("Sistema de gesti\u00F3n de clases");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 401, 222);
@@ -82,44 +65,24 @@ public class Ventana_Inicial extends JFrame {
 		contentPane.add(txtPass);
 		
 		JButton btnIngresar = new JButton("Ingresar");
-		btnIngresar.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent e)
-			{
-				if(true)
-				{
-					dispose();
-					EventQueue.invokeLater(new Runnable()
-					{
-						public void run()
-						{
-							try
-							{
-								Ventana_Usuario frame = new Ventana_Usuario();
-								frame.setVisible(true);
-							} catch (Exception e)
-							{
-								e.printStackTrace();
-							}
-						}
-					});
-				}else{
-					EventQueue.invokeLater(new Runnable() {
-						public void run() {
-							try {
-								Ventana_Administrador frame = new Ventana_Administrador();
-								frame.setVisible(true);
-							} catch (Exception e) {
-								e.printStackTrace();
-							}
-						}
-					});
-				}
-				
-			}
-		});
+		btnIngresar.setActionCommand(Constantes.COMANDO_BTN_INGRESAR);
+		btnIngresar.addActionListener(this.control);
 		btnIngresar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnIngresar.setBounds(140, 138, 100, 34);
 		contentPane.add(btnIngresar);
+	}
+
+	public String getTxtCod() {
+		return txtCod.getText();
+	}
+
+	public String getTxtPass() {
+		return txtPass.getSelectedText();
+	}
+	
+	public void limpiarCampos()
+	{
+		txtCod.setText("");
+		txtPass.setText("");
 	}
 }

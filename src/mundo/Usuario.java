@@ -16,7 +16,7 @@ public abstract class Usuario {
 	/**
 	 * Contraseña del Usuario
 	 */
-	protected String contraseña;
+	protected String contrasenia;
 	
 	protected GestorEstudiantes gestor_Estudiantes;
 	
@@ -30,10 +30,10 @@ public abstract class Usuario {
 	
 	
 	
-	public Usuario(String codigo, String contraseña)
+	public Usuario(String codigo, String contrasenia)
 	{
 		this.codigo = codigo;
-		this.contraseña = contraseña;
+		this.contrasenia = contrasenia;
 		gestor_Estudiantes = new GestorEstudiantes();
 		gestor_Asignatura = new GestorAsignaturas();
 		gestor_Encuestas = new GestorEncuestas();

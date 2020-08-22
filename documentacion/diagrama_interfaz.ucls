@@ -2,12 +2,7 @@
 <class-diagram version="1.2.4" icons="true" automaticImage="JPEG" always-add-relationships="false" 
   generalizations="true" realizations="true" associations="true" dependencies="false" nesting-relationships="true" 
   router="FAN">  
-  <package id="1" language="java" name="ventanas" project="finalpoo" file="/finalpoo/src/ventanas" binary="false" 
-    corner="BOTTOM_RIGHT">    
-    <position height="632" width="1263" x="10" y="-2"/>    
-    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
-  </package>  
-  <class id="2" language="java" name="ventanas.Ventana_Inicial" project="finalpoo" 
+  <class id="1" language="java" name="ventanas.Ventana_Inicial" project="finalpoo" 
     file="/finalpoo/src/ventanas/Ventana_Inicial.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="121" y="123"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
@@ -16,7 +11,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="ventanas.Ventana_Usuario" project="finalpoo" 
+  <class id="2" language="java" name="ventanas.Ventana_Usuario" project="finalpoo" 
     file="/finalpoo/src/ventanas/Ventana_Usuario.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="137" y="287"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
@@ -25,7 +20,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="ventanas.Ventana_Administrador" project="finalpoo" 
+  <class id="3" language="java" name="ventanas.Ventana_Administrador" project="finalpoo" 
     file="/finalpoo/src/ventanas/Ventana_Administrador.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="401" y="122"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
@@ -34,7 +29,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="ventanas.Ventana_Carga_Asignatura" project="finalpoo" 
+  <class id="4" language="java" name="ventanas.Ventana_Carga_Asignatura" project="finalpoo" 
     file="/finalpoo/src/ventanas/Ventana_Carga_Asignatura.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="135" y="481"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
@@ -43,8 +38,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="ventanas.Lista_de_estudiantes" project="finalpoo" 
-    file="/finalpoo/src/ventanas/Lista_de_estudiantes.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="5" language="java" name="ventanas.Ventana_lista_de_estudiantes" project="finalpoo" 
+    file="/finalpoo/src/ventanas/Ventana_lista_de_estudiantes.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1152" y="92"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -52,7 +47,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="ventanas.Ventana_Modificar_Datos" project="finalpoo" 
+  <class id="6" language="java" name="ventanas.Ventana_Modificar_Datos" project="finalpoo" 
     file="/finalpoo/src/ventanas/Ventana_Modificar_Datos.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="398" y="509"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
@@ -61,7 +56,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="ventanas.Ventana_Lista_Asignatura_Admin" project="finalpoo" 
+  <class id="7" language="java" name="ventanas.Ventana_Lista_Asignatura_Admin" project="finalpoo" 
     file="/finalpoo/src/ventanas/Ventana_Lista_Asignatura_Admin.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1147" y="233"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
@@ -70,7 +65,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="ventanas.Ventana_Resultados_Encuesta" project="finalpoo" 
+  <class id="8" language="java" name="ventanas.Ventana_Resultados_Encuesta" project="finalpoo" 
     file="/finalpoo/src/ventanas/Ventana_Resultados_Encuesta.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="918" y="310"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
@@ -79,7 +74,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="ventanas.Ventana_Carga_de_estudiantes" project="finalpoo" 
+  <class id="9" language="java" name="ventanas.Ventana_Carga_de_estudiantes" project="finalpoo" 
     file="/finalpoo/src/ventanas/Ventana_Carga_de_estudiantes.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="674" y="385"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
@@ -88,16 +83,16 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="11" language="java" name="ventanas.Ventana_Resultado_Encuesta_Detalle" project="finalpoo" 
+  <class id="10" language="java" name="ventanas.Ventana_Resultado_Encuesta_Detalle" project="finalpoo" 
     file="/finalpoo/src/ventanas/Ventana_Resultado_Encuesta_Detalle.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1060" y="529"/>    
+    <position height="-1" width="-1" x="940" y="507"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="12" language="java" name="ventanas.Ventana_Encuesta" project="finalpoo" 
+  <class id="11" language="java" name="ventanas.Ventana_Encuesta" project="finalpoo" 
     file="/finalpoo/src/ventanas/Ventana_Encuesta.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="402" y="306"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
@@ -106,41 +101,41 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <dependency id="13">    
-    <end type="SOURCE" refId="4"/>    
+  <dependency id="12">    
+    <end type="SOURCE" refId="2"/>    
     <end type="TARGET" refId="6"/>  
   </dependency>  
-  <dependency id="14">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="3"/>  
-  </dependency>  
-  <dependency id="15">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="4"/>  
-  </dependency>  
-  <dependency id="16">    
+  <dependency id="13">    
     <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="7"/>  
   </dependency>  
-  <dependency id="17">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="12"/>  
+  <dependency id="14">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
   </dependency>  
-  <dependency id="18">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="8"/>  
-  </dependency>  
-  <dependency id="19">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="9"/>  
-  </dependency>  
-  <dependency id="20">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="10"/>  
-  </dependency>  
-  <dependency id="21">    
+  <dependency id="15">    
     <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <dependency id="16">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <dependency id="17">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="11"/>  
+  </dependency>  
+  <dependency id="18">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="19">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <dependency id="20">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="9"/>  
   </dependency>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
