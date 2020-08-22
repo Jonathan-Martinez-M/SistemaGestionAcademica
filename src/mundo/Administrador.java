@@ -7,11 +7,6 @@ import datos.GestorEncuestas;
 import datos.GestorEstudiantes;
 
 public class  Administrador extends Usuario {
-	
-	
-	
-	private Object gestor_Encuesta;
-	private Object gestor_Estudiante;
 
 	/**
 	 * Constructor de la clase Administrador
