@@ -2,6 +2,8 @@ package mundo;
 
 import java.util.ArrayList;
 
+import datos.GestorAsignaturas;
+import datos.GestorEncuestas;
 import datos.GestorEstudiantes;
 
 public class  Administrador extends Usuario {
@@ -25,7 +27,7 @@ public class  Administrador extends Usuario {
 	 */
 	public boolean agregar_estudiante(Estudiante p) 
 	{
-		return this.gestor_Estudiantes.agregar_estudiante(p);
+		return GestorEstudiantes.agregar_estudiante(p);
 	}
 	
 	/**
@@ -34,7 +36,7 @@ public class  Administrador extends Usuario {
 	 */
 	public boolean  modificar_estudiante( Estudiante p) 
 	{
-		return this.gestor_Estudiantes.modificar_estudiante(p);
+		return GestorEstudiantes.modificar_estudiante(p);
 	}
 	
 	/**
@@ -43,7 +45,7 @@ public class  Administrador extends Usuario {
 	 */
 	public boolean agregar_asignatura(Asignatura p) 
 	{
-		return this.gestor_Asignatura.agregar_asignatura(p);
+		return GestorAsignaturas.agregar_asignatura(p);
 	}
 	
 	/**
@@ -52,7 +54,7 @@ public class  Administrador extends Usuario {
 	 */
 	public boolean modificar_asignatura(Asignatura p) 
 	{
-		return this.gestor_Asignatura.modificar_asignatura(p);
+		return GestorAsignaturas.modificar_asignatura(p);
 	}
 	
 	/**
@@ -61,7 +63,7 @@ public class  Administrador extends Usuario {
 	 */
 	public ArrayList<Encuesta> ver_encuestas()
 	{
-		return  ((Administrador) this.gestor_Encuesta).ver_encuestas();
+		return GestorEncuestas.ver_encuestas();
 	}
 	
 	/**
@@ -70,7 +72,7 @@ public class  Administrador extends Usuario {
 	 */
 	public ArrayList<Estudiante> ver_estudiantes()
 	{
-		return  ((GestorEstudiantes) this.gestor_Estudiante).ver_estudiante();
+		return  GestorEstudiantes.ver_estudiante();
 	}
 	
 	

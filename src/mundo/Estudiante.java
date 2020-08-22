@@ -2,6 +2,9 @@ package mundo;
 
 import java.util.ArrayList;
 
+import datos.GestorAsignaturas;
+import datos.GestorEstudiantes;
+
 public class Estudiante extends Usuario
 {	
 	/**
@@ -49,7 +52,7 @@ public class Estudiante extends Usuario
 	 */
 	public boolean modificar_estudiante(Estudiante p) 
 	{
-		return this.gestor_Estudiantes.modificar_estudiante(p) ;
+		return  GestorEstudiantes.modificar_estudiante(p) ;
 	}
 	/**
 	 * Matricula una asignatura 
@@ -57,7 +60,7 @@ public class Estudiante extends Usuario
 	 */
 	public 	boolean matricular_asignatura(Asignatura p)
 	{
-		return this.gestor_Asignatura.agregar_asignatura(p);
+		return GestorAsignaturas.agregar_asignatura(p);
 	}
 
 	public String getNombres() {

@@ -56,20 +56,20 @@ public class GestorEstudiantes
 		}
 	}
 	
-	public boolean agregar_estudiante(Estudiante nuevoEstudiante)
+	public static boolean agregar_estudiante(Estudiante nuevoEstudiante)
 	{
 		return true;
 	}
 	
-	public boolean modificar_estudiante(Estudiante estudiante)
+	public static boolean modificar_estudiante(Estudiante estudiante)
 	{
 		return true;
 	}
-	public ArrayList<Estudiante> ver_estudiante()
+	public static ArrayList<Estudiante> ver_estudiante()
 	{
 		return new ArrayList<Estudiante>() ;
 	}
-	public ArrayList<Estudiante> buscar_estudiante()
+	public static ArrayList<Estudiante> buscar_estudiante()
 	{
 		return new ArrayList<Estudiante>() ;
 	}

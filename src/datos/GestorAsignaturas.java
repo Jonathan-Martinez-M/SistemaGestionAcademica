@@ -53,17 +53,17 @@ public class GestorAsignaturas {
 
 	}
 	
-	public boolean agregar_asignatura(Asignatura nuevaAsignatura) 
+	public static boolean agregar_asignatura(Asignatura nuevaAsignatura) 
 	{
 		return true;
 	}
 	
-	public boolean modificar_asignatura(Asignatura asignatura) {
+	public static boolean modificar_asignatura(Asignatura asignatura) {
 		
 		return true;
 	}
 	
-	public ArrayList<Asignatura> ver_estudiantes(){
+	public static ArrayList<Asignatura> ver_estudiantes(){
 		
 		return new ArrayList<Asignatura>();
 	}

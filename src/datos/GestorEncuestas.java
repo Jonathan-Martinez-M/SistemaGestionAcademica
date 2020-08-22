@@ -66,12 +66,12 @@ public class GestorEncuestas {
 
 	}
 	
-	public ArrayList<Encuesta> almacenar_encuestas(){
+	public static ArrayList<Encuesta> almacenar_encuestas(){
 		
 		return new ArrayList<Encuesta>();
 	}
 	
-	public ArrayList<Encuesta> ver_encuestas(){
+	public static ArrayList<Encuesta> ver_encuestas(){
 		
 		return new ArrayList<Encuesta>();
 	}
