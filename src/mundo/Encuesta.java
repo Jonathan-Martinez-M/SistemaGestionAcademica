@@ -33,6 +33,38 @@ public class Encuesta
 		this.pregunta_abierta = pregunta_abierta;
 		this.respuesta_abierta = respuesta_abierta;
 	}
+
+	public String[] getPreguntas_cuantitativas() {
+		return preguntas_cuantitativas;
+	}
+
+	public void setPreguntas_cuantitativas(String[] preguntas_cuantitativas) {
+		this.preguntas_cuantitativas = preguntas_cuantitativas;
+	}
+
+	public int[] getRespuestas_cuantitativas() {
+		return respuestas_cuantitativas;
+	}
+
+	public void setRespuestas_cuantitativas(int[] respuestas_cuantitativas) {
+		this.respuestas_cuantitativas = respuestas_cuantitativas;
+	}
+
+	public String getPregunta_abierta() {
+		return pregunta_abierta;
+	}
+
+	public void setPregunta_abierta(String pregunta_abierta) {
+		this.pregunta_abierta = pregunta_abierta;
+	}
+
+	public String getRespuesta_abierta() {
+		return respuesta_abierta;
+	}
+
+	public void setRespuesta_abierta(String respuesta_abierta) {
+		this.respuesta_abierta = respuesta_abierta;
+	}
 	
 	
 }

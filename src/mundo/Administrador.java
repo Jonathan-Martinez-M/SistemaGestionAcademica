@@ -72,4 +72,6 @@ public class  Administrador extends Usuario {
 	{
 		return  ((GestorEstudiantes) this.gestor_Estudiante).ver_estudiante();
 	}
+	
+	
 }

@@ -53,6 +53,31 @@ public class Matricula {
 	{
 		return true;
 	}
+
+	public String getPertenece_a_estudiante() {
+		return pertenece_a_estudiante;
+	}
+
+	public void setPertenece_a_estudiante(String pertenece_a_estudiante) {
+		this.pertenece_a_estudiante = pertenece_a_estudiante;
+	}
+
+	public String getDe_la_asignatura() {
+		return de_la_asignatura;
+	}
+
+	public void setDe_la_asignatura(String de_la_asignatura) {
+		this.de_la_asignatura = de_la_asignatura;
+	}
+
+	public Encuesta getEncuesta() {
+		return encuesta;
+	}
+
+	public void setEncuesta(Encuesta encuesta) {
+		this.encuesta = encuesta;
+	}
+	
 	
 	
 }

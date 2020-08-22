@@ -20,11 +20,11 @@ public class GestorEncuestas {
 	
 	public GestorEncuestas() {
 		
-		File archivo = new File("C:\\Users\\user\\Documents\\Universidad\\Programacion\\Java\\SDGDA-GIT\\finalpoo\\finalpoo\\informacion\\estudiantes.txt");
+		File archivo = new File("C:\\Users\\user\\Documents\\Universidad\\Programacion\\Java\\SDGDA-GIT\\finalpoo\\finalpoo\\informacion\\encuestas.txt");
 		if (!archivo.exists()) {
 		    
 			try {
-				FileWriter archivoEncuesta = new FileWriter("C:\\Users\\user\\Documents\\Universidad\\Programacion\\Java\\SDGDA-GIT\\finalpoo\\finalpoo\\informacion\\estudiantes.txt");
+				FileWriter archivoEncuesta = new FileWriter("C:\\Users\\user\\Documents\\Universidad\\Programacion\\Java\\SDGDA-GIT\\finalpoo\\finalpoo\\informacion\\encuestas.txt");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

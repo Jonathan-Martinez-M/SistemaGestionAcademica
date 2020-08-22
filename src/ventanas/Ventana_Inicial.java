@@ -6,6 +6,11 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import datos.GestorAsignaturas;
+import datos.GestorEncuestas;
+import datos.GestorEstudiantes;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
@@ -25,6 +30,7 @@ public class Ventana_Inicial extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		/*
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -34,7 +40,11 @@ public class Ventana_Inicial extends JFrame {
 					e.printStackTrace();
 				}
 			}
-		});
+		});*/
+		GestorEstudiantes g = new GestorEstudiantes();
+		GestorEncuestas l = new GestorEncuestas();
+		GestorAsignaturas s = new GestorAsignaturas();
+		
 	}
 
 	/**
