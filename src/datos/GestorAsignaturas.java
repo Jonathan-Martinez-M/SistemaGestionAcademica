@@ -21,7 +21,7 @@ public class GestorAsignaturas {
 	
 	public GestorAsignaturas() {
 		
-		archivo = new File(Constantes.RUTA + "\\estudiantes.txt");
+		archivo = new File(Constantes.RUTA + "\\asignaturas.txt");
 		
 		if(archivo.exists())
 		{
@@ -46,7 +46,7 @@ public class GestorAsignaturas {
 		try
 		{
 			//además de la ruta del archivo recibe un parámetro de tipo boolean, que le indican que se va añadir más registros 
-			flwriter = new FileWriter(Constantes.RUTA + "\\estudiantes.txt", true);
+			flwriter = new FileWriter(Constantes.RUTA + "\\asignaturas.txt", true);
 			BufferedWriter bfwriter = new BufferedWriter(flwriter);
 		
 			//escribe los datos en el archivo
