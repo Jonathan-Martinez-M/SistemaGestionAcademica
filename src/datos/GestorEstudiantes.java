@@ -46,6 +46,21 @@ public class GestorEstudiantes
 	
 	public static boolean agregar_estudiante(Estudiante nuevoEstudiante)
 	{
+		FileWriter flwriter = null;
+		try
+		{
+			//además de la ruta del archivo recibe un parámetro de tipo boolean, que le indican que se va añadir más registros 
+			flwriter = new FileWriter(Constantes.RUTA + "\\asignaturas.txt", true);
+			BufferedWriter bfwriter = new BufferedWriter(flwriter);
+		
+			//escribe los datos en el archivo
+			bfwriter.write(nuevoEstudiante.getNombres() + "," + nuevoEstudiante.getApellidos() + "," + nuevoEstudiante.getCiudad() +
+					"," + nuevoEstudiante.getBarrio() + "\n");
+			bfwriter.close();
+ 
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		return true;
 	}
 	
