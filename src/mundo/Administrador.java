@@ -22,7 +22,7 @@ public class  Administrador extends Usuario {
 	 */
 	public boolean agregar_estudiante(Estudiante p) 
 	{
-		return GestorEstudiantes.agregar_estudiante(p);
+		return true;
 	}
 	
 	/**
@@ -31,16 +31,17 @@ public class  Administrador extends Usuario {
 	 */
 	public boolean  modificar_estudiante( Estudiante p) 
 	{
-		return GestorEstudiantes.modificar_estudiante(p);
+		return true;
 	}
 	
 	/**
 	 * Agrega una asignatura
 	 * @return boolean
 	 */
-	public boolean agregar_asignatura(Asignatura p) 
+	public boolean agregar_asignatura(Asignatura nuevaAsign) 
 	{
-		return GestorAsignaturas.agregar_asignatura(p);
+		GestorAsignaturas.agregar_asignatura(nuevaAsign);
+		return true;
 	}
 	
 	/**
@@ -49,7 +50,7 @@ public class  Administrador extends Usuario {
 	 */
 	public boolean modificar_asignatura(Asignatura p) 
 	{
-		return GestorAsignaturas.modificar_asignatura(p);
+		return true;
 	}
 	
 	/**
@@ -58,7 +59,7 @@ public class  Administrador extends Usuario {
 	 */
 	public ArrayList<Encuesta> ver_encuestas()
 	{
-		return GestorEncuestas.ver_encuestas();
+		return null;
 	}
 	
 	/**
@@ -67,7 +68,7 @@ public class  Administrador extends Usuario {
 	 */
 	public ArrayList<Estudiante> ver_estudiantes()
 	{
-		return  GestorEstudiantes.ver_estudiante();
+		return  null;
 	}
 	
 	

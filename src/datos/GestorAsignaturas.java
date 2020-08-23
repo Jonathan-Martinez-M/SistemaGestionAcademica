@@ -43,13 +43,15 @@ public class GestorAsignaturas {
 	public static boolean agregar_asignatura(Asignatura nuevaAsignatura) 
 	{
 		FileWriter flwriter = null;
-		try {//además de la ruta del archivo recibe un parámetro de tipo boolean, que le indican que se va añadir más registros 
-				flwriter = new FileWriter(Constantes.RUTA + "\\estudiantes.txt", true);
-				BufferedWriter bfwriter = new BufferedWriter(flwriter);
-			
-				//escribe los datos en el archivo
-				bfwriter.write(nuevaAsignatura.getNombre() + "," + nuevaAsignatura.getCodigo() + "\n");
-				bfwriter.close();
+		try
+		{
+			//además de la ruta del archivo recibe un parámetro de tipo boolean, que le indican que se va añadir más registros 
+			flwriter = new FileWriter(Constantes.RUTA + "\\estudiantes.txt", true);
+			BufferedWriter bfwriter = new BufferedWriter(flwriter);
+		
+			//escribe los datos en el archivo
+			bfwriter.write(nuevaAsignatura.getNombre() + "," + nuevaAsignatura.getCodigo() + "\n");
+			bfwriter.close();
  
 		} catch (IOException e) {
 			e.printStackTrace();

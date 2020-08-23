@@ -18,12 +18,6 @@ public abstract class Usuario {
 	 */
 	protected String contrasenia;
 	
-	protected GestorEstudiantes gestor_Estudiantes;
-	
-	protected GestorAsignaturas gestor_Asignatura;
-	
-	protected GestorEncuestas gestor_Encuestas;
-	
 	/**
 	 * Constructor de la clase Usuario
 	 */
@@ -34,9 +28,6 @@ public abstract class Usuario {
 	{
 		this.codigo = codigo;
 		this.contrasenia = contrasenia;
-		gestor_Estudiantes = new GestorEstudiantes();
-		gestor_Asignatura = new GestorAsignaturas();
-		gestor_Encuestas = new GestorEncuestas();
 	}
 	
 	/**

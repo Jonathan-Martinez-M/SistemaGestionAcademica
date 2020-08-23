@@ -7,6 +7,8 @@ public interface Constantes
 	
 	//Constantes Botones
 	public static final String COMANDO_BTN_INGRESAR = "login";
+	public static final String COMANDO_BTN_CARGAR_ASIGNATURA = "Crear asignatura";
+	public static final String COMANDO_BTN_REGISTRAR_ASIGNATURA = "Registrar asignatura";
 	
 	//Constantes de resolución
 	public static final String USUARIO_ADMIN = "Usuario Admin";

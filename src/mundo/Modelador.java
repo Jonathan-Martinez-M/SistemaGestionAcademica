@@ -19,8 +19,6 @@ public class Modelador
 	public Modelador()
 	{
 		// TODO Auto-generated constructor stub
-		
-		
 	}
 	
 	public String iniciarSesion(String codigo, String contrasenia)
@@ -36,5 +34,13 @@ public class Modelador
 		
 		return Constantes.USUARIO_ERRONEO;
 	}
-
+	
+	public boolean RegistrarAsignatura(String codigo, String nombre)
+	{
+		Asignatura nuevaAsignatura = new Asignatura(nombre, codigo, null);
+		
+		((Administrador) usuarioLogueado).agregar_asignatura(nuevaAsignatura);
+		
+		return true;
+	}
 }

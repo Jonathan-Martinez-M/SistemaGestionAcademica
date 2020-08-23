@@ -8,9 +8,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 import datos.Constantes;
+import datos.GestorAsignaturas;
+import datos.GestorEncuestas;
+import datos.GestorEstudiantes;
 import mundo.Modelador;
 
 /**
@@ -23,6 +27,7 @@ public class Controlador implements ActionListener
 {
 	private Modelador modelo;
 	private Ventana_Inicial ventanaLogin;
+	private Ventana_Carga_Asignatura_Admin ventanaRegistroAsignatura;
 	
 	/**
 	 * 
@@ -44,6 +49,9 @@ public class Controlador implements ActionListener
 			{
 				try
 				{
+					GestorEstudiantes gEs = new GestorEstudiantes();
+					GestorAsignaturas gAs = new GestorAsignaturas();
+					GestorEncuestas gEn = new GestorEncuestas();
 					Controlador controlador = new Controlador();
 					Ventana_Inicial frame = new Ventana_Inicial(controlador);
 					controlador.setVentanaLogin(frame);
@@ -87,23 +95,33 @@ public class Controlador implements ActionListener
 				}else if(modelo.iniciarSesion(ventanaLogin.getTxtCod(), ventanaLogin.getTxtPass()).equals(Constantes.USUARIO_ADMIN))
 				{
 					ventanaLogin.dispose();
-					EventQueue.invokeLater(new Runnable()
+					try
 					{
-						public void run()
-						{
-							try {
-								Ventana_Administrador frame = new Ventana_Administrador();
-								frame.setVisible(true);
-							} catch (Exception e) {
-								e.printStackTrace();
-							}
-						}
-					});
+						Ventana_Administrador frame = new Ventana_Administrador(this);
+						frame.setVisible(true);
+					} catch (Exception e3) {
+						e3.printStackTrace();
+					}
 				}else if(modelo.iniciarSesion(ventanaLogin.getTxtCod(), ventanaLogin.getTxtPass()).equals(Constantes.USUARIO_ERRONEO))
 				{
 					ventanaLogin.limpiarCampos();
 					JOptionPane.showMessageDialog( ventanaLogin, Constantes.MENSAJE_LOGIN_FALLIDO, Constantes.USUARIO_ERRONEO, JOptionPane.INFORMATION_MESSAGE );
 				}
+			}else if(e.getActionCommand().equals(Constantes.COMANDO_BTN_CARGAR_ASIGNATURA))
+			{
+				try 
+				{
+					Ventana_Carga_Asignatura_Admin dialog = new Ventana_Carga_Asignatura_Admin(this);
+					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+				}catch (Exception e2)
+				{
+					e2.printStackTrace();
+				}
+			}else if(e.getActionCommand().equals(Constantes.COMANDO_BTN_REGISTRAR_ASIGNATURA))
+			{
+				
+				modelo.RegistrarAsignatura(ventanaRegistroAsignatura.getTxtCodAsign(), ventanaRegistroAsignatura.getTxtNomAsign());
 			}
 		}
 	}
@@ -111,6 +129,11 @@ public class Controlador implements ActionListener
 	public void setVentanaLogin(Ventana_Inicial ventanaLogin)
 	{
 		this.ventanaLogin = ventanaLogin;
+	}
+
+	public void setVentanaRegistroAsignatura(Ventana_Carga_Asignatura_Admin ventanaRegistroAsignatura)
+	{
+		this.ventanaRegistroAsignatura = ventanaRegistroAsignatura;
 	}
 
 }

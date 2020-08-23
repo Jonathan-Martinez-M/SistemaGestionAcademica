@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import datos.Constantes;
+
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import java.awt.Font;
@@ -16,14 +19,18 @@ import javax.swing.JDialog;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class Ventana_Administrador extends JFrame {
-
+public class Ventana_Administrador extends JFrame
+{
+	private Controlador control;
 	private JPanel contentPane;
 
 	/**
 	 * Create the frame.
 	 */
-	public Ventana_Administrador() {
+	public Ventana_Administrador(Controlador control)
+	{
+		this.control = control;
+		setTitle("Ventana de Administrador");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 322);
 		contentPane = new JPanel();
@@ -77,6 +84,8 @@ public class Ventana_Administrador extends JFrame {
 		contentPane.add(btnCargarDeEstudiante);
 		
 		JButton btnCargarAsignatura_1 = new JButton("Cargar Asignatura");
+		btnCargarAsignatura_1.setActionCommand(Constantes.COMANDO_BTN_CARGAR_ASIGNATURA);
+		btnCargarAsignatura_1.addActionListener(control);
 		btnCargarAsignatura_1.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		btnCargarAsignatura_1.setBounds(229, 126, 147, 34);
 		contentPane.add(btnCargarAsignatura_1);
