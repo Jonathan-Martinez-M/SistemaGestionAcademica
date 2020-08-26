@@ -22,7 +22,7 @@ public class GestorAsignaturas {
 	
 	private File archivoM;
 	
-	private BufferedWriter buff;
+	private static BufferedWriter buff;
 	
 	private BufferedWriter buffM;
 	
@@ -74,25 +74,43 @@ public class GestorAsignaturas {
 		
 	}
 	
-	public static boolean modificar_asignatura(Asignatura asignatura) {
+	public static boolean modificar_asignatura(Asignatura asignaturaVieja , Asignatura asignaturaNueva) {
 		
-		String nombre = asignatura.getNombre() + "," + asignatura.getCodigo();
+		String nombre = asignaturaVieja.getNombre() + "," + asignaturaVieja.getCodigo();
 		
 		Scanner entrada = null;
 		
 		File archivo = new File(Constantes.RUTA + "\\asignaturas.txt");
 		
+		int numeroLinea = 0;
+		
+		int almacenarLinea = 0;
+		
+		ArrayList<String> lineasTxt = new ArrayList<String>();
+		
 		try {
 			entrada = new Scanner(archivo);
 			while (entrada.hasNext()) { //mientras no se llegue al final del fichero
+				numeroLinea++;
                 String linea = entrada.nextLine();  //se lee una línea
+                lineasTxt.add(linea);
                 if (linea.contains(nombre)) {   //si la línea contiene el texto buscado se muestra por pantalla         
                    
+                	almacenarLinea = numeroLinea;
                 }
+                
             }
+			lineasTxt.remove(almacenarLinea-1);
+			lineasTxt.add(almacenarLinea-1 , asignaturaNueva.getNombre() + "," + asignaturaNueva.getCodigo());
+			buff = new BufferedWriter(new FileWriter(archivo));
+			for(int i = 0; i < lineasTxt.size() ; i++ )
+			{
+				buff.write(lineasTxt.get(i));
+			}
 			
+			buff.close();
 			return true;
-		} catch (FileNotFoundException e) {
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return false;
