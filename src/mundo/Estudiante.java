@@ -28,6 +28,11 @@ public class Estudiante extends Usuario
 	private String barrio;
 	
 	/**
+	 * contraseña estudiante
+	 */
+	private String contrasegna;
+	
+	/**
 	 * Lista de las matriculas del estudiante
 	 */
 	private ArrayList<Matricula> matriculas ;
@@ -44,15 +49,16 @@ public class Estudiante extends Usuario
 		this.ciudad = ciudad;
 		this.barrio = barrio;
 		this.matriculas = matriculas;
+		this.contrasegna = contraseña;
 	}
 	
 	/**
 	 * Modifica la informacion del estudiante exceptuando el codigo
 	 * @return boolean
 	 */
-	public boolean modificar_estudiante(Estudiante p) 
+	public boolean modificar_estudiante(Estudiante v, Estudiante n) 
 	{
-		return  GestorEstudiantes.modificar_estudiante(p);
+		return  GestorEstudiantes.modificar_estudiante(v,n);
 	}
 	/**
 	 * Matricula una asignatura 
@@ -94,6 +100,14 @@ public class Estudiante extends Usuario
 	public void setBarrio(String barrio) {
 		this.barrio = barrio;
 	}
+	
+	public String getContrasegna() {
+		return contrasegna;
+	}
+
+	public void setVontrasegna(String contraseña) {
+		this.contrasegna = contraseña;
+	}
 
 	public ArrayList<Matricula> getMatriculas() {
 		return matriculas;
@@ -102,6 +116,5 @@ public class Estudiante extends Usuario
 	public void setMatriculas(ArrayList<Matricula> matriculas) {
 		this.matriculas = matriculas;
 	}
-	
 	
 }
