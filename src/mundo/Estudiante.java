@@ -31,7 +31,12 @@ public class Estudiante extends Usuario
 	 * contraseña estudiante
 	 */
 	private String contrasegna;
-	
+
+	/**
+	 * codigo estudiante
+	 */
+	private String codigo;
+
 	/**
 	 * Lista de las matriculas del estudiante
 	 */
@@ -50,6 +55,7 @@ public class Estudiante extends Usuario
 		this.barrio = barrio;
 		this.matriculas = matriculas;
 		this.contrasegna = contraseña;
+		this.codigo = codigo;
 	}
 	
 	/**
@@ -105,8 +111,16 @@ public class Estudiante extends Usuario
 		return contrasegna;
 	}
 
-	public void setVontrasegna(String contraseña) {
+	public void setContrasegna(String contraseña) {
 		this.contrasegna = contraseña;
+	}
+	
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 
 	public ArrayList<Matricula> getMatriculas() {

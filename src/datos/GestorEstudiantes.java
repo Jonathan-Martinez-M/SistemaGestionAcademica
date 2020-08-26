@@ -57,8 +57,8 @@ public class GestorEstudiantes
 			BufferedWriter bfwriter = new BufferedWriter(flwriter);
 		
 			//escribe los datos en el archivo
-			bfwriter.write(nuevoEstudiante.getContrasegna() + "," + nuevoEstudiante.getNombres() + "," + nuevoEstudiante.getApellidos() + 
-					"," + nuevoEstudiante.getCiudad() + "," + nuevoEstudiante.getBarrio() + "\n");
+			bfwriter.write(nuevoEstudiante.getCodigo() + "," + nuevoEstudiante.getContrasegna() + "," + nuevoEstudiante.getNombres() + 
+					"," + nuevoEstudiante.getApellidos() + "," + nuevoEstudiante.getCiudad() + "," + nuevoEstudiante.getBarrio() + "\n");
 			bfwriter.close();
  
 		} catch (IOException e) {
@@ -70,8 +70,8 @@ public class GestorEstudiantes
 	
 	public static boolean modificar_estudiante(Estudiante estudianteviejo , Estudiante estudiantenuevo) {
 		
-		String nombre = estudianteviejo.getContrasegna() + "," + estudianteviejo.getNombres() + "," + estudianteviejo.getApellidos() + 
-				"," + estudianteviejo.getCiudad() + "," + estudianteviejo.getBarrio();
+		String nombre = estudianteviejo.getCodigo() + "," + estudianteviejo.getContrasegna() + "," + estudianteviejo.getNombres() + 
+				"," + estudianteviejo.getApellidos() + "," + estudianteviejo.getCiudad() + "," + estudianteviejo.getBarrio();
 		
 		Scanner entrada = null;
 		
@@ -96,7 +96,7 @@ public class GestorEstudiantes
                 
             }
 			lineasTxt.remove(almacenarLinea-1);
-			lineasTxt.add(almacenarLinea-1 ,estudiantenuevo.getContrasegna() + "," + estudiantenuevo.getNombres() + "," + 
+			lineasTxt.add(almacenarLinea-1 ,estudiantenuevo.getCodigo() + "," + estudiantenuevo.getContrasegna() + "," + estudiantenuevo.getNombres() + "," + 
 			estudiantenuevo.getApellidos() + "," + estudiantenuevo.getCiudad() + "," + estudiantenuevo.getBarrio());
 			buff = new BufferedWriter(new FileWriter(archivo));
 			for(int i = 0; i < lineasTxt.size() ; i++ )
@@ -133,7 +133,7 @@ public class GestorEstudiantes
                 
                 delimitar.useDelimiter("\\s*,\\s*");
                 
-                Estudiante estudianteAgregar = new Estudiante(null, delimitar.next(), delimitar.next(), delimitar.next(), delimitar.next(), delimitar.next(), null);
+                Estudiante estudianteAgregar = new Estudiante(delimitar.next(), delimitar.next(), delimitar.next(), delimitar.next(), delimitar.next(), delimitar.next(), null);
                 
                 estudiantes.add(estudianteAgregar);
                 
@@ -147,6 +147,12 @@ public class GestorEstudiantes
 		}
 		
 		return estudiantes;
+	}
+	
+	public static boolean ingresar(Estudiante estudiante) {
+			
+			
+		return true;
 	}
 	
 }
