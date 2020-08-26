@@ -51,8 +51,9 @@ public class GestorEncuestas {
 
 	}
 	
-	public static ArrayList<Encuesta> almacenar_encuestas(){
-		
+	public static ArrayList<Encuesta> almacenar_encuestas(Encuesta nuevaEncuesta){
+			
+				
 		return new ArrayList<Encuesta>();
 	}
 	

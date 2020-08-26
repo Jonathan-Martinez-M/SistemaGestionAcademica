@@ -50,7 +50,7 @@ public class GestorAsignaturas {
 			BufferedWriter bfwriter = new BufferedWriter(flwriter);
 		
 			//escribe los datos en el archivo
-			bfwriter.write(nuevaAsignatura.getNombre() + "," + nuevaAsignatura.getCodigo() + "\n");
+			bfwriter.write(nuevaAsignatura.getNombre() + "," + nuevaAsignatura.getCodigo() + "\r" + "\n");
 			bfwriter.close();
  
 		} catch (IOException e) {

@@ -43,4 +43,13 @@ public class Modelador
 		
 		return true;
 	}
-}
+	
+	public boolean RegistrarEstudiante(String nombres, String apellidos, String codigo, String ciudad, String barrio) {
+		
+		Estudiante nuevoEstudiante = new Estudiante(codigo, contraseña, nombres, apellidos, ciudad, barrio, materias);
+		
+		((Administrador) usuarioLogueado).agregar_estudiante(nuevoEstudiante);
+		
+		return true;
+	}
+}		

@@ -25,6 +25,7 @@ public class GestorEstudiantes
 	
 	public GestorEstudiantes()
 	{
+		
 		archivo = new File(Constantes.RUTA + "\\estudiantes.txt");
 		
 		if(archivo.exists())
@@ -52,10 +53,10 @@ public class GestorEstudiantes
 			//además de la ruta del archivo recibe un parámetro de tipo boolean, que le indican que se va añadir más registros 
 			flwriter = new FileWriter(Constantes.RUTA + "\\asignaturas.txt", true);
 			BufferedWriter bfwriter = new BufferedWriter(flwriter);
-		
+			
 			//escribe los datos en el archivo
 			bfwriter.write(nuevoEstudiante.getNombres() + "," + nuevoEstudiante.getApellidos() + "," + nuevoEstudiante.getCiudad() +
-					"," + nuevoEstudiante.getBarrio() + "\n");
+					"," + nuevoEstudiante.getBarrio() + "\r" + "\n");
 			bfwriter.close();
  
 		} catch (IOException e) {
@@ -66,6 +67,21 @@ public class GestorEstudiantes
 	
 	public static boolean modificar_estudiante(Estudiante estudiante)
 	{
+		FileWriter flwriter = null;
+		try
+		{
+			//además de la ruta del archivo recibe un parámetro de tipo boolean, que le indican que se va añadir más registros 
+			flwriter = new FileWriter(Constantes.RUTA + "\\asignaturas.txt", true);
+			BufferedWriter bfwriter = new BufferedWriter(flwriter);
+			
+			//escribe los datos en el archivo
+			bfwriter.write(estudiante.getNombres() + "," + estudiante.getApellidos() + "," + estudiante.getCiudad() +
+					"," + estudiante.getBarrio() + "\r" + "\n");
+			bfwriter.close();
+ 
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		return true;
 	}
 	public static ArrayList<Estudiante> ver_estudiante()
