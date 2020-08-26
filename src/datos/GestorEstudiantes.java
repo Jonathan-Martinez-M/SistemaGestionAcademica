@@ -5,11 +5,14 @@ package datos;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
+import mundo.Asignatura;
 import mundo.Estudiante;
 
 /**
@@ -64,14 +67,48 @@ public class GestorEstudiantes
 		return true;
 	}
 	
+	
 	public static boolean modificar_estudiante(Estudiante estudiante)
 	{
 		return true;
 	}
-	public static ArrayList<Estudiante> ver_estudiante()
+	
+	
+	public static ArrayList<Estudiante> ver_estudiantes()
 	{
-		return new ArrayList<Estudiante>() ;
+		Scanner entrada = null;
+		
+		ArrayList<Estudiante> estudiantes = new ArrayList<Estudiante>();
+		
+		File archivo = new File(Constantes.RUTA + "\\estudiantes.txt");
+		
+		try {
+			
+			entrada = new Scanner(archivo);
+			while (entrada.hasNext()) { //mientras no se llegue al final del fichero
+                String linea = entrada.nextLine();  //se lee una línea
+                
+                Scanner delimitar = new Scanner(linea);
+                
+                delimitar.useDelimiter("\\s*,\\s*");
+                
+                Estudiante estudianteAgregar = new Estudiante(null, null, delimitar.next(), delimitar.next(), delimitar.next(), delimitar.next(), null);
+                
+                estudiantes.add(estudianteAgregar);
+                
+                
+            }
+			entrada.close();
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return estudiantes;
 	}
+	
+	
 	public static ArrayList<Estudiante> buscar_estudiante()
 	{
 		return new ArrayList<Estudiante>() ;
