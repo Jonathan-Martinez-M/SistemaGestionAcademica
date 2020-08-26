@@ -40,8 +40,7 @@ public class  Administrador extends Usuario {
 	 */
 	public boolean agregar_asignatura(Asignatura nuevaAsign) 
 	{
-		GestorAsignaturas.agregar_asignatura(nuevaAsign);
-		return true;
+		return GestorAsignaturas.agregar_asignatura(nuevaAsign);
 	}
 	
 	/**

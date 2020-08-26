@@ -66,25 +66,14 @@ public class Ventana_Administrador extends JFrame
 		subtitulo.add(lblDeAsignaturas);
 		
 		JButton btnCargarDeEstudiante = new JButton("Cargar de Estudiante");
-		btnCargarDeEstudiante.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e)
-			{
-				try
-				{
-					Ventana_Carga_de_estudiantes dialog = new Ventana_Carga_de_estudiantes();
-					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-					dialog.setVisible(true);
-				} catch (Exception e2) {
-					e2.printStackTrace();
-				}
-			}
-		});
+		btnCargarDeEstudiante.addActionListener(control);
 		btnCargarDeEstudiante.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		btnCargarDeEstudiante.setBounds(56, 126, 147, 34);
+		btnCargarDeEstudiante.setActionCommand(Constantes.COMANDO_BTN_REGISTRAR_ESTUDIANTE);
 		contentPane.add(btnCargarDeEstudiante);
 		
 		JButton btnCargarAsignatura_1 = new JButton("Cargar Asignatura");
-		btnCargarAsignatura_1.setActionCommand(Constantes.COMANDO_BTN_CARGAR_ASIGNATURA);
+		btnCargarAsignatura_1.setActionCommand(Constantes.COMANDO_BTN_VTNA_CARGAR_ASIGNATURA);
 		btnCargarAsignatura_1.addActionListener(control);
 		btnCargarAsignatura_1.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		btnCargarAsignatura_1.setBounds(229, 126, 147, 34);

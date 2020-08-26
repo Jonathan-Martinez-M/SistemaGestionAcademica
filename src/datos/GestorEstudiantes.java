@@ -50,7 +50,7 @@ public class GestorEstudiantes
 		try
 		{
 			//además de la ruta del archivo recibe un parámetro de tipo boolean, que le indican que se va añadir más registros 
-			flwriter = new FileWriter(Constantes.RUTA + "\\asignaturas.txt", true);
+			flwriter = new FileWriter(Constantes.RUTA + "\\estudiantes.txt", true);
 			BufferedWriter bfwriter = new BufferedWriter(flwriter);
 		
 			//escribe los datos en el archivo

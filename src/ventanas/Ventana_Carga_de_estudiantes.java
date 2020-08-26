@@ -28,11 +28,15 @@ public class Ventana_Carga_de_estudiantes extends JDialog {
 	private JTextField textField_2;
 	private JTextField textField_3;
 	private JTable table;
-
+	private Controlador control;	
+		
 	/**
 	 * Create the dialog.
 	 */
-	public Ventana_Carga_de_estudiantes() {
+	public Ventana_Carga_de_estudiantes(Controlador control)
+	{
+		this.control = control;
+		control.setVentanaRegistroEstudiante(this);
 		setTitle("Carga de estudiantes");
 		setBounds(100, 100, 414, 538);
 		getContentPane().setLayout(new BorderLayout());

@@ -39,8 +39,13 @@ public class Modelador
 	{
 		Asignatura nuevaAsignatura = new Asignatura(nombre, codigo, null);
 		
-		((Administrador) usuarioLogueado).agregar_asignatura(nuevaAsignatura);
+		return ((Administrador) usuarioLogueado).agregar_asignatura(nuevaAsignatura);
+	}
+	
+	public boolean RegistrarEstudiante(String codigo, String nombre)
+	{
+		Asignatura nuevaAsignatura = new Asignatura(nombre, codigo, null);
 		
-		return true;
+		return ((Administrador) usuarioLogueado).agregar_asignatura(nuevaAsignatura);
 	}
 }
