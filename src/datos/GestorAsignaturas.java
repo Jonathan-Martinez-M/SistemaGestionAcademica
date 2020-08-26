@@ -100,12 +100,12 @@ public class GestorAsignaturas {
 		
 	}
 	
-	public static ArrayList<String> ver_asignatura(){
+	public static ArrayList<Asignatura> ver_asignatura(){
 		
 		
 		Scanner entrada = null;
 		
-		ArrayList<String> asignaturas = new ArrayList<String>();
+		ArrayList<Asignatura> asignaturas = new ArrayList<Asignatura>();
 		
 		File archivo = new File(Constantes.RUTA + "\\asignaturas.txt");
 		
@@ -115,8 +115,17 @@ public class GestorAsignaturas {
 			while (entrada.hasNext()) { //mientras no se llegue al final del fichero
                 String linea = entrada.nextLine();  //se lee una línea
                 
-                asignaturas.add(linea);       
+                Scanner delimitar = new Scanner(linea);
+                
+                delimitar.useDelimiter("\\s*,\\s*");
+                
+                Asignatura asignaturaAgregar = new Asignatura(delimitar.next(), delimitar.next(), null);
+                
+                asignaturas.add(asignaturaAgregar);
+                
+                
             }
+			entrada.close();
 			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
