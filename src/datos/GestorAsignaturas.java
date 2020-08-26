@@ -5,6 +5,7 @@ package datos;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import mundo.Asignatura;
 
@@ -50,8 +51,8 @@ public class GestorAsignaturas {
 			BufferedWriter bfwriter = new BufferedWriter(flwriter);
 		
 			//escribe los datos en el archivo
-			bfwriter.write(nuevaAsignatura.getNombre() + "," + nuevaAsignatura.getCodigo() + "\n");
-			bfwriter.close();
+			bfwriter.write(nuevaAsignatura.getNombre() + "," + nuevaAsignatura.getCodigo() + "\r "+"\n");
+			bfwriter.close();	
  
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -61,10 +62,29 @@ public class GestorAsignaturas {
 	
 	public static boolean modificar_asignatura(Asignatura asignatura) {
 		
+		String nombre = " "+ asignatura.getNombre() + "," + asignatura.getCodigo();
+		
+		Scanner entrada = null;
+		
+		File archivo = new File(Constantes.RUTA + "\\asignaturas.txt");
+		
+		try {
+			entrada = new Scanner(archivo);
+			while (entrada.hasNext()) { //mientras no se llegue al final del fichero
+                String linea = entrada.nextLine();  //se lee una línea
+                if (linea.contains(nombre)) {   //si la línea contiene el texto buscado se muestra por pantalla         
+                   
+                }
+            }
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return true;
 	}
 	
-	public static ArrayList<Asignatura> ver_estudiantes(){
+	public static ArrayList<Asignatura> ver_asignatura(){
 		
 		return new ArrayList<Asignatura>();
 	}

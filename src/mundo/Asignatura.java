@@ -22,8 +22,8 @@ public  class Asignatura  {
 	/**
 	 * Constructor de la clase Asignatura
 	 */	
+	
 	public Asignatura(String nombre, String codigo, ArrayList<Matricula> matriculas) {
-
 		this.nombre = nombre;
 		this.codigo = codigo;
 		this.matriculas = matriculas;

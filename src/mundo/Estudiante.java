@@ -52,7 +52,7 @@ public class Estudiante extends Usuario
 	 */
 	public boolean modificar_estudiante(Estudiante p) 
 	{
-		return  GestorEstudiantes.modificar_estudiante(p) ;
+		return  GestorEstudiantes.modificar_estudiante(p);
 	}
 	/**
 	 * Matricula una asignatura 
