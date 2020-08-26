@@ -11,6 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Toolkit;
+
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.GroupLayout;
@@ -204,4 +206,25 @@ public class Ventana_Carga_de_estudiantes extends JDialog {
 		scrollPane.setViewportView(tablaAsignaturas);
 		contentPanel.setLayout(gl_contentPanel);
 	}
+
+	public String getTxtNombre() {
+		return txtNombre.getText();
+	}
+
+	public String getTxtApellido() {
+		return txtApellido.getText();
+	}
+
+	public String getTxtCodigo() {
+		return txtCodigo.getText();
+	}
+
+	public String getTxtUbicacion() {
+		return txtUbicacion.getText();
+	}
+
+	public String getTxtContrasenia() {
+		return txtContrasenia.getText();
+	}
+	
 }

@@ -22,7 +22,7 @@ public class  Administrador extends Usuario {
 	 */
 	public boolean agregar_estudiante(Estudiante p) 
 	{
-		return true;
+		return GestorEstudiantes.agregar_estudiante(p);
 	}
 	
 	/**
