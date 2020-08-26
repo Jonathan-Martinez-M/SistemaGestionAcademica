@@ -169,7 +169,18 @@ public class Ventana_Carga_de_estudiantes extends JDialog {
 		);
 		
 		tablaAsignaturas = new JTable();
-		DefaultTableModel modeloTabla = new DefaultTableModel(null, new String[] { "Asignatura", "C\u00F3digo", "Adicionar"});
+		DefaultTableModel modeloTabla = new DefaultTableModel(
+			null,
+			new String[] {"Asignatura", "C\u00F3digo", "Adicionar"
+			}
+		) {
+			boolean[] columnEditables = new boolean[] {
+				false, false, true
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		};
 		
 		ArrayList<Asignatura> lasAsignaturas = control.listarAsignaturas(); 
 		
@@ -183,9 +194,7 @@ public class Ventana_Carga_de_estudiantes extends JDialog {
 			
 			modeloTabla.addRow(registros);
 		}
-		
 		tablaAsignaturas.setModel(modeloTabla);
-		
 		scrollPane.setViewportView(tablaAsignaturas);
 		contentPanel.setLayout(gl_contentPanel);
 	}
