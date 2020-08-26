@@ -24,7 +24,7 @@ public class GestorEstudiantes
 	//objeto para leer archivos
 	private File archivo;
 	
-	private BufferedWriter buff;
+	private static BufferedWriter buff;
 	
 	public GestorEstudiantes()
 	{
@@ -68,9 +68,48 @@ public class GestorEstudiantes
 	}
 	
 	
-	public static boolean modificar_estudiante(Estudiante estudiante)
-	{
-		return true;
+	public static boolean modificar_estudiante(Estudiante estudianteviejo , Estudiante estudiantenuevo) {
+		
+		String nombre = estudianteviejo.getNombres() + "," + estudianteviejo.getApellidos() + "," + estudianteviejo.getCiudad() + "," + estudianteviejo.getBarrio();
+		
+		Scanner entrada = null;
+		
+		File archivo = new File(Constantes.RUTA + "\\estudiantes.txt");
+		
+		int numeroLinea = 0;
+		
+		int almacenarLinea = 0;
+		
+		ArrayList<String> lineasTxt = new ArrayList<String>();
+		
+		try {
+			entrada = new Scanner(archivo);
+			while (entrada.hasNext()) { //mientras no se llegue al final del fichero
+				numeroLinea++;
+                String linea = entrada.nextLine();  //se lee una línea
+                lineasTxt.add(linea);
+                if (linea.contains(nombre)) {   //si la línea contiene el texto buscado se muestra por pantalla         
+                   
+                	almacenarLinea = numeroLinea;
+                }
+                
+            }
+			lineasTxt.remove(almacenarLinea-1);
+			lineasTxt.add(almacenarLinea-1 , estudiantenuevo.getNombres() + "," + estudiantenuevo.getApellidos() + "," + estudiantenuevo.getCiudad() + "," + estudiantenuevo.getBarrio());
+			buff = new BufferedWriter(new FileWriter(archivo));
+			for(int i = 0; i < lineasTxt.size() ; i++ )
+			{
+				buff.write(lineasTxt.get(i));
+			}
+			
+			buff.close();
+			return true;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+		
 	}
 	
 	
@@ -108,9 +147,4 @@ public class GestorEstudiantes
 		return estudiantes;
 	}
 	
-	
-	public static ArrayList<Estudiante> buscar_estudiante()
-	{
-		return new ArrayList<Estudiante>() ;
-	}
 }
