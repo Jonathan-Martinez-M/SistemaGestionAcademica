@@ -1,7 +1,7 @@
 package mundo;
 
 public class Encuesta
-{	
+{
 	/**
 	 * Lista de preguntas Cuantitativas
 	 */
@@ -21,6 +21,11 @@ public class Encuesta
 	 * Respuesta a la pregunta abierta
 	 */
 	private String respuesta_abierta;
+	
+	/*
+	 * Identificador de la encuesta
+	 */
+	private int identificador;
 	
 	/**
 	 * Constructor de la clase Encuesta
@@ -64,6 +69,11 @@ public class Encuesta
 
 	public void setRespuesta_abierta(String respuesta_abierta) {
 		this.respuesta_abierta = respuesta_abierta;
+	}
+
+	public int getIdentificador()
+	{
+		return identificador;
 	}
 	
 	
