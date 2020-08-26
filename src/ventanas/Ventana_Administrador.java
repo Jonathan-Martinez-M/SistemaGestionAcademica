@@ -66,10 +66,10 @@ public class Ventana_Administrador extends JFrame
 		subtitulo.add(lblDeAsignaturas);
 		
 		JButton btnCargarDeEstudiante = new JButton("Cargar de Estudiante");
+		btnCargarDeEstudiante.setActionCommand(Constantes.COMANDO_BTN_VTNA_CARGAR_ESTUDIANTE);
 		btnCargarDeEstudiante.addActionListener(control);
 		btnCargarDeEstudiante.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		btnCargarDeEstudiante.setBounds(56, 126, 147, 34);
-		btnCargarDeEstudiante.setActionCommand(Constantes.COMANDO_BTN_REGISTRAR_ESTUDIANTE);
 		contentPane.add(btnCargarDeEstudiante);
 		
 		JButton btnCargarAsignatura_1 = new JButton("Cargar Asignatura");

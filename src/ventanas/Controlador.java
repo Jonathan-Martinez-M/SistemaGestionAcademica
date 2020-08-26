@@ -6,6 +6,7 @@ package ventanas;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -15,6 +16,7 @@ import datos.Constantes;
 import datos.GestorAsignaturas;
 import datos.GestorEncuestas;
 import datos.GestorEstudiantes;
+import mundo.Asignatura;
 import mundo.Modelador;
 
 /**
@@ -154,6 +156,11 @@ public class Controlador implements ActionListener
 			}
 		}
 	}
+	
+	public ArrayList<Asignatura> listarAsignaturas()
+	{
+		return modelo.listarAsignaturas();
+	}
 
 	public void setVentanaLogin(Ventana_Inicial ventanaLogin)
 	{
@@ -168,6 +175,5 @@ public class Controlador implements ActionListener
 	public void setVentanaRegistroEstudiante(Ventana_Carga_de_estudiantes ventanaRegistroEstudiante)
 	{
 		this.ventanaRegistroEstudiante = ventanaRegistroEstudiante;
-	}
-
+	}	
 }

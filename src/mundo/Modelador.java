@@ -3,7 +3,10 @@
  */
 package mundo;
 
+import java.util.ArrayList;
+
 import datos.Constantes;
+import datos.GestorAsignaturas;
 
 /**
  * @author Rubén Fúquene
@@ -42,10 +45,15 @@ public class Modelador
 		return ((Administrador) usuarioLogueado).agregar_asignatura(nuevaAsignatura);
 	}
 	
-	public boolean RegistrarEstudiante(String codigo, String nombre)
+	public boolean RegistrarEstudiante(String codigo, String nombre, String apellidos, String ubicacion, String contrasenia)
 	{
 		Asignatura nuevaAsignatura = new Asignatura(nombre, codigo, null);
 		
 		return ((Administrador) usuarioLogueado).agregar_asignatura(nuevaAsignatura);
+	}
+	
+	public ArrayList<Asignatura> listarAsignaturas()
+	{
+		return GestorAsignaturas.ver_asignatura();
 	}
 }
