@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 import mundo.Asignatura;
 import mundo.Encuesta;
+import mundo.Estudiante;
 import mundo.Matricula;
 
 /**
@@ -154,5 +155,40 @@ public class GestorAsignaturas {
 			return false;
 		}
 		
+	}
+	
+public static ArrayList<Matricula> ver_matricula(){
+		
+		
+		Scanner entrada = null;
+		
+		ArrayList<Matricula> matricula = new ArrayList<Matricula>();
+		
+		File archivo = new File(Constantes.RUTA + "\\matriculas.txt");
+		
+		try {
+			
+			entrada = new Scanner(archivo);
+			while (entrada.hasNext()) { //mientras no se llegue al final del fichero
+                String linea = entrada.nextLine();  //se lee una línea
+                
+                Scanner delimitar = new Scanner(linea);
+                
+                delimitar.useDelimiter("\\s*,\\s*");
+                
+                Matricula matriculaAgregar = new Matricula(delimitar.next(), delimitar.next(), new Encuesta(null, null, null, null));
+                
+                matricula.add(matriculaAgregar);
+                
+                
+            }
+			entrada.close();
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return matricula;
 	}
 }
