@@ -149,10 +149,25 @@ public class GestorEstudiantes
 		return estudiantes;
 	}
 	
-	public static boolean ingresar(Estudiante estudiante) {
+	public static boolean ingresar(String codigo, String contrasegna) {
 			
+			boolean bandera = false;
 			
-		return true;
+			ArrayList<Estudiante> estudiante = new ArrayList<Estudiante>();
+			
+			estudiante = GestorEstudiantes.ver_estudiantes();
+			
+			for(int i=0; i < estudiante.size() ; i++) {
+				
+				if((estudiante.get(i).getCodigo()).equals(codigo) && (estudiante.get(i).getContrasegna().equals(contrasegna))) {
+					
+					bandera = true;
+					
+					break;
+				}
+			}
+			
+		return bandera;
 	}
 	
 }
