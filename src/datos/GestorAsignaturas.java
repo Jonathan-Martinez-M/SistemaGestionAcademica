@@ -194,7 +194,7 @@ public static ArrayList<Matricula> ver_matricula(){
                 
                 delimitar.useDelimiter("\\s*,\\s*");
                 
-                Matricula matriculaAgregar = new Matricula(delimitar.next(), delimitar.next(), new Encuesta(null, null, null, null));
+                Matricula matriculaAgregar = new Matricula(delimitar.next(), delimitar.next(), new Encuesta(null, null));
                 
                 matricula.add(matriculaAgregar);
                 

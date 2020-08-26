@@ -30,13 +30,10 @@ public class Encuesta
 	/**
 	 * Constructor de la clase Encuesta
 	 */
-	public Encuesta(String[] preguntas_cuantitativas, int[] respuestas_cuantitativas, String pregunta_abierta,
-			String respuesta_abierta) {
-
+	public Encuesta(String[] preguntas_cuantitativas, String pregunta_abierta)
+	{
 		this.preguntas_cuantitativas = preguntas_cuantitativas;
-		this.respuestas_cuantitativas = respuestas_cuantitativas;
 		this.pregunta_abierta = pregunta_abierta;
-		this.respuesta_abierta = respuesta_abierta;
 	}
 
 	public String[] getPreguntas_cuantitativas() {
@@ -47,12 +44,18 @@ public class Encuesta
 		this.preguntas_cuantitativas = preguntas_cuantitativas;
 	}
 
+	public void agregar_Pregunta_Cuantitativa(int posicion, String pregunta)
+	{
+		this.preguntas_cuantitativas[posicion] = pregunta;
+	}
+	
 	public int[] getRespuestas_cuantitativas() {
 		return respuestas_cuantitativas;
 	}
 
-	public void setRespuestas_cuantitativas(int[] respuestas_cuantitativas) {
-		this.respuestas_cuantitativas = respuestas_cuantitativas;
+	public void agregar_Respuestas_cuantitativas(int posicion, int respuesta)
+	{
+		this.respuestas_cuantitativas[posicion] = respuesta;
 	}
 
 	public String getPregunta_abierta() {
@@ -74,6 +77,11 @@ public class Encuesta
 	public int getIdentificador()
 	{
 		return identificador;
+	}
+
+	public void setIdentificador(int identificador)
+	{
+		this.identificador = identificador;
 	}
 	
 	
