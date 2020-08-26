@@ -18,6 +18,7 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JTable;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 import datos.Constantes;
 import mundo.Asignatura;
@@ -195,6 +196,11 @@ public class Ventana_Carga_de_estudiantes extends JDialog {
 			modeloTabla.addRow(registros);
 		}
 		tablaAsignaturas.setModel(modeloTabla);
+		
+		TableColumn colmnaCheck = tablaAsignaturas.getColumnModel().getColumn(2);
+		colmnaCheck.setCellEditor(tablaAsignaturas.getDefaultEditor(Boolean.class));
+		colmnaCheck.setCellRenderer(tablaAsignaturas.getDefaultRenderer(Boolean.class));
+		
 		scrollPane.setViewportView(tablaAsignaturas);
 		contentPanel.setLayout(gl_contentPanel);
 	}

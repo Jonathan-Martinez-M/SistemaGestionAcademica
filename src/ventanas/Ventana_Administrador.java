@@ -80,20 +80,8 @@ public class Ventana_Administrador extends JFrame
 		contentPane.add(btnCargarAsignatura_1);
 		
 		JButton btnListaDeAsignaturas = new JButton("Lista de Asignaturas");
-		btnListaDeAsignaturas.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e)
-			{
-				try
-				{
-					Ventana_Lista_Asignatura_Admin dialog = new Ventana_Lista_Asignatura_Admin();
-					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-					dialog.setVisible(true);
-				} catch (Exception e2)
-				{
-					e2.printStackTrace();
-				}
-			}
-		});
+		btnListaDeAsignaturas.setActionCommand(Constantes.COMANDO_BTN_VTNA_LISTA_ASIGNATURAS);
+		btnListaDeAsignaturas.addActionListener(control);
 		btnListaDeAsignaturas.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		btnListaDeAsignaturas.setBounds(10, 181, 147, 34);
 		contentPane.add(btnListaDeAsignaturas);

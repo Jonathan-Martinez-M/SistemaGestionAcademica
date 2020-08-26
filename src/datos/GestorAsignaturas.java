@@ -15,15 +15,13 @@ import mundo.Matricula;
 /**
  * @author Andrés
  *
+ * Clase encargada del manejo de datos en BD de las asignaturas y las matrículas 
  */
-public class GestorAsignaturas {
-	
-	private File archivo;
-	
-	private File archivoM;
-	
-	private static BufferedWriter buff;
-	
+public class GestorAsignaturas
+{
+	private File archivoAsignaturas;	
+	private File archivoMatriculas;
+	private static BufferedWriter buff;	
 	private BufferedWriter buffM;
 	
 	private static ArrayList<Matricula> matriculas;
@@ -31,18 +29,18 @@ public class GestorAsignaturas {
 	
 	public GestorAsignaturas() {
 		
-		archivo = new File(Constantes.RUTA + "\\asignaturas.txt");
-		archivoM = new File(Constantes.RUTA + "\\matriculas.txt");
+		archivoAsignaturas = new File(Constantes.RUTA + "\\asignaturas.txt");
+		archivoMatriculas = new File(Constantes.RUTA + "\\matriculas.txt");
 		
-		if(archivo.exists() && archivoM.exists())
+		if(archivoAsignaturas.exists() && archivoMatriculas.exists())
 		{
 			
 		}
 		else {
 			
 			try {
-				buff = new BufferedWriter(new FileWriter(archivo));
-				buffM = new BufferedWriter(new FileWriter(archivoM));
+				buff = new BufferedWriter(new FileWriter(archivoAsignaturas));
+				buffM = new BufferedWriter(new FileWriter(archivoMatriculas));
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

@@ -131,6 +131,7 @@ public class Controlador implements ActionListener
 				if(modelo.RegistrarAsignatura(ventanaRegistroAsignatura.getTxtCodAsign(), ventanaRegistroAsignatura.getTxtNomAsign()))
 				{
 					this.ventanaRegistroAsignatura.dispose();
+					JOptionPane.showMessageDialog(null, Constantes.CARGA_EXITOSA_ASIGNATURA);
 				}
 			}
 			//Abre ventana para registrar un nuevo estudiante
@@ -152,6 +153,19 @@ public class Controlador implements ActionListener
 				if(true)
 				{
 					
+				}
+			}
+			//Abre ventana para registrar un nuevo estudiante
+			else if(e.getActionCommand().equals(Constantes.COMANDO_BTN_VTNA_LISTA_ASIGNATURAS))
+			{
+				try
+				{
+					Ventana_Lista_Asignatura_Admin dialog = new Ventana_Lista_Asignatura_Admin(this);
+					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+				} catch (Exception e2)
+				{
+					e2.printStackTrace();
 				}
 			}
 		}
