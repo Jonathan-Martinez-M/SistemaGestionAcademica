@@ -36,6 +36,7 @@ public class Controlador implements ActionListener
 	private Ventana_Carga_de_estudiantes ventanaRegistroEstudiante;
 	private Ventana_Modificar_Datos ventanamodificardatos;
 	private Ventana_Carga_Asignatura ventanaMatriculaEst;
+	private Ventana_Encuesta ventanaEncuestas;
 	
 	/**
 	 * Contructor de la clase controlador
@@ -255,6 +256,18 @@ public class Controlador implements ActionListener
 					e2.printStackTrace();
 				}
 			}
+			else if(e.getActionCommand().equals(Constantes.COMANDO_BTN_REGISTRAR_ENCUESTA))
+			{
+				String[][] lasrespuestas = ventanaEncuestas.obtenerResultadoEncuesta();
+				
+				for(int cadaFila = 0; cadaFila < lasrespuestas.length; cadaFila++)
+				{
+					for(int cadaCol = 0; cadaCol < lasrespuestas[cadaFila].length; cadaCol++)
+					{
+						System.out.println(lasrespuestas[cadaFila][cadaCol] + " - ");
+					}
+				}
+			}
 		}
 	}
 	/**
@@ -315,6 +328,11 @@ public class Controlador implements ActionListener
 	public void setVentanaMatriculaEst(Ventana_Carga_Asignatura ventanaMatriculaEst)
 	{
 		this.ventanaMatriculaEst = ventanaMatriculaEst;
+	}
+	
+	public void setVentanaEncuestas(Ventana_Encuesta ventanaEncuestas)
+	{
+		this.ventanaEncuestas = ventanaEncuestas;
 	}
 	
 	public Encuesta getEncuestaDummy()

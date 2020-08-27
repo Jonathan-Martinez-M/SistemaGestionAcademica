@@ -33,11 +33,15 @@ public class Ventana_Encuesta extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTable tablaEncuestas;
+	private Controlador control;
 
 	/**
 	 * Constructor de la clase Ventana_Encuesta
 	 */
-	public Ventana_Encuesta(Controlador control) {
+	public Ventana_Encuesta(Controlador control)
+	{
+		this.control = control;
+		control.setVentanaEncuestas(this);
 		setTitle("Encuesta\r\n");
 		setBounds(100, 100, 578, 310);
 		getContentPane().setLayout(new BorderLayout());
@@ -47,10 +51,8 @@ public class Ventana_Encuesta extends JDialog {
 		JScrollPane scrollPane = new JScrollPane();
 		
 		JButton btnEnviar = new JButton("Enviar\r\n");
-		btnEnviar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
+		btnEnviar.setActionCommand(Constantes.COMANDO_BTN_REGISTRAR_ENCUESTA);
+		btnEnviar.addActionListener(control);
 		btnEnviar.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		GroupLayout gl_contentPanel = new GroupLayout(contentPanel);
 		gl_contentPanel.setHorizontalGroup(
@@ -125,5 +127,27 @@ public class Ventana_Encuesta extends JDialog {
 		}
 		scrollPane.setViewportView(tablaEncuestas);
 		contentPanel.setLayout(gl_contentPanel);
+	}
+	
+	public String[][] obtenerResultadoEncuesta()
+	{
+		String[][] lasRespuestas = new String[control.listarMatriculasPorEstudiante().size()][6];
+		for(int cadaFila = 0; cadaFila < tablaEncuestas.getRowCount(); cadaFila++)
+		{
+			System.out.println(tablaEncuestas.getValueAt(cadaFila, 0).toString() + " - ");
+			System.out.println(tablaEncuestas.getValueAt(cadaFila, 1).toString() + " - ");
+			System.out.println(tablaEncuestas.getValueAt(cadaFila, 2).toString() + " - ");
+			System.out.println(tablaEncuestas.getValueAt(cadaFila, 3).toString() + " - ");
+			System.out.println(tablaEncuestas.getValueAt(cadaFila, 4).toString() + " - ");
+			//System.out.println(tablaEncuestas.getValueAt(cadaFila, 5) + " - ");
+			lasRespuestas[cadaFila][0] = tablaEncuestas.getValueAt(cadaFila, 0).toString();
+			lasRespuestas[cadaFila][1] = tablaEncuestas.getValueAt(cadaFila, 1).toString();
+			lasRespuestas[cadaFila][2] = tablaEncuestas.getValueAt(cadaFila, 2).toString();
+			lasRespuestas[cadaFila][3] = tablaEncuestas.getValueAt(cadaFila, 3).toString();
+			lasRespuestas[cadaFila][4] = tablaEncuestas.getValueAt(cadaFila, 4).toString();
+			//lasRespuestas[cadaFila][5] = tablaEncuestas.getValueAt(cadaFila, 5).toString();
+		}
+		
+		return lasRespuestas;
 	}
 }
