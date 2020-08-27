@@ -151,7 +151,14 @@ public class Controlador implements ActionListener
 			//Registra a un estudiante nuevo
 			else if(e.getActionCommand().equals(Constantes.COMANDO_BTN_REGISTRAR_ESTUDIANTE))
 			{
-				if(modelo.RegistrarEstudiante(ventanaRegistroEstudiante.getTxtCodigo(), ventanaRegistroEstudiante.getTxtNombre(),ventanaRegistroEstudiante.getTxtApellido(), ventanaRegistroEstudiante.getTxtUbicacion(), ventanaRegistroEstudiante.getTxtContrasenia()))
+				String[] asignaturasSeleccionadas = this.ventanaRegistroEstudiante.obtenerAsignaturasSeleccionadas();
+				
+				if(asignaturasSeleccionadas != null)
+					for(String cadaCadena : asignaturasSeleccionadas)
+					{
+						//System.out.println(cadaCadena);
+					}
+				if(false)
 				{
 					this.ventanaRegistroEstudiante.dispose();
 					JOptionPane.showMessageDialog(null, Constantes.CARGA_EXITOSA_ESTUDIANTE);

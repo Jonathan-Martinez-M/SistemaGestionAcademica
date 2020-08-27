@@ -204,6 +204,12 @@ public class Ventana_Carga_de_estudiantes extends JDialog {
 		colmnaCheck.setCellRenderer(tablaAsignaturas.getDefaultRenderer(Boolean.class));
 		
 		scrollPane.setViewportView(tablaAsignaturas);
+		
+		for(int cadafila = 0; cadafila < tablaAsignaturas.getRowCount(); cadafila++)
+		{
+			tablaAsignaturas.setValueAt(false, cadafila, 2);
+		}
+		
 		contentPanel.setLayout(gl_contentPanel);
 	}
 
@@ -227,4 +233,31 @@ public class Ventana_Carga_de_estudiantes extends JDialog {
 		return txtContrasenia.getText();
 	}
 	
+	//
+	public String[] obtenerAsignaturasSeleccionadas()
+	{
+		int cantidadMatriculas = 0;
+		String[] asignaturasSeleccionadas = null;
+		
+		for(int cadafila = 0; cadafila < tablaAsignaturas.getRowCount(); cadafila++)
+		{
+			if(Boolean.parseBoolean(tablaAsignaturas.getValueAt(cadafila, 2).toString()))
+				cantidadMatriculas++;
+		}
+		
+		if(cantidadMatriculas > 0)
+		{
+			asignaturasSeleccionadas = new String[cantidadMatriculas];
+			
+			for(int cadafila = 0; cadafila < tablaAsignaturas.getRowCount(); cadafila++)
+			{
+				if(Boolean.parseBoolean(tablaAsignaturas.getValueAt(cadafila, 2).toString()))
+				{
+					asignaturasSeleccionadas[cadafila] = tablaAsignaturas.getValueAt(cadafila, 1).toString();
+				}
+			}
+		}
+		
+		return asignaturasSeleccionadas;
+	}
 }

@@ -195,8 +195,6 @@ public static ArrayList<Matricula> ver_matricula(){
                 Matricula matriculaAgregar = new Matricula(delimitar.next(), delimitar.next(), new Encuesta(null, null));
                 
                 matricula.add(matriculaAgregar);
-                
-                
             }
 			entrada.close();
 			
