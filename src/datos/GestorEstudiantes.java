@@ -314,4 +314,27 @@ public class GestorEstudiantes
 		
 		return barrios;
 	}
+	
+	public static ArrayList<Barrio> ver_barrios_de_una_ciudad(Ciudad ciudad){
+		
+		
+		ArrayList<Barrio> barrios = new ArrayList<Barrio>();
+		
+		ArrayList<Barrio> barriosDeLaCiudad = new ArrayList<Barrio>();
+		
+		barrios = ver_barrios();
+		
+		for(int i = 0; i<barrios.size(); i++)
+		{
+			if(ciudad.getIdentificador().equals(barrios.get(i).getIdentificadorCiudad()))
+			{
+				barriosDeLaCiudad.add(barrios.get(i));
+			}
+		}
+		
+		
+		
+		return barriosDeLaCiudad;
+	}
+	
 }
