@@ -17,6 +17,8 @@ public interface Constantes
 	public static final String COMANDO_BTN_VTNA_LISTA_ESTUDIANTES = "Abrir lista estudiantes";
 	public static final String COMANDO_BTN_REGISTRAR_ASIGNATURA = "Registrar asignatura";
 	public static final String COMANDO_BTN_REGISTRAR_ESTUDIANTE = "Registrar estudiante";
+	public static final String COMANDO_BTN_VTNA_MODIFICACION_DE_DATOS = "Modificación de datos";
+	public static final String COMANDO_BTN_MODIFICACION_DE_DATOS = "Modificar datos";
 	
 	//Constantes de resolución
 	public static final String USUARIO_ADMIN = "Usuario Admin";
@@ -28,6 +30,9 @@ public interface Constantes
 	public static final String CAMPOS_VACIOS = "Ingrese un usuario y/o una contraseña";
 	public static final String CARGA_EXITOSA_ASIGNATURA = "La asignatura fue creada con éxito";
 	public static final String CARGA_EXITOSA_ESTUDIANTE = "El estudiante fue cargado con éxito";
+	public static final String MODIFICACION_EXITOSA_ESTUDIANTE = "La modificación se realizó con éxito";
+	public static final String CARGA_FALLIDA_ASIGNATURA = "La asignatura no pudo ser creada porque ya existe";
+	public static final String CARGA_FALLIDA_ESTUDIANTE = "El estudiante no fue cargado porque el estudiante ya existe";
 	
 	//Constantes de título
 	public static final String TITULO_LOGIN_FALLIDO = "Datos erroneos";

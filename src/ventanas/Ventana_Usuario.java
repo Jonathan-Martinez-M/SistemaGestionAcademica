@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import datos.Constantes;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
@@ -23,7 +26,7 @@ public class Ventana_Usuario extends JFrame
 	/**
 	 * Create the frame.
 	 */
-	public Ventana_Usuario() {
+	public Ventana_Usuario(Controlador control) {
 		setTitle("Estudiantes");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -78,19 +81,8 @@ public class Ventana_Usuario extends JFrame
 		contentPane.add(btnCargarAsignatura);
 		
 		JButton btnModificacinDeDatos = new JButton("Modificaci\u00F3n de datos");
-		btnModificacinDeDatos.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e)
-			{
-				try
-				{
-					Ventana_Modificar_Datos dialog = new Ventana_Modificar_Datos();
-					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-					dialog.setVisible(true);
-				} catch (Exception e2) {
-					e2.printStackTrace();
-				}
-			}
-		});
+		btnModificacinDeDatos.setActionCommand(Constantes.COMANDO_BTN_VTNA_MODIFICACION_DE_DATOS);
+		btnModificacinDeDatos.addActionListener(control);
 		btnModificacinDeDatos.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		btnModificacinDeDatos.setBounds(289, 176, 135, 34);
 		contentPane.add(btnModificacinDeDatos);

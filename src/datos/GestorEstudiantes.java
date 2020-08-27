@@ -49,22 +49,43 @@ public class GestorEstudiantes
 	
 	public static boolean agregar_estudiante(Estudiante nuevoEstudiante)
 	{
-		FileWriter flwriter = null;
-		try
-		{
-			//además de la ruta del archivo recibe un parámetro de tipo boolean, que le indican que se va añadir más registros 
-			flwriter = new FileWriter(Constantes.RUTA + "\\estudiantes.txt", true);
-			BufferedWriter bfwriter = new BufferedWriter(flwriter);
+		ArrayList<Estudiante> estudiantes =  ver_estudiantes();
 		
-			//escribe los datos en el archivo
-			bfwriter.write(nuevoEstudiante.getCodigo() + "," + nuevoEstudiante.getContrasegna() + "," + nuevoEstudiante.getNombres() + 
-					"," + nuevoEstudiante.getApellidos() + "," + nuevoEstudiante.getCiudad() + "," + nuevoEstudiante.getBarrio() + "\r\n");
-			bfwriter.close();
- 
-		} catch (IOException e) {
-			e.printStackTrace();
+		boolean verificacion = true;
+		
+		for(int i = 0; i<estudiantes.size(); i++)
+		{
+			if(nuevoEstudiante.getCodigo().equals(estudiantes.get(i).getCodigo()))
+			{
+				verificacion = false;
+			}
 		}
-		return true;
+		if(verificacion)
+		{
+			FileWriter flwriter = null;
+			try
+			{
+				//además de la ruta del archivo recibe un parámetro de tipo boolean, que le indican que se va añadir más registros 
+				flwriter = new FileWriter(Constantes.RUTA + "\\estudiantes.txt", true);
+				BufferedWriter bfwriter = new BufferedWriter(flwriter);
+			
+				//escribe los datos en el archivo
+				bfwriter.write(nuevoEstudiante.getCodigo() + "," + nuevoEstudiante.getContrasegna() + "," + nuevoEstudiante.getNombres() + 
+						"," + nuevoEstudiante.getApellidos() + "," + nuevoEstudiante.getCiudad() + "," + nuevoEstudiante.getBarrio() + "\r\n");
+				bfwriter.close();
+				return true;
+	 
+			} catch (IOException e) {
+				e.printStackTrace();
+				return false;
+			}
+			
+		}
+		else
+		{
+			return false;
+		}
+		
 	}
 	
 	
@@ -170,4 +191,24 @@ public class GestorEstudiantes
 		return bandera;
 	}
 	
+	public static Estudiante buscarEstudiante(String codigo) {
+		
+		Estudiante estudiante = null;
+		
+		ArrayList<Estudiante> estudiantes = new ArrayList<Estudiante>();
+		
+		estudiantes = GestorEstudiantes.ver_estudiantes();
+		
+		for(int i=0; i < estudiantes.size() ; i++) {
+			
+			if(estudiantes.get(i).getCodigo().equals(codigo)) {
+				
+				estudiante = estudiantes.get(i);
+				
+				break;
+			}
+		}
+		
+		return estudiante;
+	}
 }

@@ -64,4 +64,16 @@ public class Modelador
 	{
 		return GestorEstudiantes.ver_estudiantes();
 	}
+	
+	public boolean ModificarEstudiante(String nombre, String apellido, String ubicacion, String contrasegna) 
+	{
+		Estudiante nuevoEstudiante = GestorEstudiantes.buscarEstudiante(((Estudiante)usuarioLogueado).getCodigo());
+		
+		nuevoEstudiante.setNombres(nombre);
+		nuevoEstudiante.setApellidos(apellido);
+		nuevoEstudiante.setCiudad(ubicacion);
+		nuevoEstudiante.setBarrio(ubicacion);
+		
+		return((Estudiante)usuarioLogueado).modificar_estudiante(GestorEstudiantes.buscarEstudiante(((Estudiante)usuarioLogueado).getCodigo()), nuevoEstudiante);
+	}
 }

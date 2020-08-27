@@ -52,22 +52,44 @@ public class GestorAsignaturas
 	
 	public static boolean agregar_asignatura(Asignatura nuevaAsignatura) 
 	{
-		FileWriter flwriter = null;
-		try
-		{
-			//además de la ruta del archivo recibe un parámetro de tipo boolean, que le indican que se va añadir más registros 
-			flwriter = new FileWriter(Constantes.RUTA + "\\asignaturas.txt", true);
-			BufferedWriter bfwriter = new BufferedWriter(flwriter);
 		
-			//escribe los datos en el archivo
-			bfwriter.write(nuevaAsignatura.getNombre() + "," + nuevaAsignatura.getCodigo() + "\r\n");
-			bfwriter.close();
-			return true;
- 
-		} catch (IOException e) {
-			e.printStackTrace();
+		ArrayList<Asignatura> asignaturas =  ver_asignatura();
+		
+		boolean verificacion = true;
+		
+		for(int i = 0; i<asignaturas.size(); i++)
+		{
+			if(nuevaAsignatura.getCodigo().equals(asignaturas.get(i).getCodigo()))
+			{
+				verificacion = false;
+			}
+		}
+		
+		if(verificacion)
+		{
+			FileWriter flwriter = null;
+			try
+			{
+				//además de la ruta del archivo recibe un parámetro de tipo boolean, que le indican que se va añadir más registros 
+				flwriter = new FileWriter(Constantes.RUTA + "\\asignaturas.txt", true);
+				BufferedWriter bfwriter = new BufferedWriter(flwriter);
+			
+				//escribe los datos en el archivo
+				bfwriter.write(nuevaAsignatura.getNombre() + "," + nuevaAsignatura.getCodigo() + "\r\n");
+				bfwriter.close();
+				return true;
+	 
+			} catch (IOException e) {
+				e.printStackTrace();
+				return false;
+			}
+		}
+		else
+		{
 			return false;
 		}
+		
+		
 		
 		
 	}

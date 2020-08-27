@@ -32,6 +32,7 @@ public class Controlador implements ActionListener
 	private Ventana_Inicial ventanaLogin;
 	private Ventana_Carga_Asignatura_Admin ventanaRegistroAsignatura;
 	private Ventana_Carga_de_estudiantes ventanaRegistroEstudiante;
+	private Ventana_Modificar_Datos ventanamodificardatos;
 	
 	/**
 	 * 
@@ -83,20 +84,14 @@ public class Controlador implements ActionListener
 				}else if(modelo.iniciarSesion(ventanaLogin.getTxtCod(), ventanaLogin.getTxtPass()).equals(Constantes.USUARIO_ESTUDIANTE))
 				{
 					ventanaLogin.dispose();
-					EventQueue.invokeLater(new Runnable()
+					try
 					{
-						public void run()
-						{
-							try
-							{
-								Ventana_Usuario frame = new Ventana_Usuario();
-								frame.setVisible(true);
-							} catch (Exception e)
-							{
-								e.printStackTrace();
-							}
-						}
-					});
+						Ventana_Usuario frame = new Ventana_Usuario(this);
+						frame.setVisible(true);
+					} catch (Exception x)
+					{
+						x.printStackTrace();
+					}
 				}else if(modelo.iniciarSesion(ventanaLogin.getTxtCod(), ventanaLogin.getTxtPass()).equals(Constantes.USUARIO_ADMIN))
 				{
 					ventanaLogin.dispose();
@@ -163,6 +158,11 @@ public class Controlador implements ActionListener
 					this.ventanaRegistroEstudiante.dispose();
 					JOptionPane.showMessageDialog(null, Constantes.CARGA_EXITOSA_ESTUDIANTE);
 				}
+				else
+				{
+					this.ventanaRegistroEstudiante.dispose();
+					JOptionPane.showMessageDialog(null, Constantes.CARGA_FALLIDA_ESTUDIANTE);
+				}
 			}
 			//Abre ventana para registrar un nuevo estudiante
 			else if(e.getActionCommand().equals(Constantes.COMANDO_BTN_VTNA_LISTA_ASIGNATURAS))
@@ -186,6 +186,24 @@ public class Controlador implements ActionListener
 				} catch (Exception e2)
 				{
 					e2.printStackTrace();
+				}
+			}
+			else if(e.getActionCommand().equals(Constantes.COMANDO_BTN_VTNA_MODIFICACION_DE_DATOS)) {
+				try
+				{
+					Ventana_Modificar_Datos dialog = new Ventana_Modificar_Datos(this);
+					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+			}
+			else if(e.getActionCommand().equals(Constantes.COMANDO_BTN_MODIFICACION_DE_DATOS)) {
+				
+				if(modelo.ModificarEstudiante(ventanamodificardatos.getTextNombre(), ventanamodificardatos.getTextApellido(), ventanamodificardatos.getTextUbicacion(), null)){
+					
+					this.ventanamodificardatos.dispose();
+					JOptionPane.showMessageDialog(null, Constantes.MODIFICACION_EXITOSA_ESTUDIANTE);
 				}
 			}
 		}
@@ -215,4 +233,9 @@ public class Controlador implements ActionListener
 	{
 		this.ventanaRegistroEstudiante = ventanaRegistroEstudiante;
 	}	
+	
+	public void setVentanaModificarDatos(Ventana_Modificar_Datos ventanaModificarDatos) 
+	{
+		this.ventanamodificardatos = ventanaModificarDatos;
+	}
 }

@@ -49,10 +49,7 @@ public class Lista_de_estudiantes extends JDialog {
 		);
 		{
 			table = new JTable();
-			DefaultTableModel modeloTabla = new DefaultTableModel(
-					new Object[][] {
-						{null, null, null},
-					},
+			DefaultTableModel modeloTabla = new DefaultTableModel(null,
 					new String[] {
 						"Nombres", "C\u00F3digo", "Cambiar datos"
 					}
