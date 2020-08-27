@@ -1,0 +1,31 @@
+1, Suba
+1, Kennedy
+1, Engativá
+1, Ciudad Bolívar
+1, Bosa
+1, Usaquén
+1, Usme
+1, San Cristóbal
+1, Fontibón
+1, Rafael Uribe Uribe
+2, Poblado
+2, Belén
+2, Aranjuez
+2, Manrique
+2, Buenos Aires
+2, Castilla
+2, Robledo
+2, La América
+2, Santa Cruz
+2, Laureles
+3, Cali Aguacatal
+3, Cañaveralejo
+3, Cauca Norte
+3, Cauca sur
+3, Pondaje
+3, Pance Lili
+4, Sur Occidente
+4, Sur Oriente
+4, Norte-Centro Histórico
+4, Metropolitana
+4, Riomar
