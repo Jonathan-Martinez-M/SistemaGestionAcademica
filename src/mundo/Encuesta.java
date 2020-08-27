@@ -1,11 +1,13 @@
 package mundo;
 
+import java.util.ArrayList;
+
 public class Encuesta
 {
 	/**
 	 * Lista de preguntas Cuantitativas
 	 */
-	private String preguntas_cuantitativas[];
+	private ArrayList<String> preguntas_cuantitativas;
 	
 	/**
 	 * Lista de respuestas Cuantitativas
@@ -30,23 +32,23 @@ public class Encuesta
 	/**
 	 * Constructor de la clase Encuesta
 	 */
-	public Encuesta(String[] preguntas_cuantitativas, String pregunta_abierta)
+	public Encuesta(ArrayList<String> preguntas_cuantitativas, String pregunta_abierta)
 	{
 		this.preguntas_cuantitativas = preguntas_cuantitativas;
 		this.pregunta_abierta = pregunta_abierta;
 	}
 
-	public String[] getPreguntas_cuantitativas() {
+	public ArrayList<String> getPreguntas_cuantitativas() {
 		return preguntas_cuantitativas;
 	}
 
-	public void setPreguntas_cuantitativas(String[] preguntas_cuantitativas) {
+	public void setPreguntas_cuantitativas(ArrayList<String> preguntas_cuantitativas) {
 		this.preguntas_cuantitativas = preguntas_cuantitativas;
 	}
 
 	public void agregar_Pregunta_Cuantitativa(int posicion, String pregunta)
 	{
-		this.preguntas_cuantitativas[posicion] = pregunta;
+		this.preguntas_cuantitativas.add(posicion, pregunta ) ;
 	}
 	
 	public int[] getRespuestas_cuantitativas() {
