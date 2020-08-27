@@ -38,6 +38,9 @@ public  class Asignatura  {
 		return new ArrayList<Estudiante>();
 	}
 
+	/**
+	 * Setters & Getters
+	 */
 	public String getNombre() {
 		return nombre;
 	}

@@ -39,29 +39,36 @@ public class Encuesta
 		
 		this.respuestas_cuantitativas = new ArrayList<String>();
 	}
+	
+	/**
+	 * Agrega pregunta cuantitativa a la encuesta
+	 */
+	public void agregar_Pregunta_Cuantitativa(int posicion, String pregunta)
+	{
+		this.preguntas_cuantitativas.add(posicion, pregunta ) ;
+	}
+
 
 	public ArrayList<String> getPreguntas_cuantitativas() {
-		return preguntas_cuantitativas;
+	return preguntas_cuantitativas;
 	}
 
 	public void setPreguntas_cuantitativas(ArrayList<String> preguntas_cuantitativas) {
 		this.preguntas_cuantitativas = preguntas_cuantitativas;
-	}
-
-	public void agregar_Pregunta_Cuantitativa(int posicion, String pregunta)
-	{
-		this.preguntas_cuantitativas.add(posicion, pregunta ) ;
 	}
 	
 	public ArrayList<String> getRespuestas_cuantitativas() {
 		return respuestas_cuantitativas;
 	}
 
+<<<<<<< HEAD
 	public void agregar_Respuestas_cuantitativas(int posicion, String respuesta)
 	{
 		this.respuestas_cuantitativas.add(posicion, respuesta);
 	}
 
+=======
+>>>>>>> c7c364b9c05b52971c868e882c206416df3b5029
 	public String getPregunta_abierta() {
 		return pregunta_abierta;
 	}

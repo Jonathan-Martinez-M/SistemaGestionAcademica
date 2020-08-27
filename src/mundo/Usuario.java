@@ -22,8 +22,9 @@ public abstract class Usuario {
 	 * Constructor de la clase Usuario
 	 */
 	
-	
-	
+	/**
+	 * constructor Usuario
+	 */
 	public Usuario(String codigo, String contrasenia)
 	{
 		this.codigo = codigo;

@@ -21,11 +21,18 @@ import mundo.Estudiante;
  */
 public class GestorEstudiantes
 {
-	//objeto para leer archivos
+	
+	/**
+	 * Atriubutos encargados de generar los archivos de texto
+	 */
 	private File archivo;
 	
 	private static BufferedWriter buff;
+	//objeto para leer archivos
 	
+	/**
+	 * Constructor de la clase GestorEstudiantes
+	 */
 	public GestorEstudiantes()
 	{
 		archivo = new File(Constantes.RUTA + "\\estudiantes.txt");
@@ -47,6 +54,10 @@ public class GestorEstudiantes
 	
 	}
 	
+	/**
+	 * Metodo encargado de agregar un estudiante a la BD
+	 * @return boolean
+	 */
 	public static boolean agregar_estudiante(Estudiante nuevoEstudiante)
 	{
 		ArrayList<Estudiante> estudiantes =  ver_estudiantes();
@@ -88,7 +99,10 @@ public class GestorEstudiantes
 		
 	}
 	
-	
+	/**
+	* Metodo encargado de modificar un estudiante
+	* @return boolean	
+	*/
 	public static boolean modificar_estudiante(Estudiante estudianteviejo , Estudiante estudiantenuevo) {
 		
 		String nombre = estudianteviejo.getCodigo() + "," + estudianteviejo.getContrasegna() + "," + estudianteviejo.getNombres() + 
@@ -135,7 +149,10 @@ public class GestorEstudiantes
 		
 	}
 	
-	
+	/**
+	* Metodo encargado de crear una lista de estudiantes que estan en la BD
+	* @return ArrayList<Estudiante>
+	*/
 	public static ArrayList<Estudiante> ver_estudiantes()
 	{
 		Scanner entrada = null;
@@ -170,6 +187,10 @@ public class GestorEstudiantes
 		return estudiantes;
 	}
 	
+	/**
+	* Metodo encargado del ingreso de un estudiante a la plataforma
+	* @return boolean
+	*/
 	public static boolean ingresar(String codigo, String contrasegna) {
 			
 			boolean bandera = false;
@@ -191,6 +212,10 @@ public class GestorEstudiantes
 		return bandera;
 	}
 	
+	/**
+	* Metodo encargado de buscar un estudiante 
+	* @return Estudiante
+	*/
 	public static Estudiante buscarEstudiante(String codigo) {
 		
 		Estudiante estudiante = null;

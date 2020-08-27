@@ -75,6 +75,9 @@ public class Estudiante extends Usuario
 		return GestorAsignaturas.agregar_asignatura(p);
 	}
 
+	/**
+	 * Setters & Getters
+	 */
 	public String getNombres() {
 		return nombres;
 	}
