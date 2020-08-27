@@ -7,6 +7,9 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import datos.Constantes;
+
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
@@ -19,11 +22,14 @@ public class Ventana_Modificar_Datos extends JDialog {
 	private JTextField textApellido;
 	private JTextField textUbicacion;
 	private JPasswordField txtContraseña;
+	private Controlador control;
 
 	/**
 	 * Create the dialog.
 	 */
-	public Ventana_Modificar_Datos() {
+	public Ventana_Modificar_Datos(Controlador control) {
+		this.control = control;
+		control.setVentanaModificarDatos(this);
 		setTitle("Modificar Datos");
 		setBounds(100, 100, 390, 300);
 		getContentPane().setLayout(new BorderLayout());
@@ -70,6 +76,8 @@ public class Ventana_Modificar_Datos extends JDialog {
 		contentPanel.add(txtContraseña);
 		
 		JButton btnActualizar = new JButton("Actualizar datos");
+		btnActualizar.setActionCommand(Constantes.COMANDO_BTN_MODIFICACION_DE_DATOS);
+		btnActualizar.addActionListener(control);
 		btnActualizar.setBounds(117, 217, 118, 23);
 		contentPanel.add(btnActualizar);
 		{
@@ -77,5 +85,17 @@ public class Ventana_Modificar_Datos extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 		}
+	}
+
+	public String getTextNombre() {
+		return textNombre.getText();
+	}
+
+	public String getTextApellido() {
+		return textApellido.getText();
+	}
+
+	public String getTextUbicacion() {
+		return textUbicacion.getText();
 	}
 }
