@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import mundo.Asignatura;
+import mundo.Barrio;
+import mundo.Ciudad;
 import mundo.Estudiante;
 
 /**
@@ -242,5 +244,74 @@ public class GestorEstudiantes
 		}
 		
 		return estudiante;
+	}
+	
+	
+	public static ArrayList<Ciudad> ver_ciudades(){
+		
+		Scanner entrada = null;
+		
+		ArrayList<Ciudad> ciudades = new ArrayList<Ciudad>();
+		
+		File archivo = new File(Constantes.RUTA + "\\Ciudades.txt");
+		
+		try {
+			
+			entrada = new Scanner(archivo);
+			while (entrada.hasNext()) { //mientras no se llegue al final del fichero
+                String linea = entrada.nextLine();  //se lee una línea
+                
+                Scanner delimitar = new Scanner(linea);
+                
+                delimitar.useDelimiter("\\s*,\\s*");
+                
+                Ciudad ciudadesAgregar = new Ciudad(delimitar.next(), delimitar.next());
+                
+                ciudades.add(ciudadesAgregar);
+                
+                
+            }
+			entrada.close();
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return ciudades;
+	}
+	
+	public static ArrayList<Barrio> ver_barrios(){
+		
+		Scanner entrada = null;
+		
+		ArrayList<Barrio> barrios = new ArrayList<Barrio>();
+		
+		File archivo = new File(Constantes.RUTA + "\\Barrios.txt");
+		
+		try {
+			
+			entrada = new Scanner(archivo);
+			while (entrada.hasNext()) { //mientras no se llegue al final del fichero
+                String linea = entrada.nextLine();  //se lee una línea
+                
+                Scanner delimitar = new Scanner(linea);
+                
+                delimitar.useDelimiter("\\s*,\\s*");
+                
+                Barrio barriosAgregar = new Barrio(delimitar.next(), delimitar.next());
+                
+                barrios.add(barriosAgregar);
+                
+                
+            }
+			entrada.close();
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return barrios;
 	}
 }
