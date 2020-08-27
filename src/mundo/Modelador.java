@@ -85,8 +85,15 @@ public class Modelador
 
 		return GestorAsignaturas.almacenar_matricula(nuevaMatricula);
 	}
+	
+	public ArrayList<Matricula> obtenerMatriculasEstudiantes()
+	{
+		Estudiante elEstudiante = (Estudiante) usuarioLogueado;
+		return GestorAsignaturas.buscarMatriculasEstudiantes(elEstudiante);
+	}
 
-	public Usuario getUsuarioLogueado() {
+	public Usuario getUsuarioLogueado()
+	{
 		return usuarioLogueado;
 	}
 }

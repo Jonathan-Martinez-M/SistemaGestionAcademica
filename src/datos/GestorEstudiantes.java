@@ -104,14 +104,14 @@ public class GestorEstudiantes
 		
 		ArrayList<String> lineasTxt = new ArrayList<String>();
 		
-		try {
+		try
+		{
 			entrada = new Scanner(archivo);
 			while (entrada.hasNext()) { //mientras no se llegue al final del fichero
 				numeroLinea++;
                 String linea = entrada.nextLine();  //se lee una línea
                 lineasTxt.add(linea);
-                if (linea.contains(nombre)) {   //si la línea contiene el texto buscado se muestra por pantalla         
-                   
+                if (linea.contains(nombre)) {   //si la línea contiene el texto buscado se muestra por pantalla
                 	almacenarLinea = numeroLinea;
                 }
                 

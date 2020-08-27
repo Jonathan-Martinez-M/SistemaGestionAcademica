@@ -18,6 +18,7 @@ import datos.GestorEncuestas;
 import datos.GestorEstudiantes;
 import mundo.Asignatura;
 import mundo.Estudiante;
+import mundo.Matricula;
 import mundo.Modelador;
 
 /**
@@ -33,6 +34,7 @@ public class Controlador implements ActionListener
 	private Ventana_Carga_Asignatura_Admin ventanaRegistroAsignatura;
 	private Ventana_Carga_de_estudiantes ventanaRegistroEstudiante;
 	private Ventana_Modificar_Datos ventanamodificardatos;
+	private Ventana_Carga_Asignatura ventanaMatriculaEst;
 	
 	/**
 	 * 
@@ -197,7 +199,8 @@ public class Controlador implements ActionListener
 					Ventana_Carga_Asignatura dialog = new Ventana_Carga_Asignatura(this);
 					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 					dialog.setVisible(true);
-				} catch (Exception e2) {
+				} catch (Exception e2)
+				{
 					e2.printStackTrace();
 				}
 			}
@@ -220,6 +223,19 @@ public class Controlador implements ActionListener
 
 				}
 			}
+			else if(e.getActionCommand().equals(Constantes.COMANDO_BTN_MATRICULAR_DESDE_ESTUDIANTE))
+			{
+				String[] asignaturasSeleccionadas = this.ventanaMatriculaEst.obtenerAsignaturasSeleccionadas();
+				
+				if(asignaturasSeleccionadas != null)
+					for(int cadaAsignatura = 0; cadaAsignatura < asignaturasSeleccionadas.length; cadaAsignatura++)
+					{
+						modelo.matricular(asignaturasSeleccionadas[cadaAsignatura], ((Estudiante) modelo.getUsuarioLogueado()).getCodigo());
+					}
+				
+				this.ventanaMatriculaEst.dispose();
+				JOptionPane.showMessageDialog(null, Constantes.MATRICULA_EXITOSA_ESTUDIANTES);
+			}
 		}
 	}
 	
@@ -231,6 +247,11 @@ public class Controlador implements ActionListener
 	public ArrayList<Estudiante> listarEstudiantes()
 	{
 		return modelo.ver_estudiantes();
+	}
+	
+	public ArrayList<Matricula> listarMatriculasPorEstudiante()
+	{
+		return modelo.obtenerMatriculasEstudiantes();
 	}
 	
 	public void setVentanaLogin(Ventana_Inicial ventanaLogin)
@@ -252,4 +273,10 @@ public class Controlador implements ActionListener
 	{
 		this.ventanamodificardatos = ventanaModificarDatos;
 	}
+
+	public void setVentanaMatriculaEst(Ventana_Carga_Asignatura ventanaMatriculaEst)
+	{
+		this.ventanaMatriculaEst = ventanaMatriculaEst;
+	}
+	
 }

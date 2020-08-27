@@ -195,9 +195,8 @@ public class GestorAsignaturas
 		}
 	}
 
-public static ArrayList<Matricula> ver_matricula(){
-		
-		
+	public static ArrayList<Matricula> ver_matriculas()
+	{
 		Scanner entrada = null;
 		
 		ArrayList<Matricula> matricula = new ArrayList<Matricula>();
@@ -214,7 +213,10 @@ public static ArrayList<Matricula> ver_matricula(){
                 
                 delimitar.useDelimiter("\\s*,\\s*");
                 
-                Matricula matriculaAgregar = new Matricula(delimitar.next(), delimitar.next(), new Encuesta(null, null));
+                Matricula matriculaAgregar = new Matricula(null, null, new Encuesta(null, null));
+                matriculaAgregar.setDe_la_asignatura(delimitar.next());
+                matriculaAgregar.setPertenece_a_estudiante(delimitar.next());
+                matriculaAgregar.getEncuesta().setIdentificador(Integer.parseInt(delimitar.next()));
                 
                 matricula.add(matriculaAgregar);
             }
@@ -226,5 +228,20 @@ public static ArrayList<Matricula> ver_matricula(){
 		}
 		
 		return matricula;
+	}
+	
+	public static ArrayList<Matricula> buscarMatriculasEstudiantes(Estudiante elEstudiante)
+	{
+		ArrayList<Matricula> lasMatriculas = GestorAsignaturas.ver_matriculas();
+		ArrayList<Matricula> matriculasDelEstudiante = new ArrayList<Matricula>();
+		
+		for(Matricula cadaMatricula : lasMatriculas)
+		{
+			if(cadaMatricula.getPertenece_a_estudiante().equals(elEstudiante.getCodigo()))
+			{
+				matriculasDelEstudiante.add(cadaMatricula);
+			}
+		}
+		return matriculasDelEstudiante;
 	}
 }
