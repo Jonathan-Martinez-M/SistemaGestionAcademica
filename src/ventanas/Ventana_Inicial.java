@@ -30,7 +30,7 @@ public class Ventana_Inicial extends JFrame
 	private Controlador control;
 	
 	/**
-	 * Create the frame.
+	 * Constructor de la clase Ventana_Inicial
 	 */
 	public Ventana_Inicial(Controlador control)
 	{
@@ -72,11 +72,17 @@ public class Ventana_Inicial extends JFrame
 		btnIngresar.setBounds(140, 138, 100, 34);
 		contentPane.add(btnIngresar);
 	}
-
+	/**
+	 * Metodo que devuelve lo ingresado en el campo codigo
+	 * @return String
+	 */
 	public String getTxtCod() {
 		return txtCod.getText();
 	}
-
+	/**
+	 * Metodo que devuelve lo ingresado en el campo contraseña
+	 * @return String
+	 */
 	public String getTxtPass()
 	{
 		String contrasenia = "";
@@ -88,7 +94,9 @@ public class Ventana_Inicial extends JFrame
 		
 		return contrasenia;
 	}
-	
+	/**
+	 * Metodo que limpia los campos txt
+	 */
 	public void limpiarCampos()
 	{
 		txtCod.setText("");

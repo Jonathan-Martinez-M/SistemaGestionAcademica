@@ -24,7 +24,7 @@ public class Ventana_Usuario extends JFrame
 	private JPanel contentPane;
 	private Controlador control;
 	/**
-	 * Create the frame.
+	 * Constructor de la clase Ventana_Usuario
 	 */
 	public Ventana_Usuario(Controlador control) {
 		setTitle("Estudiantes");
