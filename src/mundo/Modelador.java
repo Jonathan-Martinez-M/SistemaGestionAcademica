@@ -15,16 +15,23 @@ import datos.GestorEstudiantes;
  */
 public class Modelador
 {
+	/**
+	 * usuario logueado en el sistema
+	 */
 	Usuario usuarioLogueado;
 	
 	/**
-	 * 
+	 * constructor clase Modelador
 	 */
 	public Modelador()
 	{
 		// TODO Auto-generated constructor stub
 	}
 	
+	/**
+	 * Inicia sesión en el sistema 
+	 * @return String
+	 */
 	public String iniciarSesion(String codigo, String contrasenia)
 	{
 		if(codigo.equals(Constantes.CODIGO_ADMIN) && contrasenia.equals(Constantes.CONTRASENIA_ADMIN))
@@ -41,6 +48,10 @@ public class Modelador
 		return Constantes.USUARIO_ERRONEO;
 	}
 	
+	/**
+	 * Registra una asignatura 
+	 * @return boolean
+	 */
 	public boolean RegistrarAsignatura(String codigo, String nombre)
 	{
 		Asignatura nuevaAsignatura = new Asignatura(nombre, codigo, null);
@@ -48,6 +59,10 @@ public class Modelador
 		return ((Administrador) usuarioLogueado).agregar_asignatura(nuevaAsignatura);
 	}
 	
+	/**
+	 * Registra un estudiante 
+	 * @return boolean
+	 */
 	public boolean RegistrarEstudiante(String codigo, String nombre, String apellidos, String ubicacion, String contrasenia)
 	{
 		Estudiante nuevaEstudiante = new Estudiante(codigo, contrasenia, nombre, apellidos, ubicacion, ubicacion, null);
@@ -55,16 +70,28 @@ public class Modelador
 		return ((Administrador) usuarioLogueado).agregar_estudiante(nuevaEstudiante);
 	}
 	
+	/**
+	 * Muestra la lista de asignaturas 
+	 * @retunr ArrayList<Asignatura>
+	 */
 	public ArrayList<Asignatura> listarAsignaturas()
 	{
 		return GestorAsignaturas.ver_asignatura();
 	}
-	
+
+	/**
+	 * Muestra la lista de estudiantes 
+	 * @retunr ArrayList<Asignatura>
+	 */
 	public ArrayList<Estudiante> ver_estudiantes()
 	{
 		return GestorEstudiantes.ver_estudiantes();
 	}
 	
+	/**
+	 * Modifica un estudiante 
+	 * @return boolean
+	 */
 	public boolean ModificarEstudiante(String nombre, String apellido, String ubicacion, String contrasegna) 
 	{
 		Estudiante nuevoEstudiante = GestorEstudiantes.buscarEstudiante(((Estudiante)usuarioLogueado).getCodigo());
@@ -77,6 +104,10 @@ public class Modelador
 		return((Estudiante)usuarioLogueado).modificar_estudiante(GestorEstudiantes.buscarEstudiante(((Estudiante)usuarioLogueado).getCodigo()), nuevoEstudiante);
 	}
 	
+	/**
+	 * matricula una asignatura a un estudiante 
+	 * @return boolean
+	 */
 	public boolean matricular(String asignatura, String estudiante)
 	{
 		Encuesta laEncuesta = new Encuesta(null, null);
@@ -86,12 +117,19 @@ public class Modelador
 		return GestorAsignaturas.almacenar_matricula(nuevaMatricula);
 	}
 	
+	/**
+	 * Muestra las matrículas del estudiante 
+	 * @retunr ArrayList<Asignatura>
+	 */
 	public ArrayList<Matricula> obtenerMatriculasEstudiantes()
 	{
 		Estudiante elEstudiante = (Estudiante) usuarioLogueado;
 		return GestorAsignaturas.buscarMatriculasEstudiantes(elEstudiante);
 	}
 
+	/**
+	 * Getter usuario logueado 
+	 */
 	public Usuario getUsuarioLogueado()
 	{
 		return usuarioLogueado;

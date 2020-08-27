@@ -22,6 +22,9 @@ import mundo.Encuesta;
  */
 public class GestorEncuestas
 {
+	/**
+	 * Atriubutos encargados de generar los archivos de texto
+	 */
 	private File archivo;
 	
 	private BufferedWriter buff;
@@ -29,6 +32,9 @@ public class GestorEncuestas
 	private BufferedWriter buffM;
 	//objeto para leer archivos
 	
+	/**
+	 * Constructor de la clase GestorEncuestas
+	 */
 	public GestorEncuestas()
 	{
 		archivo = new File(Constantes.RUTA + "\\encuestas.txt");
@@ -50,6 +56,10 @@ public class GestorEncuestas
 		}
 	}
 	
+	/**
+	 * Metodo encargado de almacenar la encuesta en la BD
+	 * @return boolean
+	 */
 	public static boolean almacenar_encuesta(Encuesta nuevaEncuesta)
 	{
 		FileWriter flwriter = null;
@@ -80,6 +90,10 @@ public class GestorEncuestas
 		}
 	}
 	
+	/**
+	* Metodo encargado de crear una lista de encuestas que estan en la BD
+	* @return ArrayList<Encuesta>
+	*/
 	public static ArrayList<Encuesta> ver_encuestas()
 	{
 		Scanner entrada = null;
@@ -130,6 +144,10 @@ public class GestorEncuestas
 		return encuestas;
 	}
 	
+	/**
+	* Metodo encargado de obtener el utlimo identificador en la BD
+	* @return int
+	*/
 	private static int obtenerUltimoIdentificador()
 	{
 		ArrayList<Encuesta> encuestasAlmacenadas = GestorEncuestas.ver_encuestas();

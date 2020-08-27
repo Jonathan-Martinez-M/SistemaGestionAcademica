@@ -35,7 +35,26 @@ public class Encuesta
 		this.preguntas_cuantitativas = preguntas_cuantitativas;
 		this.pregunta_abierta = pregunta_abierta;
 	}
+	
+	/**
+	 * Agrega pregunta cuantitativa a la encuesta
+	 */
+	public void agregar_Pregunta_Cuantitativa(int posicion, String pregunta)
+	{
+		this.preguntas_cuantitativas[posicion] = pregunta;
+	}
 
+	/**
+	 * Agrega respuesta cuantitativa a la encuesta
+	 */
+	public void agregar_Respuestas_cuantitativas(int posicion, int respuesta)
+	{
+		this.respuestas_cuantitativas[posicion] = respuesta;
+	}
+	
+	/**
+	 * Setters & Getters
+	 */
 	public String[] getPreguntas_cuantitativas() {
 		return preguntas_cuantitativas;
 	}
@@ -43,19 +62,9 @@ public class Encuesta
 	public void setPreguntas_cuantitativas(String[] preguntas_cuantitativas) {
 		this.preguntas_cuantitativas = preguntas_cuantitativas;
 	}
-
-	public void agregar_Pregunta_Cuantitativa(int posicion, String pregunta)
-	{
-		this.preguntas_cuantitativas[posicion] = pregunta;
-	}
 	
 	public int[] getRespuestas_cuantitativas() {
 		return respuestas_cuantitativas;
-	}
-
-	public void agregar_Respuestas_cuantitativas(int posicion, int respuesta)
-	{
-		this.respuestas_cuantitativas[posicion] = respuesta;
 	}
 
 	public String getPregunta_abierta() {

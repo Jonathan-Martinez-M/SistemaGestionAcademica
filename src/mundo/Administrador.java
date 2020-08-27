@@ -26,36 +26,36 @@ public class  Administrador extends Usuario {
 	}
 	
 	/**
-	 * Modifica un la informacion de un estudiante
-	 * @return boolean
-	 */
+	* Modifica un la informacion de un estudiante
+	* @return boolean
+	*/
 	public boolean  modificar_estudiante( Estudiante p) 
 	{
 		return true;
 	}
 	
 	/**
-	 * Agrega una asignatura
-	 * @return boolean
-	 */
+	* Agrega una asignatura
+	* @return boolean
+	*/
 	public boolean agregar_asignatura(Asignatura nuevaAsign) 
 	{
 		return GestorAsignaturas.agregar_asignatura(nuevaAsign);
 	}
 	
 	/**
-	 * Modifica una asignatura
-	 * @return boolean
-	 */
+	* Modifica una asignatura
+	* @return boolean
+	*/
 	public boolean modificar_asignatura(Asignatura p) 
 	{
 		return true;
 	}
 	
 	/**
-	 * Muestra la lista de encuestas de cada asignatura
-	 * @return ArrayList<Encuesta>
-	 */
+	* Muestra la lista de encuestas de cada asignatura
+	* @return ArrayList<Encuesta>
+	*/
 	public ArrayList<Encuesta> ver_encuestas()
 	{
 		return null;

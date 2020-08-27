@@ -54,6 +54,9 @@ public class Matricula {
 		return true;
 	}
 
+	/**
+	 * Setters & Getters
+	 */
 	public String getPertenece_a_estudiante() {
 		return pertenece_a_estudiante;
 	}

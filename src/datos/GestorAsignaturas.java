@@ -19,7 +19,10 @@ import mundo.Matricula;
  */
 public class GestorAsignaturas
 {
-	private File archivoAsignaturas;	
+	/**
+	 * Atriubutos encargados de generar los archivos de texto
+	 */
+	private File archivoAsignaturas;
 	private File archivoMatriculas;
 	private static BufferedWriter buff;	
 	private BufferedWriter buffM;
@@ -27,6 +30,9 @@ public class GestorAsignaturas
 	private static ArrayList<Matricula> matriculas;
 	//objeto para leer archivos
 	
+	/**
+	 * Constructor de la clase GestorAsignaturas
+	 */
 	public GestorAsignaturas() {
 		
 		archivoAsignaturas = new File(Constantes.RUTA + "\\asignaturas.txt");
@@ -50,6 +56,10 @@ public class GestorAsignaturas
 
 	}
 	
+	/**
+	 * Metodo encargado de agregar una nueva asignatura a la BD
+	 * @return boolean
+	 */
 	public static boolean agregar_asignatura(Asignatura nuevaAsignatura) 
 	{
 		
@@ -87,13 +97,13 @@ public class GestorAsignaturas
 		else
 		{
 			return false;
-		}
-		
-		
-		
-		
+		}	
 	}
 	
+	/**
+	* Metodo encargado de modificar una asignatura
+	* @return boolean	
+	*/
 	public static boolean modificar_asignatura(Asignatura asignaturaVieja , Asignatura asignaturaNueva) {
 		
 		String nombre = asignaturaVieja.getNombre() + "," + asignaturaVieja.getCodigo();
@@ -139,6 +149,10 @@ public class GestorAsignaturas
 		
 	}
 	
+	/**
+	* Metodo encargado de crear una lista de asignaturas que estan en la BD
+	* @return ArrayList<Encuesta>
+	*/
 	public static ArrayList<Asignatura> ver_asignatura(){
 		
 		
@@ -174,6 +188,10 @@ public class GestorAsignaturas
 		return asignaturas;
 	}
 
+	/**
+	* Metodo encargado de almacenar la matrícula de un estudiante
+	* @return boolean	
+	*/
 	public static boolean almacenar_matricula(Matricula m)
 	{
 		FileWriter flwriter = null;
@@ -195,6 +213,10 @@ public class GestorAsignaturas
 		}
 	}
 
+	/**
+	* Metodo encargado de crear una lista de matrículas que estan en la BD
+	* @return ArrayList<Matricula>
+	*/
 	public static ArrayList<Matricula> ver_matriculas()
 	{
 		Scanner entrada = null;
@@ -230,6 +252,10 @@ public class GestorAsignaturas
 		return matricula;
 	}
 	
+	/**
+	* Metodo encargado de buscar las matrículas de un estudiante
+	* @return ArrayList<Matricula>
+	*/
 	public static ArrayList<Matricula> buscarMatriculasEstudiantes(Estudiante elEstudiante)
 	{
 		ArrayList<Matricula> lasMatriculas = GestorAsignaturas.ver_matriculas();
