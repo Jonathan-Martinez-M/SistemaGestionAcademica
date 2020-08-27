@@ -105,49 +105,56 @@ public class GestorEstudiantes
 	*/
 	public static boolean modificar_estudiante(Estudiante estudianteviejo , Estudiante estudiantenuevo) {
 		
-		String nombre = estudianteviejo.getCodigo() + "," + estudianteviejo.getContrasegna() + "," + estudianteviejo.getNombres() + 
-				"," + estudianteviejo.getApellidos() + "," + estudianteviejo.getCiudad() + "," + estudianteviejo.getBarrio();
-		
-		Scanner entrada = null;
-		
-		File archivo = new File(Constantes.RUTA + "\\estudiantes.txt");
-		
-		int numeroLinea = 0;
-		
-		int almacenarLinea = 0;
-		
-		ArrayList<String> lineasTxt = new ArrayList<String>();
-		
-		try
+		if(estudianteviejo.getContrasegna().equalsIgnoreCase(estudiantenuevo.getContrasegna()))
 		{
-			entrada = new Scanner(archivo);
-			while (entrada.hasNext()) { //mientras no se llegue al final del fichero
-				numeroLinea++;
-                String linea = entrada.nextLine();  //se lee una línea
-                lineasTxt.add(linea);
-                if (linea.contains(nombre)) {   //si la línea contiene el texto buscado se muestra por pantalla
-                	almacenarLinea = numeroLinea;
-                }
-                
-            }
-			lineasTxt.remove(almacenarLinea-1);
-			lineasTxt.add(almacenarLinea-1 ,estudiantenuevo.getCodigo() + "," + estudiantenuevo.getContrasegna() + "," + estudiantenuevo.getNombres() + "," + 
-			estudiantenuevo.getApellidos() + "," + estudiantenuevo.getCiudad() + "," + estudiantenuevo.getBarrio());
-			buff = new BufferedWriter(new FileWriter(archivo));
-			for(int i = 0; i < lineasTxt.size() ; i++ )
+			String nombre = estudianteviejo.getCodigo() + "," + estudianteviejo.getContrasegna() + "," + estudianteviejo.getNombres() + 
+					"," + estudianteviejo.getApellidos() + "," + estudianteviejo.getCiudad() + "," + estudianteviejo.getBarrio();
+			
+			Scanner entrada = null;
+			
+			File archivo = new File(Constantes.RUTA + "\\estudiantes.txt");
+			
+			int numeroLinea = 0;
+			
+			int almacenarLinea = 0;
+			
+			ArrayList<String> lineasTxt = new ArrayList<String>();
+			
+			try
 			{
-				buff.write(lineasTxt.get(i) + "\r\n");
+				entrada = new Scanner(archivo);
+				while (entrada.hasNext()) { //mientras no se llegue al final del fichero
+					numeroLinea++;
+	                String linea = entrada.nextLine();  //se lee una línea
+	                lineasTxt.add(linea);
+	                if (linea.contains(nombre)) {   //si la línea contiene el texto buscado se muestra por pantalla
+	                	almacenarLinea = numeroLinea;
+	                }
+	                
+	            }
+				lineasTxt.remove(almacenarLinea-1);
+				lineasTxt.add(almacenarLinea-1 ,estudiantenuevo.getCodigo() + "," + estudiantenuevo.getContrasegna() + "," + estudiantenuevo.getNombres() + "," + 
+				estudiantenuevo.getApellidos() + "," + estudiantenuevo.getCiudad() + "," + estudiantenuevo.getBarrio());
+				buff = new BufferedWriter(new FileWriter(archivo));
+				for(int i = 0; i < lineasTxt.size() ; i++ )
+				{
+					buff.write(lineasTxt.get(i) + "\r\n");
+				}
+				
+				buff.close();
+				return true;
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return false;
 			}
 			
-			buff.close();
-			return true;
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		}
+		else {
 			return false;
 		}
-		
 	}
+		
 	
 	/**
 	* Metodo encargado de crear una lista de estudiantes que estan en la BD

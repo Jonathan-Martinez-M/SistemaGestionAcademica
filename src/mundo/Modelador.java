@@ -101,7 +101,7 @@ public class Modelador
 		nuevoEstudiante.setApellidos(apellido);
 		nuevoEstudiante.setCiudad(ubicacion);
 		nuevoEstudiante.setBarrio(ubicacion);
-
+		nuevoEstudiante.setContrasegna(contrasegna);
 		return((Estudiante)usuarioLogueado).modificar_estudiante(GestorEstudiantes.buscarEstudiante(((Estudiante)usuarioLogueado).getCodigo()), nuevoEstudiante);
 	}
 	
