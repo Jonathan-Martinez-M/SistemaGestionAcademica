@@ -77,7 +77,7 @@ public class Modelador
 	 */
 	public ArrayList<Asignatura> listarAsignaturas()
 	{
-		return GestorAsignaturas.ver_asignatura();
+		return GestorAsignaturas.ver_asignaturas();
 	}
 
 	/**
@@ -127,6 +127,16 @@ public class Modelador
 	{
 		Estudiante elEstudiante = (Estudiante) usuarioLogueado;
 		return GestorAsignaturas.buscarMatriculasEstudiantes(elEstudiante);
+	}
+	
+	public Asignatura buscarAsignaturaPorCodigo(String codigo)
+	{
+		return GestorAsignaturas.buscarAsignaturaCod(codigo);
+	}
+	
+	public Encuesta obtetnerEncuestaDummy()
+	{
+		return GestorEncuestas.nuevaEncuestaRetasVacias();
 	}
 
 	/**

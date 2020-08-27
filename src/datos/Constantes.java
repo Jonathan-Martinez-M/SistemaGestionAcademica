@@ -16,10 +16,11 @@ public interface Constantes
 	public static final String COMANDO_BTN_VTNA_CARGAR_ESTUDIANTE = "Abrir carga estudiante";
 	public static final String COMANDO_BTN_VTNA_LISTA_ASIGNATURAS = "Abrir lista asignaturas";
 	public static final String COMANDO_BTN_VTNA_LISTA_ESTUDIANTES = "Abrir lista estudiantes";
-	public static final String COMANDO_BTN_REGISTRAR_ASIGNATURA = "Registrar asignatura";
-	public static final String COMANDO_BTN_REGISTRAR_ESTUDIANTE = "Registrar estudiante";
 	public static final String COMANDO_BTN_VTNA_CARGAR_ASIGNATURA_ESTUDIANTE = "Carga Asignatura";
 	public static final String COMANDO_BTN_VTNA_MODIFICACION_DE_DATOS = "Modificación de datos";
+	public static final String COMANDO_BTN_VTNA_REALIZAR_ENCUESTAS = "Llenar encuestas";
+	public static final String COMANDO_BTN_REGISTRAR_ASIGNATURA = "Registrar asignatura";
+	public static final String COMANDO_BTN_REGISTRAR_ESTUDIANTE = "Registrar estudiante";
 	public static final String COMANDO_BTN_MODIFICACION_DE_DATOS = "Modificar datos";
 	public static final String COMANDO_BTN_MATRICULAR_DESDE_ESTUDIANTE = "Matricular Asignatura Estudiante";
 

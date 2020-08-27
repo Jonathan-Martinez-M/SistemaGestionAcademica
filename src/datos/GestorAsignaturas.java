@@ -33,7 +33,7 @@ public class GestorAsignaturas
 	/**
 	 * Constructor de la clase GestorAsignaturas
 	 */
-	public GestorAsignaturas() {
+	public GestorAsignaturas(){
 		
 		archivoAsignaturas = new File(Constantes.RUTA + "\\asignaturas.txt");
 		archivoMatriculas = new File(Constantes.RUTA + "\\matriculas.txt");
@@ -63,7 +63,7 @@ public class GestorAsignaturas
 	public static boolean agregar_asignatura(Asignatura nuevaAsignatura) 
 	{
 		
-		ArrayList<Asignatura> asignaturas =  ver_asignatura();
+		ArrayList<Asignatura> asignaturas =  ver_asignaturas();
 		
 		boolean verificacion = true;
 		
@@ -104,8 +104,8 @@ public class GestorAsignaturas
 	* Metodo encargado de modificar una asignatura
 	* @return boolean	
 	*/
-	public static boolean modificar_asignatura(Asignatura asignaturaVieja , Asignatura asignaturaNueva) {
-		
+	public static boolean modificar_asignatura(Asignatura asignaturaVieja , Asignatura asignaturaNueva)
+	{
 		String nombre = asignaturaVieja.getNombre() + "," + asignaturaVieja.getCodigo();
 		
 		Scanner entrada = null;
@@ -153,7 +153,7 @@ public class GestorAsignaturas
 	* Metodo encargado de crear una lista de asignaturas que estan en la BD
 	* @return ArrayList<Encuesta>
 	*/
-	public static ArrayList<Asignatura> ver_asignatura(){
+	public static ArrayList<Asignatura> ver_asignaturas(){
 		
 		
 		Scanner entrada = null;
@@ -186,6 +186,23 @@ public class GestorAsignaturas
 		}
 		
 		return asignaturas;
+	}
+	
+	public static Asignatura buscarAsignaturaCod(String cod)
+	{
+		ArrayList<Asignatura> lasAsignaturas = ver_asignaturas();
+		Asignatura asignaturaEncontrada = null;
+		
+		for(Asignatura cadaAsignatura : lasAsignaturas)
+		{
+			if(cadaAsignatura.getCodigo().equals(cod))
+			{
+				asignaturaEncontrada = cadaAsignatura;
+				break;
+			}
+		}
+		
+		return asignaturaEncontrada;
 	}
 
 	/**

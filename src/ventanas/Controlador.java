@@ -17,6 +17,7 @@ import datos.GestorAsignaturas;
 import datos.GestorEncuestas;
 import datos.GestorEstudiantes;
 import mundo.Asignatura;
+import mundo.Encuesta;
 import mundo.Estudiante;
 import mundo.Matricula;
 import mundo.Modelador;
@@ -74,7 +75,7 @@ public class Controlador implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
-
+		//Acción de los botones
 		if(e.getSource().getClass().equals(new JButton().getClass()))
 		{
 			// Inicio de sesión
@@ -217,7 +218,6 @@ public class Controlador implements ActionListener
 			}
 			else if(e.getActionCommand().equals(Constantes.COMANDO_BTN_MODIFICACION_DE_DATOS))
 			{
-				
 				if(modelo.ModificarEstudiante(ventanamodificardatos.getTextNombre(), ventanamodificardatos.getTextApellido(), ventanamodificardatos.getTextUbicacion(), null)){
 					
 					this.ventanamodificardatos.dispose();
@@ -237,6 +237,18 @@ public class Controlador implements ActionListener
 				
 				this.ventanaMatriculaEst.dispose();
 				JOptionPane.showMessageDialog(null, Constantes.MATRICULA_EXITOSA_ESTUDIANTES);
+			}
+			else if(e.getActionCommand().equals(Constantes.COMANDO_BTN_VTNA_REALIZAR_ENCUESTAS))
+			{
+				try
+				{
+					Ventana_Encuesta dialog = new Ventana_Encuesta(this);
+					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+				} catch (Exception e2)
+				{
+					e2.printStackTrace();
+				}
 			}
 		}
 	}
@@ -300,4 +312,18 @@ public class Controlador implements ActionListener
 		this.ventanaMatriculaEst = ventanaMatriculaEst;
 	}
 	
+	public Encuesta getEncuestaDummy()
+	{
+		return modelo.obtetnerEncuestaDummy();
+	}
+	
+	public Asignatura buscarAsignaturaCod(String cod)
+	{
+		return modelo.buscarAsignaturaPorCodigo(cod);
+	}
+	
+	public void getEncuestasUsuario()
+	{
+		
+	}
 }

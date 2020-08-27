@@ -77,20 +77,8 @@ public class Ventana_Usuario extends JFrame
 		contentPane.add(btnModificacinDeDatos);
 		
 		JButton btnRealizarEncuestas = new JButton("Realizar Encuestas");
-		btnRealizarEncuestas.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e)
-			{
-				try
-				{
-					Ventana_Encuesta dialog = new Ventana_Encuesta();
-					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-					dialog.setVisible(true);
-				} catch (Exception e2)
-				{
-					e2.printStackTrace();
-				}
-			}
-		});
+		btnRealizarEncuestas.setActionCommand(Constantes.COMANDO_BTN_VTNA_REALIZAR_ENCUESTAS);
+		btnRealizarEncuestas.addActionListener(control);
 		btnRealizarEncuestas.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		btnRealizarEncuestas.setBounds(150, 176, 135, 34);
 		contentPane.add(btnRealizarEncuestas);

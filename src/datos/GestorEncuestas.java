@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import mundo.Encuesta;
+import mundo.Estudiante;
 
 /**
  * @author Andrés
@@ -73,11 +74,11 @@ public class GestorEncuestas
 			//escribe los datos en el archivo
 			for(int cadaPregunta = 0; cadaPregunta < Constantes.CANTIDAD_PREGUNTAS_CUANTITATIVAS; cadaPregunta++)
 			{
-				bfwriter.write(Constantes.PREGUNTA_CUANTITATIVA + "," + nuevaEncuesta.getIdentificador() + "," +
+				bfwriter.write(nuevaEncuesta.getIdentificador() + "," + Constantes.PREGUNTA_CUANTITATIVA + "," + 
 						nuevaEncuesta.getPreguntas_cuantitativas().get(cadaPregunta) + "," + nuevaEncuesta.getRespuestas_cuantitativas().get(cadaPregunta) + "\r\n");
 			}
 			
-			bfwriter.write(Constantes.PREGUNTA_ABIERTA + "," + nuevaEncuesta.getIdentificador() + "," + nuevaEncuesta.getPregunta_abierta() + "," +
+			bfwriter.write(nuevaEncuesta.getIdentificador() + "," + Constantes.PREGUNTA_ABIERTA + "," + nuevaEncuesta.getPregunta_abierta() + "," +
 					nuevaEncuesta.getRespuesta_abierta() + "\r\n");
 			
 			bfwriter.close();	
@@ -150,7 +151,7 @@ public class GestorEncuestas
 	public static int obtenerUltimoIdentificador()
 	{
 		ArrayList<Encuesta> encuestasAlmacenadas = GestorEncuestas.ver_encuestas();
-		int elUltimoIndice = 0;
+		int elUltimoIndice = 1;
 		
 		for(Encuesta cadaEncuesta : encuestasAlmacenadas)
 		{
@@ -180,12 +181,12 @@ public class GestorEncuestas
                 
             }
 			entrada.close();
-			
-		} catch (IOException e) {
+		} catch (IOException e)
+		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			
 		}
+		
 		preguntaAbierta = lineasTxt.get(lineasTxt.size()-1);
 		lineasTxt.remove(lineasTxt.size()-1);
 		
@@ -196,8 +197,27 @@ public class GestorEncuestas
 			encuesta.agregar_Respuestas_cuantitativas(cadaRespuesta, Constantes.PREGUNTA_SIN_RESPONDER);
 		}
 		
-		encuesta.setPregunta_abierta(Constantes.PREGUNTA_SIN_RESPONDER);
+		encuesta.setRespuesta_abierta(Constantes.PREGUNTA_SIN_RESPONDER);
 		
 		return encuesta;
+	}
+	
+	public static ArrayList<Encuesta> obtenerEncuestasPorUsuario(Estudiante elEstudiante)
+	{
+		ArrayList<Encuesta> todasLasEncuestas = GestorEncuestas.ver_encuestas();
+		ArrayList<Encuesta> encuestasUsuario = new ArrayList<Encuesta>();
+		
+		for(Encuesta cadaEncuesta : todasLasEncuestas)
+		{
+			for(int cadaMatricula = 0; cadaMatricula < elEstudiante.getMatriculas().size(); cadaMatricula++)
+			{
+				if(cadaEncuesta.getIdentificador() == elEstudiante.getMatriculas().get(cadaMatricula).getEncuesta().getIdentificador())
+				{
+					
+				}
+			}
+		}
+		
+		return encuestasUsuario;
 	}
 }
