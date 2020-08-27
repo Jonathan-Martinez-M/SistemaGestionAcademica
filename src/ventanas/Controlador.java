@@ -151,9 +151,10 @@ public class Controlador implements ActionListener
 			//Registra a un estudiante nuevo
 			else if(e.getActionCommand().equals(Constantes.COMANDO_BTN_REGISTRAR_ESTUDIANTE))
 			{
-				if(true)
+				if(modelo.RegistrarEstudiante(ventanaRegistroEstudiante.getTxtCodigo(), ventanaRegistroEstudiante.getTxtNombre(),ventanaRegistroEstudiante.getTxtApellido(), ventanaRegistroEstudiante.getTxtUbicacion(), ventanaRegistroEstudiante.getTxtContrasenia()))
 				{
-					
+					this.ventanaRegistroEstudiante.dispose();
+					JOptionPane.showMessageDialog(null, Constantes.CARGA_EXITOSA_ESTUDIANTE);
 				}
 			}
 			//Abre ventana para registrar un nuevo estudiante

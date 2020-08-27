@@ -31,8 +31,10 @@ public class Modelador
 		{
 			usuarioLogueado = new Administrador(codigo, contrasenia);
 			return Constantes.USUARIO_ADMIN;
-		}else
+		}else if((GestorEstudiantes.ingresar(codigo, contrasenia)) == true)
 		{
+			usuarioLogueado = new Estudiante(codigo, contrasenia, null, null, null, null, null);
+			return Constantes.USUARIO_ESTUDIANTE;
 			//Consulta en BD
 		}
 		
@@ -48,9 +50,9 @@ public class Modelador
 	
 	public boolean RegistrarEstudiante(String codigo, String nombre, String apellidos, String ubicacion, String contrasenia)
 	{
-		Asignatura nuevaAsignatura = new Asignatura(nombre, codigo, null);
+		Estudiante nuevaEstudiante = new Estudiante(codigo, contrasenia, nombre, apellidos, ubicacion, ubicacion, null);
 		
-		return ((Administrador) usuarioLogueado).agregar_asignatura(nuevaAsignatura);
+		return ((Administrador) usuarioLogueado).agregar_estudiante(nuevaEstudiante);
 	}
 	
 	public ArrayList<Asignatura> listarAsignaturas()
