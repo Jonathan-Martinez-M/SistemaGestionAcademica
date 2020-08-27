@@ -31,6 +31,7 @@ import java.util.ArrayList;
 import java.util.Vector;
 import java.awt.event.ActionEvent;
 import javax.swing.JRadioButton;
+import javax.swing.JComboBox;
 
 public class Ventana_Carga_de_estudiantes extends JDialog {
 
@@ -38,7 +39,6 @@ public class Ventana_Carga_de_estudiantes extends JDialog {
 	private JTextField txtNombre;
 	private JTextField txtApellido;
 	private JTextField txtCodigo;
-	private JTextField txtUbicacion;
 	private JTable tablaAsignaturas;
 	private Controlador control;	
 	private JTextField txtContrasenia;
@@ -51,10 +51,10 @@ public class Ventana_Carga_de_estudiantes extends JDialog {
 		this.control = control;
 		control.setVentanaRegistroEstudiante(this);
 		setTitle("Carga de estudiantes");
-		setBounds(100, 100, 414, 581);
+		setBounds(100, 100, 414, 636);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		getContentPane().add(contentPanel, BorderLayout.CENTER);
+		getContentPane().add(contentPanel, BorderLayout.NORTH);
 		
 		JLabel lblNombres = new JLabel("Nombres\r\n");
 		lblNombres.setHorizontalAlignment(SwingConstants.LEFT);
@@ -68,7 +68,7 @@ public class Ventana_Carga_de_estudiantes extends JDialog {
 		lblCdigo.setHorizontalAlignment(SwingConstants.LEFT);
 		lblCdigo.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
-		JLabel lblUbicacin = new JLabel("Ubicaci\u00F3n\r\n");
+		JLabel lblUbicacin = new JLabel("Ciudad");
 		lblUbicacin.setHorizontalAlignment(SwingConstants.LEFT);
 		lblUbicacin.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
@@ -80,9 +80,6 @@ public class Ventana_Carga_de_estudiantes extends JDialog {
 		
 		txtCodigo = new JTextField();
 		txtCodigo.setColumns(10);
-		
-		txtUbicacion = new JTextField();
-		txtUbicacion.setColumns(10);
 		
 		JLabel lblAsignatura = new JLabel("Asignatura\r\n");
 		lblAsignatura.setHorizontalAlignment(SwingConstants.CENTER);
@@ -101,43 +98,56 @@ public class Ventana_Carga_de_estudiantes extends JDialog {
 		JLabel lblContrasea = new JLabel("Contrase\u00F1a");
 		lblContrasea.setHorizontalAlignment(SwingConstants.LEFT);
 		lblContrasea.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		
+		JComboBox comboBox = new JComboBox();
+		
+		JComboBox comboBox_1 = new JComboBox();
+		
+		JLabel lblNewLabel = new JLabel("Barrio");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		GroupLayout gl_contentPanel = new GroupLayout(contentPanel);
 		gl_contentPanel.setHorizontalGroup(
 			gl_contentPanel.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPanel.createSequentialGroup()
-					.addContainerGap(10, Short.MAX_VALUE)
-					.addGroup(gl_contentPanel.createParallelGroup(Alignment.TRAILING)
-						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 328, GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
-							.addGroup(gl_contentPanel.createSequentialGroup()
-								.addComponent(lblNombres, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-								.addGap(10)
-								.addComponent(txtNombre, GroupLayout.PREFERRED_SIZE, 242, GroupLayout.PREFERRED_SIZE))
-							.addGroup(gl_contentPanel.createSequentialGroup()
-								.addComponent(lblApellidos, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-								.addGap(10)
-								.addComponent(txtApellido, GroupLayout.PREFERRED_SIZE, 242, GroupLayout.PREFERRED_SIZE))
-							.addGroup(gl_contentPanel.createSequentialGroup()
+					.addGap(10)
+					.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPanel.createSequentialGroup()
+							.addComponent(lblNombres, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+							.addGap(10)
+							.addComponent(txtNombre, GroupLayout.PREFERRED_SIZE, 242, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPanel.createSequentialGroup()
+							.addComponent(lblApellidos, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+							.addGap(10)
+							.addComponent(txtApellido, GroupLayout.PREFERRED_SIZE, 242, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPanel.createSequentialGroup()
+							.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
 								.addComponent(lblCdigo, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-								.addGap(10)
-								.addComponent(txtCodigo, GroupLayout.PREFERRED_SIZE, 242, GroupLayout.PREFERRED_SIZE))
-							.addGroup(gl_contentPanel.createSequentialGroup()
-								.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
-									.addComponent(lblUbicacin, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblUbicacin, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+								.addGroup(gl_contentPanel.createSequentialGroup()
+									.addPreferredGap(ComponentPlacement.RELATED)
 									.addComponent(lblContrasea, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
-								.addGap(10)
-								.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
-									.addComponent(txtContrasenia, GroupLayout.PREFERRED_SIZE, 242, GroupLayout.PREFERRED_SIZE)
-									.addComponent(txtUbicacion, GroupLayout.PREFERRED_SIZE, 242, GroupLayout.PREFERRED_SIZE)))))
+								.addGroup(gl_contentPanel.createSequentialGroup()
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 69, GroupLayout.PREFERRED_SIZE)))
+							.addGap(10)
+							.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
+								.addComponent(comboBox_1, 0, 242, Short.MAX_VALUE)
+								.addComponent(txtContrasenia, GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
+								.addGroup(gl_contentPanel.createSequentialGroup()
+									.addGap(18)
+									.addComponent(lblAsignatura, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED, 124, Short.MAX_VALUE))
+								.addComponent(txtCodigo, GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+								.addComponent(comboBox, 0, 242, Short.MAX_VALUE))))
 					.addGap(31))
-				.addGroup(gl_contentPanel.createSequentialGroup()
-					.addGap(149)
+				.addGroup(Alignment.LEADING, gl_contentPanel.createSequentialGroup()
+					.addGap(25)
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 328, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(40, Short.MAX_VALUE))
+				.addGroup(Alignment.LEADING, gl_contentPanel.createSequentialGroup()
+					.addGap(133)
 					.addComponent(btnCargarEstudiante, GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-					.addGap(144))
-				.addGroup(gl_contentPanel.createSequentialGroup()
-					.addContainerGap(148, Short.MAX_VALUE)
-					.addComponent(lblAsignatura, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-					.addGap(145))
+					.addGap(160))
 		);
 		gl_contentPanel.setVerticalGroup(
 			gl_contentPanel.createParallelGroup(Alignment.LEADING)
@@ -155,20 +165,27 @@ public class Ventana_Carga_de_estudiantes extends JDialog {
 						.addComponent(lblCdigo, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
 						.addComponent(txtCodigo, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))
 					.addGap(20)
-					.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblUbicacin, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-						.addComponent(txtUbicacion, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))
+						.addComponent(comboBox_1, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
+					.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
+						.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE))
 					.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
-						.addComponent(txtContrasenia, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblContrasea, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPanel.createSequentialGroup()
+							.addGap(54)
+							.addComponent(lblAsignatura, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPanel.createSequentialGroup()
+							.addGap(18)
+							.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblContrasea, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+								.addComponent(txtContrasenia, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))))
+					.addGap(11)
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 168, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
-					.addComponent(lblAsignatura, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 191, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(btnCargarEstudiante, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+					.addGap(27))
 		);
 		
 		tablaAsignaturas = new JTable();
@@ -238,7 +255,7 @@ public class Ventana_Carga_de_estudiantes extends JDialog {
 	 * @return String
 	 */
 	public String getTxtUbicacion() {
-		return txtUbicacion.getText();
+		return null;
 	}
 	/**
 	 * Metodo que devuelve lo ingresado en el campo contraseña
