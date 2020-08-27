@@ -17,6 +17,7 @@ public interface Constantes
 	public static final String COMANDO_BTN_VTNA_LISTA_ESTUDIANTES = "Abrir lista estudiantes";
 	public static final String COMANDO_BTN_REGISTRAR_ASIGNATURA = "Registrar asignatura";
 	public static final String COMANDO_BTN_REGISTRAR_ESTUDIANTE = "Registrar estudiante";
+	public static final String COMANDO_BTN_VTNA_CARGAR_ASIGNATURA_ESTUDIANTE = "Carga Asignatura";
 	
 	//Constantes de resolución
 	public static final String USUARIO_ADMIN = "Usuario Admin";

@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import datos.Constantes;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
@@ -19,11 +22,11 @@ import javax.swing.ImageIcon;
 public class Ventana_Usuario extends JFrame
 {
 	private JPanel contentPane;
-
+	private Controlador control;
 	/**
 	 * Create the frame.
 	 */
-	public Ventana_Usuario() {
+	public Ventana_Usuario(Controlador control) {
 		setTitle("Estudiantes");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -60,19 +63,8 @@ public class Ventana_Usuario extends JFrame
 		subtitulo.add(lblDeAsignaturas);
 		
 		JButton btnCargarAsignatura = new JButton("Cargar Asignatura");
-		btnCargarAsignatura.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e)
-			{
-				try 
-				{
-					Ventana_Carga_Asignatura dialog = new Ventana_Carga_Asignatura();
-					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-					dialog.setVisible(true);
-				} catch (Exception e2) {
-					e2.printStackTrace();
-				}
-			}
-		});
+		btnCargarAsignatura.setActionCommand(Constantes.COMANDO_BTN_VTNA_CARGAR_ASIGNATURA_ESTUDIANTE);
+		btnCargarAsignatura.addActionListener(control);
 		btnCargarAsignatura.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		btnCargarAsignatura.setBounds(10, 176, 135, 34);
 		contentPane.add(btnCargarAsignatura);

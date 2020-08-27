@@ -83,20 +83,14 @@ public class Controlador implements ActionListener
 				}else if(modelo.iniciarSesion(ventanaLogin.getTxtCod(), ventanaLogin.getTxtPass()).equals(Constantes.USUARIO_ESTUDIANTE))
 				{
 					ventanaLogin.dispose();
-					EventQueue.invokeLater(new Runnable()
+					try
 					{
-						public void run()
-						{
-							try
-							{
-								Ventana_Usuario frame = new Ventana_Usuario();
-								frame.setVisible(true);
-							} catch (Exception e)
-							{
-								e.printStackTrace();
-							}
-						}
-					});
+						Ventana_Usuario frame = new Ventana_Usuario(this);
+						frame.setVisible(true);
+					} catch (Exception ec)
+					{
+						ec.printStackTrace();
+					}
 				}else if(modelo.iniciarSesion(ventanaLogin.getTxtCod(), ventanaLogin.getTxtPass()).equals(Constantes.USUARIO_ADMIN))
 				{
 					ventanaLogin.dispose();
@@ -188,6 +182,17 @@ public class Controlador implements ActionListener
 					dialog.setVisible(true);
 				} catch (Exception e2)
 				{
+					e2.printStackTrace();
+				}
+			}
+			else if(e.getActionCommand().equals(Constantes.COMANDO_BTN_VTNA_CARGAR_ASIGNATURA_ESTUDIANTE))
+			{
+				try 
+				{
+					Ventana_Carga_Asignatura dialog = new Ventana_Carga_Asignatura(this);
+					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+				} catch (Exception e2) {
 					e2.printStackTrace();
 				}
 			}
