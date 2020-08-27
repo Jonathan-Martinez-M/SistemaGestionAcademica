@@ -143,15 +143,11 @@ public class GestorEncuestas
 		return encuestas;
 	}
 	
-<<<<<<< HEAD
-	public static int obtenerUltimoIdentificador()
-=======
 	/**
 	* Metodo encargado de obtener el utlimo identificador en la BD
 	* @return int
 	*/
-	private static int obtenerUltimoIdentificador()
->>>>>>> c7c364b9c05b52971c868e882c206416df3b5029
+	public static int obtenerUltimoIdentificador()
 	{
 		ArrayList<Encuesta> encuestasAlmacenadas = GestorEncuestas.ver_encuestas();
 		int elUltimoIndice = 0;

@@ -60,15 +60,12 @@ public class Encuesta
 	public ArrayList<String> getRespuestas_cuantitativas() {
 		return respuestas_cuantitativas;
 	}
-
-<<<<<<< HEAD
+	
 	public void agregar_Respuestas_cuantitativas(int posicion, String respuesta)
 	{
 		this.respuestas_cuantitativas.add(posicion, respuesta);
 	}
-
-=======
->>>>>>> c7c364b9c05b52971c868e882c206416df3b5029
+	
 	public String getPregunta_abierta() {
 		return pregunta_abierta;
 	}
