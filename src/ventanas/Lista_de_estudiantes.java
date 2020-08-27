@@ -2,6 +2,7 @@ package ventanas;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -13,6 +14,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import mundo.Asignatura;
+import mundo.Estudiante;
+
 public class Lista_de_estudiantes extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
@@ -21,12 +25,13 @@ public class Lista_de_estudiantes extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public Lista_de_estudiantes() {
+	public Lista_de_estudiantes(Controlador control) {
 		setTitle("Lista de estudiantes\r\n");
 		setBounds(100, 100, 423, 355);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
+		
 		JScrollPane scrollPane = new JScrollPane();
 		GroupLayout gl_contentPanel = new GroupLayout(contentPanel);
 		gl_contentPanel.setHorizontalGroup(
@@ -44,14 +49,27 @@ public class Lista_de_estudiantes extends JDialog {
 		);
 		{
 			table = new JTable();
-			table.setModel(new DefaultTableModel(
-				new Object[][] {
-					{null, null, null},
-				},
-				new String[] {
-					"Nombres", "C\u00F3digo", "Cambiar datos"
-				}
-			));
+			DefaultTableModel modeloTabla = new DefaultTableModel(
+					new Object[][] {
+						{null, null, null},
+					},
+					new String[] {
+						"Nombres", "C\u00F3digo", "Cambiar datos"
+					}
+				);
+			ArrayList<Estudiante> losEstudiantes = control.listarEstudiantes(); 
+			
+			String registros[] = new String[2];
+			for(Estudiante cadaEstudiante : losEstudiantes)
+			{
+				//Checkbox nuevoCheck = new Checkbox();
+				registros[0] = cadaEstudiante.getNombres();
+				registros[1] = cadaEstudiante.getCodigo();
+				//registros.add(nuevoCheck);
+				
+				modeloTabla.addRow(registros);
+			}
+			table.setModel(modeloTabla);
 			scrollPane.setViewportView(table);
 		}
 		contentPanel.setLayout(gl_contentPanel);

@@ -106,20 +106,8 @@ public class Ventana_Administrador extends JFrame
 		contentPane.add(btnResultados);
 		
 		JButton btnListaDeEstudiantes = new JButton("Lista de Estudiantes");
-		btnListaDeEstudiantes.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e)
-			{
-				try
-				{
-					Lista_de_estudiantes dialog = new Lista_de_estudiantes();
-					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-					dialog.setVisible(true);
-				} catch (Exception e2)
-				{
-					e2.printStackTrace();
-				}
-			}
-		});
+		btnListaDeEstudiantes.setActionCommand(Constantes.COMANDO_BTN_VTNA_LISTA_ESTUDIANTES);
+		btnListaDeEstudiantes.addActionListener(control);
 		btnListaDeEstudiantes.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		btnListaDeEstudiantes.setBounds(277, 181, 147, 34);
 		contentPane.add(btnListaDeEstudiantes);

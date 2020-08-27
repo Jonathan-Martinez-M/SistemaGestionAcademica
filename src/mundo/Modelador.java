@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import datos.Constantes;
 import datos.GestorAsignaturas;
+import datos.GestorEstudiantes;
 
 /**
  * @author Rubén Fúquene
@@ -30,8 +31,10 @@ public class Modelador
 		{
 			usuarioLogueado = new Administrador(codigo, contrasenia);
 			return Constantes.USUARIO_ADMIN;
-		}else
+		}else if((GestorEstudiantes.ingresar(codigo, contrasenia)) == true)
 		{
+			usuarioLogueado = new Estudiante(codigo, contrasenia, null, null, null, null, null);
+			return Constantes.USUARIO_ESTUDIANTE;
 			//Consulta en BD
 		}
 		
@@ -55,5 +58,10 @@ public class Modelador
 	public ArrayList<Asignatura> listarAsignaturas()
 	{
 		return GestorAsignaturas.ver_asignatura();
+	}
+	
+	public ArrayList<Estudiante> ver_estudiantes()
+	{
+		return GestorEstudiantes.ver_estudiantes();
 	}
 }

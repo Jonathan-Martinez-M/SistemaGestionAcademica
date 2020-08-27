@@ -59,7 +59,7 @@ public class Ventana_Lista_Asignatura_Admin extends JDialog {
 		String registros[] = new String[2];
 		for(Asignatura cadaAsignatura : lasAsignaturas)
 		{
-			Checkbox nuevoCheck = new Checkbox();
+			//Checkbox nuevoCheck = new Checkbox();
 			registros[0] = cadaAsignatura.getNombre();
 			registros[1] = cadaAsignatura.getCodigo();
 			//registros.add(nuevoCheck);
@@ -70,4 +70,6 @@ public class Ventana_Lista_Asignatura_Admin extends JDialog {
 		table.setModel(modeloTabla);
 		scrollPane.setViewportView(table);
 	}
+	
+	
 }
