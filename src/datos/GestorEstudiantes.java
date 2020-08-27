@@ -122,7 +122,7 @@ public class GestorEstudiantes
 			buff = new BufferedWriter(new FileWriter(archivo));
 			for(int i = 0; i < lineasTxt.size() ; i++ )
 			{
-				buff.write(lineasTxt.get(i));
+				buff.write(lineasTxt.get(i) + "\r\n");
 			}
 			
 			buff.close();

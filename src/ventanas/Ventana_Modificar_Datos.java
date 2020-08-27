@@ -14,15 +14,18 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Ventana_Modificar_Datos extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-	private JTextField textNombre;
-	private JTextField textApellido;
-	private JTextField textUbicacion;
-	private JPasswordField txtContraseña;
 	private Controlador control;
+	private JTextField txtNombre;
+	private JTextField txtApellido;
+	private JTextField txtUbicacion;
+	private JTextField txtPass;
 
 	/**
 	 * Create the dialog.
@@ -31,55 +34,62 @@ public class Ventana_Modificar_Datos extends JDialog {
 		this.control = control;
 		control.setVentanaModificarDatos(this);
 		setTitle("Modificar Datos");
-		setBounds(100, 100, 390, 300);
+		setBounds(100, 100, 450, 347);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		
-		JLabel lblNewNombre = new JLabel("Ingrese nuevo nombre");
-		lblNewNombre.setBounds(10, 45, 127, 31);
-		contentPanel.add(lblNewNombre);
-		{
-			JLabel lblNewApellido = new JLabel("Ingrese nuevo apellido");
-			lblNewApellido.setBounds(10, 87, 109, 14);
-			contentPanel.add(lblNewApellido);
-		}
-		{
-			JLabel lblNewUbicacion = new JLabel("Ingrese nueva ubicaci\u00F3n");
-			lblNewUbicacion.setBounds(10, 129, 127, 14);
-			contentPanel.add(lblNewUbicacion);
-		}
-		{
-			JLabel lblNewConstraseña = new JLabel("Confirme la contrase\u00F1a");
-			lblNewConstraseña.setBounds(10, 169, 127, 14);
-			contentPanel.add(lblNewConstraseña);
-		}
+		JLabel lblIngreseNuevoNombre = new JLabel("Ingrese nuevo nombre");
+		lblIngreseNuevoNombre.setHorizontalAlignment(SwingConstants.LEFT);
+		lblIngreseNuevoNombre.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblIngreseNuevoNombre.setBounds(9, 21, 150, 30);
+		contentPanel.add(lblIngreseNuevoNombre);
 		
-		textNombre = new JTextField();
-		textNombre.setBounds(169, 50, 199, 20);
-		contentPanel.add(textNombre);
-		textNombre.setColumns(10);
+		JLabel lblIngreseNuevoApellido = new JLabel("Ingrese nuevo apellido");
+		lblIngreseNuevoApellido.setHorizontalAlignment(SwingConstants.LEFT);
+		lblIngreseNuevoApellido.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblIngreseNuevoApellido.setBounds(9, 78, 150, 30);
+		contentPanel.add(lblIngreseNuevoApellido);
 		
-		textApellido = new JTextField();
-		textApellido.setBounds(169, 84, 199, 20);
-		contentPanel.add(textApellido);
-		textApellido.setColumns(10);
+		JLabel lblIngreseNuevoUbicacin = new JLabel("Ingrese nuevo ubicaci\u00F3n");
+		lblIngreseNuevoUbicacin.setHorizontalAlignment(SwingConstants.LEFT);
+		lblIngreseNuevoUbicacin.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblIngreseNuevoUbicacin.setBounds(9, 138, 158, 30);
+		contentPanel.add(lblIngreseNuevoUbicacin);
 		
-		textUbicacion = new JTextField();
-		textUbicacion.setBounds(169, 126, 199, 20);
-		contentPanel.add(textUbicacion);
-		textUbicacion.setColumns(10);
+		JLabel lblColoqueSuContrasea = new JLabel("Coloque su contrase\u00F1a");
+		lblColoqueSuContrasea.setHorizontalAlignment(SwingConstants.LEFT);
+		lblColoqueSuContrasea.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblColoqueSuContrasea.setBounds(9, 200, 158, 30);
+		contentPanel.add(lblColoqueSuContrasea);
 		
-		txtContraseña = new JPasswordField();
-		txtContraseña.setBounds(169, 166, 199, 20);
-		contentPanel.add(txtContraseña);
+		JButton btnActualizarDatos = new JButton("Actualizar datos");
+		btnActualizarDatos.setActionCommand(Constantes.COMANDO_BTN_MODIFICACION_DE_DATOS);
+		btnActualizarDatos.addActionListener(control);
+		btnActualizarDatos.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnActualizarDatos.setBounds(133, 264, 135, 34);
+		contentPanel.add(btnActualizarDatos);
 		
-		JButton btnActualizar = new JButton("Actualizar datos");
-		btnActualizar.setActionCommand(Constantes.COMANDO_BTN_MODIFICACION_DE_DATOS);
-		btnActualizar.addActionListener(control);
-		btnActualizar.setBounds(117, 217, 118, 23);
-		contentPanel.add(btnActualizar);
+		txtNombre = new JTextField();
+		txtNombre.setColumns(10);
+		txtNombre.setBounds(182, 23, 242, 30);
+		contentPanel.add(txtNombre);
+		
+		txtApellido = new JTextField();
+		txtApellido.setColumns(10);
+		txtApellido.setBounds(182, 80, 242, 30);
+		contentPanel.add(txtApellido);
+		
+		txtUbicacion = new JTextField();
+		txtUbicacion.setColumns(10);
+		txtUbicacion.setBounds(182, 140, 242, 30);
+		contentPanel.add(txtUbicacion);
+		
+		txtPass = new JTextField();
+		txtPass.setColumns(10);
+		txtPass.setBounds(182, 202, 242, 30);
+		contentPanel.add(txtPass);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -88,14 +98,14 @@ public class Ventana_Modificar_Datos extends JDialog {
 	}
 
 	public String getTextNombre() {
-		return textNombre.getText();
+		return txtNombre.getText();
 	}
 
 	public String getTextApellido() {
-		return textApellido.getText();
+		return txtApellido.getText();
 	}
 
 	public String getTextUbicacion() {
-		return textUbicacion.getText();
+		return txtUbicacion.getText();
 	}
 }
