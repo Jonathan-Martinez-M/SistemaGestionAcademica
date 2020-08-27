@@ -247,13 +247,15 @@ public class Ventana_Carga_de_estudiantes extends JDialog {
 		
 		if(cantidadMatriculas > 0)
 		{
+			int matriculasAsignadas = 0;
 			asignaturasSeleccionadas = new String[cantidadMatriculas];
 			
 			for(int cadafila = 0; cadafila < tablaAsignaturas.getRowCount(); cadafila++)
 			{
 				if(Boolean.parseBoolean(tablaAsignaturas.getValueAt(cadafila, 2).toString()))
 				{
-					asignaturasSeleccionadas[cadafila] = tablaAsignaturas.getValueAt(cadafila, 1).toString();
+					asignaturasSeleccionadas[matriculasAsignadas] = tablaAsignaturas.getValueAt(cadafila, 1).toString();
+					matriculasAsignadas++;
 				}
 			}
 		}

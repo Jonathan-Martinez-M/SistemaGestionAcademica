@@ -68,12 +68,25 @@ public class Modelador
 	public boolean ModificarEstudiante(String nombre, String apellido, String ubicacion, String contrasegna) 
 	{
 		Estudiante nuevoEstudiante = GestorEstudiantes.buscarEstudiante(((Estudiante)usuarioLogueado).getCodigo());
-		
+
 		nuevoEstudiante.setNombres(nombre);
 		nuevoEstudiante.setApellidos(apellido);
 		nuevoEstudiante.setCiudad(ubicacion);
 		nuevoEstudiante.setBarrio(ubicacion);
-		
+
 		return((Estudiante)usuarioLogueado).modificar_estudiante(GestorEstudiantes.buscarEstudiante(((Estudiante)usuarioLogueado).getCodigo()), nuevoEstudiante);
+	}
+	
+	public boolean matricular(String asignatura, String estudiante)
+	{
+		Encuesta laEncuesta = new Encuesta(null, null);
+		laEncuesta.setIdentificador(1);
+		Matricula nuevaMatricula = new Matricula(asignatura, estudiante, laEncuesta);
+
+		return GestorAsignaturas.almacenar_matricula(nuevaMatricula);
+	}
+
+	public Usuario getUsuarioLogueado() {
+		return usuarioLogueado;
 	}
 }
