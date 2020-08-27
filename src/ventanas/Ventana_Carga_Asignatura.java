@@ -26,7 +26,7 @@ public class Ventana_Carga_Asignatura extends JDialog {
 	private JTable tablaAsignaturas;
 	private Controlador control;
 	/**
-	 * Create the dialog.
+	 * Constructor de la clase Ventana_Carga_Asignatura
 	 */
 	public Ventana_Carga_Asignatura(Controlador control)
 	{
@@ -96,7 +96,10 @@ public class Ventana_Carga_Asignatura extends JDialog {
 		btnCargar.addActionListener(control);
 		contentPanel.add(btnCargar);
 	}
-	
+	/**
+	 * Metodo que devuelve los codigos de las asignaturas seleccionadas
+	 * @return String[]
+	 */
 	public String[] obtenerAsignaturasSeleccionadas()
 	{
 		int cantidadMatriculas = 0;

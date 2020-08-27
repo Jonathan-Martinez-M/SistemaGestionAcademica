@@ -28,7 +28,7 @@ public class Ventana_Modificar_Datos extends JDialog {
 	private JPasswordField txtPass;
 
 	/**
-	 * Create the dialog.
+	 * Constructor de la clase Ventana_Modificar_Datos
 	 */
 	public Ventana_Modificar_Datos(Controlador control) {
 		this.control = control;
@@ -96,15 +96,24 @@ public class Ventana_Modificar_Datos extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 		}
 	}
-
+	/**
+	 * Metodo que devuelve lo ingresado en el campo nombre
+	 * @return String
+	 */
 	public String getTextNombre() {
 		return txtNombre.getText();
 	}
-
+	/**
+	 * Metodo que devuelve lo ingresado en el campo apellido
+	 * @return String
+	 */
 	public String getTextApellido() {
 		return txtApellido.getText();
 	}
-
+	/**
+	 * Metodo que devuelve lo ingresado en el campo ubicacion
+	 * @return String
+	 */
 	public String getTextUbicacion() {
 		return txtUbicacion.getText();
 	}

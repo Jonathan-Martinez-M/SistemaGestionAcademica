@@ -23,7 +23,7 @@ public class Lista_de_estudiantes extends JDialog {
 	private JTable table;
 
 	/**
-	 * Create the dialog.
+	 * Constructor de la clase  lista_de_estudiante
 	 */
 	public Lista_de_estudiantes(Controlador control) {
 		setTitle("Lista de estudiantes\r\n");

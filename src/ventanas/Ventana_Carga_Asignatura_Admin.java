@@ -25,7 +25,7 @@ public class Ventana_Carga_Asignatura_Admin extends JDialog {
 	private Controlador control;
 
 	/**
-	 * Create the dialog.
+	 * Constructor de la clase  entana_Carga_Asignatura_Admin
 	 */
 	public Ventana_Carga_Asignatura_Admin(Controlador control)
 	{
@@ -67,12 +67,18 @@ public class Ventana_Carga_Asignatura_Admin extends JDialog {
 		txtNomAsign.setBounds(189, 93, 150, 30);
 		contentPanel.add(txtNomAsign);
 	}
-
+	/**
+	 * Metodo que devuelve lo escrito en el campos txtCodigo
+	 * @return String
+	 */
 	public String getTxtCodAsign()
 	{
 		return txtCodAsign.getText();
 	}
-
+	/**
+	 * Metodo que devuelve lo escrito en el campos txtNombre asignatura
+	 * @return String
+	 */
 	public String getTxtNomAsign() {
 		return txtNomAsign.getText();
 	}

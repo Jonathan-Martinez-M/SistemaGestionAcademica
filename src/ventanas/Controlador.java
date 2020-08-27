@@ -37,11 +37,10 @@ public class Controlador implements ActionListener
 	private Ventana_Carga_Asignatura ventanaMatriculaEst;
 	
 	/**
-	 * 
+	 * Contructor de la clase controlador
 	 */
 	public Controlador()
 	{
-		// TODO Auto-generated constructor stub
 		modelo = new Modelador();
 	}
 	
@@ -69,7 +68,9 @@ public class Controlador implements ActionListener
 			}
 		});	
 	}
-
+	/**
+	 * Metodo actionPerformed encargado de estar atento a cualquier accion en las ventanas 
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
@@ -239,42 +240,61 @@ public class Controlador implements ActionListener
 			}
 		}
 	}
-	
+	/**
+	 * Metodo encargado de listar asignaturas
+	 * @return ArrayList<Asignatura>
+	 */
 	public ArrayList<Asignatura> listarAsignaturas()
 	{
 		return modelo.listarAsignaturas();
 	}
-
+	/**
+	 * Metodo encargado de listar estudiantes
+	 * @return ArrayList<Estudiante>
+	 */
 	public ArrayList<Estudiante> listarEstudiantes()
 	{
 		return modelo.ver_estudiantes();
 	}
-	
+	/**
+	 * Metodo encargado de listar asignaturas de un estudiante
+	 * @return ArrayList<Asignatura>
+	 */
 	public ArrayList<Matricula> listarMatriculasPorEstudiante()
 	{
 		return modelo.obtenerMatriculasEstudiantes();
 	}
-	
+	/**
+	 * Metodo encargado recibir la ventana de login
+	 */
 	public void setVentanaLogin(Ventana_Inicial ventanaLogin)
 	{
 		this.ventanaLogin = ventanaLogin;
 	}
-
+	/**
+	 * Metodo encargado recibir la ventana de registro de asignaturas 
+	 */
 	public void setVentanaRegistroAsignatura(Ventana_Carga_Asignatura_Admin ventanaRegistroAsignatura)
 	{
 		this.ventanaRegistroAsignatura = ventanaRegistroAsignatura;
 	}
-
+	/**
+	 * Metodo encargado recibir la ventana de registro de estudiantes
+	 */
 	public void setVentanaRegistroEstudiante(Ventana_Carga_de_estudiantes ventanaRegistroEstudiante)
 	{
 		this.ventanaRegistroEstudiante = ventanaRegistroEstudiante;
 	}	
-	
+	/**
+	 * Metodo encargado recibir la ventana de modificar datos
+	 */
 	public void setVentanaModificarDatos(Ventana_Modificar_Datos ventanaModificarDatos) 
 	{
 		this.ventanamodificardatos = ventanaModificarDatos;
 	}
-
+	/**
+	 * Metodo encargado recibir la ventana de matricular estudiante
+	 */
 	public void setVentanaMatriculaEst(Ventana_Carga_Asignatura ventanaMatriculaEst)
 	{
 		this.ventanaMatriculaEst = ventanaMatriculaEst;

@@ -20,20 +20,7 @@ public class Ventana_Resultado_Encuesta_Detalle extends JDialog {
 	private JTable table_1;
 
 	/**
-	 * Launch the application.
-
-	public static void main(String[] args) {
-		try {
-			Ventana_Resultado_Encuesta_Detalle dialog = new Ventana_Resultado_Encuesta_Detalle();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}*/
-
-	/**
-	 * Create the dialog.
+	 * Constructor de la clase Ventana_Resultado_Encuesta_Detalle
 	 */
 	public Ventana_Resultado_Encuesta_Detalle() {
 		setTitle("Resultado de la Encuesta");

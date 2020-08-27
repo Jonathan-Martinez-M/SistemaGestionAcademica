@@ -23,7 +23,7 @@ public class Ventana_Encuesta extends JDialog {
 	private JTable table;
 
 	/**
-	 * Create the dialog.
+	 * Constructor de la clase Ventana_Encuesta
 	 */
 	public Ventana_Encuesta() {
 		setTitle("Encuesta\r\n");

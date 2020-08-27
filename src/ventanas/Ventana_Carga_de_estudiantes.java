@@ -44,7 +44,7 @@ public class Ventana_Carga_de_estudiantes extends JDialog {
 	private JTextField txtContrasenia;
 		
 	/**
-	 * Create the dialog.
+	 * Constructor de la clase Ventana_Carga_de_estudiantes
 	 */
 	public Ventana_Carga_de_estudiantes(Controlador control)
 	{
@@ -212,28 +212,46 @@ public class Ventana_Carga_de_estudiantes extends JDialog {
 		
 		contentPanel.setLayout(gl_contentPanel);
 	}
-
+	/**
+	 * Metodo que devuelve lo ingresado en el campo nombre
+	 * @return String
+	 */
 	public String getTxtNombre() {
 		return txtNombre.getText();
 	}
-
+	/**
+	 * Metodo que devuelve lo ingresado en el campo apellido
+	 * @return String
+	 */
 	public String getTxtApellido() {
 		return txtApellido.getText();
 	}
-
+	/**
+	 * Metodo que devuelve lo ingresado en el campo codigo
+	 * @return String
+	 */
 	public String getTxtCodigo() {
 		return txtCodigo.getText();
 	}
-
+	/**
+	 * Metodo que devuelve lo ingresado en el campo ubicacion
+	 * @return String
+	 */
 	public String getTxtUbicacion() {
 		return txtUbicacion.getText();
 	}
-
+	/**
+	 * Metodo que devuelve lo ingresado en el campo contraseña
+	 * @return String
+	 */
 	public String getTxtContrasenia() {
 		return txtContrasenia.getText();
 	}
 	
-	//
+	/**
+	 * Metodo que devuelve los codigos de las asignaturas seleccionadas
+	 * @return String[]
+	 */
 	public String[] obtenerAsignaturasSeleccionadas()
 	{
 		int cantidadMatriculas = 0;
