@@ -80,11 +80,11 @@ public class Modelador
 	
 	public boolean matricular(String asignatura, String estudiante)
 	{
-		Encuesta laEncuesta = new Encuesta(null, null);
+		Encuesta laEncuesta = GestorEncuestas.nuevaEncuestaRetasVacias();
 		laEncuesta.setIdentificador(GestorEncuestas.obtenerUltimoIdentificador());
 		Matricula nuevaMatricula = new Matricula(asignatura, estudiante, laEncuesta);
 		
-
+		GestorEncuestas.almacenar_encuesta(laEncuesta);
 		return GestorAsignaturas.almacenar_matricula(nuevaMatricula);
 	}
 	

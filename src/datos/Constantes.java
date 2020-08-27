@@ -5,9 +5,10 @@ public interface Constantes
 	//Constantes de datos fijos
 	public static final String CODIGO_ADMIN = "ADMIN";
 	public static final String CONTRASENIA_ADMIN = "20011995";
-	public static final int CANTIDAD_PREGUNTAS_CUANTITATIVAS = 5;
+	public static final int CANTIDAD_PREGUNTAS_CUANTITATIVAS = 4;
 	public static final String PREGUNTA_CUANTITATIVA = "C";
 	public static final String PREGUNTA_ABIERTA = "A";
+	public static final String PREGUNTA_SIN_RESPONDER = "NA";
 	
 	//Constantes Botones
 	public static final String COMANDO_BTN_INGRESAR = "login";

@@ -61,11 +61,10 @@ public class GestorEncuestas
 			BufferedWriter bfwriter = new BufferedWriter(flwriter);
 		
 			//escribe los datos en el archivo
-			
 			for(int cadaPregunta = 0; cadaPregunta < Constantes.CANTIDAD_PREGUNTAS_CUANTITATIVAS; cadaPregunta++)
 			{
 				bfwriter.write(Constantes.PREGUNTA_CUANTITATIVA + "," + nuevaEncuesta.getIdentificador() + "," +
-						nuevaEncuesta.getPreguntas_cuantitativas()[cadaPregunta] + "," + nuevaEncuesta.getRespuestas_cuantitativas()[cadaPregunta] + "\r\n");
+						nuevaEncuesta.getPreguntas_cuantitativas().get(cadaPregunta) + "," + nuevaEncuesta.getRespuestas_cuantitativas().get(cadaPregunta) + "\r\n");
 			}
 			
 			bfwriter.write(Constantes.PREGUNTA_ABIERTA + "," + nuevaEncuesta.getIdentificador() + "," + nuevaEncuesta.getPregunta_abierta() + "," +
@@ -107,7 +106,7 @@ public class GestorEncuestas
                 {
                 	encuestaRecuperada.setIdentificador(Integer.parseInt(delimitador.next()));
                 	encuestaRecuperada.agregar_Pregunta_Cuantitativa(preguntaNumero, delimitador.next());
-                	encuestaRecuperada.agregar_Respuestas_cuantitativas(preguntaNumero, Integer.parseInt(delimitador.next()));
+                	encuestaRecuperada.agregar_Respuestas_cuantitativas(preguntaNumero, delimitador.next());
                 	
                 	preguntaNumero++;
                 }else if(delimitador.next().equals(Constantes.PREGUNTA_ABIERTA))
@@ -145,12 +144,11 @@ public class GestorEncuestas
 		
 		return elUltimoIndice;
 	}
-	public static Encuesta cargar_preguntas()
+	public static Encuesta nuevaEncuestaRetasVacias()
 	{
-		
 		Scanner entrada = null;
 		
-		File archivo = new File(Constantes.RUTA + "\\apreguntas.txt");
+		File archivo = new File(Constantes.RUTA + "\\preguntas.txt");
 		
 		String preguntaAbierta;
 
@@ -174,6 +172,13 @@ public class GestorEncuestas
 		lineasTxt.remove(lineasTxt.size()-1);
 		
 		Encuesta encuesta = new Encuesta(lineasTxt , preguntaAbierta);
+		
+		for(int cadaRespuesta = 0; cadaRespuesta < Constantes.CANTIDAD_PREGUNTAS_CUANTITATIVAS; cadaRespuesta++)
+		{
+			encuesta.agregar_Respuestas_cuantitativas(cadaRespuesta, Constantes.PREGUNTA_SIN_RESPONDER);
+		}
+		
+		encuesta.setPregunta_abierta(Constantes.PREGUNTA_SIN_RESPONDER);
 		
 		return encuesta;
 	}

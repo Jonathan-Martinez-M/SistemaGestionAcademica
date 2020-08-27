@@ -12,7 +12,7 @@ public class Encuesta
 	/**
 	 * Lista de respuestas Cuantitativas
 	 */
-	private int respuestas_cuantitativas[];
+	private ArrayList<String> respuestas_cuantitativas;
 	
 	/**
 	 * Pregunta abierta
@@ -36,6 +36,8 @@ public class Encuesta
 	{
 		this.preguntas_cuantitativas = preguntas_cuantitativas;
 		this.pregunta_abierta = pregunta_abierta;
+		
+		this.respuestas_cuantitativas = new ArrayList<String>();
 	}
 
 	public ArrayList<String> getPreguntas_cuantitativas() {
@@ -51,13 +53,13 @@ public class Encuesta
 		this.preguntas_cuantitativas.add(posicion, pregunta ) ;
 	}
 	
-	public int[] getRespuestas_cuantitativas() {
+	public ArrayList<String> getRespuestas_cuantitativas() {
 		return respuestas_cuantitativas;
 	}
 
-	public void agregar_Respuestas_cuantitativas(int posicion, int respuesta)
+	public void agregar_Respuestas_cuantitativas(int posicion, String respuesta)
 	{
-		this.respuestas_cuantitativas[posicion] = respuesta;
+		this.respuestas_cuantitativas.add(posicion, respuesta);
 	}
 
 	public String getPregunta_abierta() {
