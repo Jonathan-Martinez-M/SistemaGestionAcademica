@@ -65,11 +65,11 @@ public class GestorEncuestas
 			for(int cadaPregunta = 0; cadaPregunta < Constantes.CANTIDAD_PREGUNTAS_CUANTITATIVAS; cadaPregunta++)
 			{
 				bfwriter.write(Constantes.PREGUNTA_CUANTITATIVA + "," + nuevaEncuesta.getIdentificador() + "," +
-						nuevaEncuesta.getPreguntas_cuantitativas()[cadaPregunta] + "," + nuevaEncuesta.getRespuestas_cuantitativas()[cadaPregunta]);
+						nuevaEncuesta.getPreguntas_cuantitativas()[cadaPregunta] + "," + nuevaEncuesta.getRespuestas_cuantitativas()[cadaPregunta] + "\r\n");
 			}
 			
 			bfwriter.write(Constantes.PREGUNTA_ABIERTA + "," + nuevaEncuesta.getIdentificador() + "," + nuevaEncuesta.getPregunta_abierta() + "," +
-					nuevaEncuesta.getRespuesta_abierta());
+					nuevaEncuesta.getRespuesta_abierta() + "\r\n");
 			
 			bfwriter.close();	
 			return true;
@@ -130,7 +130,7 @@ public class GestorEncuestas
 		return encuestas;
 	}
 	
-	private static int obtenerUltimoIdentificador()
+	public static int obtenerUltimoIdentificador()
 	{
 		ArrayList<Encuesta> encuestasAlmacenadas = GestorEncuestas.ver_encuestas();
 		int elUltimoIndice = 0;

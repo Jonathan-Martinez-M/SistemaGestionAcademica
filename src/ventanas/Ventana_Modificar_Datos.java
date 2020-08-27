@@ -25,7 +25,7 @@ public class Ventana_Modificar_Datos extends JDialog {
 	private JTextField txtNombre;
 	private JTextField txtApellido;
 	private JTextField txtUbicacion;
-	private JTextField txtPass;
+	private JPasswordField txtPass;
 
 	/**
 	 * Create the dialog.
@@ -86,7 +86,7 @@ public class Ventana_Modificar_Datos extends JDialog {
 		txtUbicacion.setBounds(182, 140, 242, 30);
 		contentPanel.add(txtUbicacion);
 		
-		txtPass = new JTextField();
+		txtPass = new JPasswordField();
 		txtPass.setColumns(10);
 		txtPass.setBounds(182, 202, 242, 30);
 		contentPanel.add(txtPass);
@@ -107,5 +107,17 @@ public class Ventana_Modificar_Datos extends JDialog {
 
 	public String getTextUbicacion() {
 		return txtUbicacion.getText();
+	}
+
+	public String getTxtPass()
+	{
+		String contrasenia = "";
+		char [] contraseniaEn = txtPass.getPassword();
+		for(int cadaCar = 0; cadaCar < contraseniaEn.length; cadaCar++)
+		{
+			contrasenia += contraseniaEn[cadaCar];
+		}
+		
+		return contrasenia;
 	}
 }

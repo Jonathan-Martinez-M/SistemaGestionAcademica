@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import datos.Constantes;
 import datos.GestorAsignaturas;
+import datos.GestorEncuestas;
 import datos.GestorEstudiantes;
 
 /**
@@ -80,8 +81,9 @@ public class Modelador
 	public boolean matricular(String asignatura, String estudiante)
 	{
 		Encuesta laEncuesta = new Encuesta(null, null);
-		laEncuesta.setIdentificador(1);
+		laEncuesta.setIdentificador(GestorEncuestas.obtenerUltimoIdentificador());
 		Matricula nuevaMatricula = new Matricula(asignatura, estudiante, laEncuesta);
+		
 
 		return GestorAsignaturas.almacenar_matricula(nuevaMatricula);
 	}

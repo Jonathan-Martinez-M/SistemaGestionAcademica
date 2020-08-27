@@ -214,7 +214,8 @@ public class Controlador implements ActionListener
 					e2.printStackTrace();
 				}
 			}
-			else if(e.getActionCommand().equals(Constantes.COMANDO_BTN_MODIFICACION_DE_DATOS)) {
+			else if(e.getActionCommand().equals(Constantes.COMANDO_BTN_MODIFICACION_DE_DATOS))
+			{
 				
 				if(modelo.ModificarEstudiante(ventanamodificardatos.getTextNombre(), ventanamodificardatos.getTextApellido(), ventanamodificardatos.getTextUbicacion(), null)){
 					
