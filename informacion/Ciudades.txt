@@ -1,4 +1,4 @@
-1, Bogot√° D.C
-2, Medell√≠n
-3, Cali
-4; Barranquilla
+1,Bogot· D.C
+2,MedellÌn
+3,Cali
+4,Barranquilla

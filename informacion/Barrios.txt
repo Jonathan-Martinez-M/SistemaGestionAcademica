@@ -1,31 +1,31 @@
-1, Suba
-1, Kennedy
-1, Engativ√°
-1, Ciudad Bol√≠var
-1, Bosa
-1, Usaqu√©n
-1, Usme
-1, San Crist√≥bal
-1, Fontib√≥n
-1, Rafael Uribe Uribe
-2, Poblado
-2, Bel√©n
-2, Aranjuez
-2, Manrique
-2, Buenos Aires
-2, Castilla
-2, Robledo
-2, La Am√©rica
-2, Santa Cruz
-2, Laureles
-3, Cali Aguacatal
-3, Ca√±averalejo
-3, Cauca Norte
-3, Cauca sur
-3, Pondaje
-3, Pance Lili
-4, Sur Occidente
-4, Sur Oriente
-4, Norte-Centro Hist√≥rico
-4, Metropolitana
-4, Riomar
+1,Suba
+1,Kennedy
+1,Engativ·
+1,Ciudad BolÌvar
+1,Bosa
+1,UsaquÈn
+1,Usme
+1,San CristÛbal
+1,FontibÛn
+1,Rafael Uribe Uribe
+2,Poblado
+2,BelÈn
+2,Aranjuez
+2,Manrique
+2,Buenos Aires
+2,Castilla
+2,Robledo
+2,La AmÈrica
+2,Santa Cruz
+2,Laureles
+3,Cali Aguacatal
+3,CaÒaveralejo
+3,Cauca Norte
+3,Cauca sur
+3,Pondaje
+3,Pance Lili
+4,Sur Occidente
+4,Sur Oriente
+4,Norte-Centro HistÛrico
+4,Metropolitana
+4,Riomar
