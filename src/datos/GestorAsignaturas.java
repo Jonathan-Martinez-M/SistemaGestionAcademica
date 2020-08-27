@@ -173,28 +173,28 @@ public class GestorAsignaturas
 		
 		return asignaturas;
 	}
-	
-	public static boolean almacenar_matricula(Matricula m){
-		
+
+	public static boolean almacenar_matricula(Matricula m)
+	{
 		FileWriter flwriter = null;
 		try
 		{
 			//además de la ruta del archivo recibe un parámetro de tipo boolean, que le indican que se va añadir más registros 
 			flwriter = new FileWriter(Constantes.RUTA + "\\matriculas.txt", true);
 			BufferedWriter bfwriter = new BufferedWriter(flwriter);
-		
+
 			//escribe los datos en el archivo
-			bfwriter.write(m.getPertenece_a_estudiante() + "," + m.getDe_la_asignatura() + "," + m.getEncuesta().getIdentificador());
+			bfwriter.write(m.getPertenece_a_estudiante() + "," + m.getDe_la_asignatura() + "," + m.getEncuesta().getIdentificador() + "\r\n");
 			bfwriter.close();	
 			return true;
  
-		} catch (IOException e) {
+		} catch (IOException e)
+		{
 			e.printStackTrace();
 			return false;
 		}
-		
 	}
-	
+
 public static ArrayList<Matricula> ver_matricula(){
 		
 		
@@ -217,8 +217,6 @@ public static ArrayList<Matricula> ver_matricula(){
                 Matricula matriculaAgregar = new Matricula(delimitar.next(), delimitar.next(), new Encuesta(null, null));
                 
                 matricula.add(matriculaAgregar);
-                
-                
             }
 			entrada.close();
 			

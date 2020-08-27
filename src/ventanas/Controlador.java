@@ -32,6 +32,7 @@ public class Controlador implements ActionListener
 	private Ventana_Inicial ventanaLogin;
 	private Ventana_Carga_Asignatura_Admin ventanaRegistroAsignatura;
 	private Ventana_Carga_de_estudiantes ventanaRegistroEstudiante;
+	private Ventana_Modificar_Datos ventanamodificardatos;
 	
 	/**
 	 * 
@@ -90,6 +91,7 @@ public class Controlador implements ActionListener
 					} catch (Exception ec)
 					{
 						ec.printStackTrace();
+
 					}
 				}else if(modelo.iniciarSesion(ventanaLogin.getTxtCod(), ventanaLogin.getTxtPass()).equals(Constantes.USUARIO_ADMIN))
 				{
@@ -128,11 +130,6 @@ public class Controlador implements ActionListener
 					this.ventanaRegistroAsignatura.dispose();
 					JOptionPane.showMessageDialog(null, Constantes.CARGA_EXITOSA_ASIGNATURA);
 				}
-				else
-				{
-					this.ventanaRegistroAsignatura.dispose();
-					JOptionPane.showMessageDialog(null, Constantes.CARGA_FALLIDA_ASIGNATURA);
-				}
 			}
 			//Abre ventana para registrar un nuevo estudiante
 			else if(e.getActionCommand().equals(Constantes.COMANDO_BTN_VTNA_CARGAR_ESTUDIANTE))
@@ -150,14 +147,22 @@ public class Controlador implements ActionListener
 			//Registra a un estudiante nuevo
 			else if(e.getActionCommand().equals(Constantes.COMANDO_BTN_REGISTRAR_ESTUDIANTE))
 			{
-				if(modelo.RegistrarEstudiante(ventanaRegistroEstudiante.getTxtCodigo(), ventanaRegistroEstudiante.getTxtNombre(),ventanaRegistroEstudiante.getTxtApellido(), ventanaRegistroEstudiante.getTxtUbicacion(), ventanaRegistroEstudiante.getTxtContrasenia()))
+				if(modelo.RegistrarEstudiante(ventanaRegistroEstudiante.getTxtCodigo(), ventanaRegistroEstudiante.getTxtNombre(),
+						ventanaRegistroEstudiante.getTxtApellido(), ventanaRegistroEstudiante.getTxtUbicacion(), ventanaRegistroEstudiante.getTxtContrasenia()))
 				{
+					String[] asignaturasSeleccionadas = this.ventanaRegistroEstudiante.obtenerAsignaturasSeleccionadas();
+					
+					if(asignaturasSeleccionadas != null)
+						for(int cadaAsignatura = 0; cadaAsignatura < asignaturasSeleccionadas.length; cadaAsignatura++)
+						{
+							modelo.matricular(asignaturasSeleccionadas[cadaAsignatura], ventanaRegistroEstudiante.getTxtCodigo());
+						}
+					
 					this.ventanaRegistroEstudiante.dispose();
 					JOptionPane.showMessageDialog(null, Constantes.CARGA_EXITOSA_ESTUDIANTE);
 				}
 				else
 				{
-					this.ventanaRegistroEstudiante.dispose();
 					JOptionPane.showMessageDialog(null, Constantes.CARGA_FALLIDA_ESTUDIANTE);
 				}
 			}
@@ -196,6 +201,25 @@ public class Controlador implements ActionListener
 					e2.printStackTrace();
 				}
 			}
+			else if(e.getActionCommand().equals(Constantes.COMANDO_BTN_VTNA_MODIFICACION_DE_DATOS)) {
+				try
+				{
+					Ventana_Modificar_Datos dialog = new Ventana_Modificar_Datos(this);
+					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+			}
+			else if(e.getActionCommand().equals(Constantes.COMANDO_BTN_MODIFICACION_DE_DATOS)) {
+				
+				if(modelo.ModificarEstudiante(ventanamodificardatos.getTextNombre(), ventanamodificardatos.getTextApellido(), ventanamodificardatos.getTextUbicacion(), null)){
+					
+					this.ventanamodificardatos.dispose();
+					JOptionPane.showMessageDialog(null, Constantes.MODIFICACION_EXITOSA_ESTUDIANTE);
+
+				}
+			}
 		}
 	}
 	
@@ -223,4 +247,9 @@ public class Controlador implements ActionListener
 	{
 		this.ventanaRegistroEstudiante = ventanaRegistroEstudiante;
 	}	
+	
+	public void setVentanaModificarDatos(Ventana_Modificar_Datos ventanaModificarDatos) 
+	{
+		this.ventanamodificardatos = ventanaModificarDatos;
+	}
 }

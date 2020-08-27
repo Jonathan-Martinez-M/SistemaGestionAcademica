@@ -191,4 +191,24 @@ public class GestorEstudiantes
 		return bandera;
 	}
 	
+	public static Estudiante buscarEstudiante(String codigo) {
+		
+		Estudiante estudiante = null;
+		
+		ArrayList<Estudiante> estudiantes = new ArrayList<Estudiante>();
+		
+		estudiantes = GestorEstudiantes.ver_estudiantes();
+		
+		for(int i=0; i < estudiantes.size() ; i++) {
+			
+			if(estudiantes.get(i).getCodigo().equals(codigo)) {
+				
+				estudiante = estudiantes.get(i);
+				
+				break;
+			}
+		}
+		
+		return estudiante;
+	}
 }
