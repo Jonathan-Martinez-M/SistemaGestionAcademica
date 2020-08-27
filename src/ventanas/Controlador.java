@@ -151,6 +151,11 @@ public class Controlador implements ActionListener
 					this.ventanaRegistroEstudiante.dispose();
 					JOptionPane.showMessageDialog(null, Constantes.CARGA_EXITOSA_ESTUDIANTE);
 				}
+				else
+				{
+					this.ventanaRegistroEstudiante.dispose();
+					JOptionPane.showMessageDialog(null, Constantes.CARGA_FALLIDA_ESTUDIANTE);
+				}
 			}
 			//Abre ventana para registrar un nuevo estudiante
 			else if(e.getActionCommand().equals(Constantes.COMANDO_BTN_VTNA_LISTA_ASIGNATURAS))
