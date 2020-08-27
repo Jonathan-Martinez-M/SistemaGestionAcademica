@@ -1,0 +1,5 @@
+1,¿Se siente a gusto con las herramientas tecnológicas utilizadas por el prfesor?
+2,¿La información brindada es clara y de fácil acceso?
+3,¿El profesor tiene buen manejo de la asignatura y herramientas digitales?
+4,¿Los programas empleados para la enseñanza son compatibles con su pc, tablet o smartphone?
+5,De su opinión respecto al manejo de las clases por parte del profesor ¿Que le gustó? ¿Que faltó implementar?
