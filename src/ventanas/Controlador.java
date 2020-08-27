@@ -218,11 +218,16 @@ public class Controlador implements ActionListener
 			else if(e.getActionCommand().equals(Constantes.COMANDO_BTN_MODIFICACION_DE_DATOS))
 			{
 				
-				if(modelo.ModificarEstudiante(ventanamodificardatos.getTextNombre(), ventanamodificardatos.getTextApellido(), ventanamodificardatos.getTextUbicacion(), null)){
+				if(modelo.ModificarEstudiante(ventanamodificardatos.getTextNombre(), ventanamodificardatos.getTextApellido(), ventanamodificardatos.getTextUbicacion(), ventanamodificardatos.getTxtPass())){
 					
 					this.ventanamodificardatos.dispose();
 					JOptionPane.showMessageDialog(null, Constantes.MODIFICACION_EXITOSA_ESTUDIANTE);
 
+				}
+				else
+				{
+					this.ventanamodificardatos.dispose();
+					JOptionPane.showMessageDialog(null, Constantes.MODIFICACION_FALLIDA_ESTUDIANTE);
 				}
 			}
 			else if(e.getActionCommand().equals(Constantes.COMANDO_BTN_MATRICULAR_DESDE_ESTUDIANTE))
