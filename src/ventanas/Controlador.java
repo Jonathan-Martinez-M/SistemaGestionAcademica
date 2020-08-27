@@ -17,6 +17,7 @@ import datos.GestorAsignaturas;
 import datos.GestorEncuestas;
 import datos.GestorEstudiantes;
 import mundo.Asignatura;
+import mundo.Estudiante;
 import mundo.Modelador;
 
 /**
@@ -168,6 +169,17 @@ public class Controlador implements ActionListener
 					e2.printStackTrace();
 				}
 			}
+			else if(e.getActionCommand().equals(Constantes.COMANDO_BTN_VTNA_LISTA_ESTUDIANTES)) {
+				try
+				{
+					Lista_de_estudiantes dialog = new Lista_de_estudiantes(this);
+					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+				} catch (Exception e2)
+				{
+					e2.printStackTrace();
+				}
+			}
 		}
 	}
 	
@@ -176,6 +188,11 @@ public class Controlador implements ActionListener
 		return modelo.listarAsignaturas();
 	}
 
+	public ArrayList<Estudiante> listarEstudiantes()
+	{
+		return modelo.ver_estudiantes();
+	}
+	
 	public void setVentanaLogin(Ventana_Inicial ventanaLogin)
 	{
 		this.ventanaLogin = ventanaLogin;

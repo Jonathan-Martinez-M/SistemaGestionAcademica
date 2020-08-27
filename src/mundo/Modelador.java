@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import datos.Constantes;
 import datos.GestorAsignaturas;
+import datos.GestorEstudiantes;
 
 /**
  * @author Rubén Fúquene
@@ -55,5 +56,10 @@ public class Modelador
 	public ArrayList<Asignatura> listarAsignaturas()
 	{
 		return GestorAsignaturas.ver_asignatura();
+	}
+	
+	public ArrayList<Estudiante> ver_estudiantes()
+	{
+		return GestorEstudiantes.ver_estudiantes();
 	}
 }
