@@ -25,7 +25,7 @@ public class Ventana_Administrador extends JFrame
 	private JPanel contentPane;
 
 	/**
-	 * Create the frame.
+	 * Constructor de la clase  Ventana_Administrador
 	 */
 	public Ventana_Administrador(Controlador control)
 	{

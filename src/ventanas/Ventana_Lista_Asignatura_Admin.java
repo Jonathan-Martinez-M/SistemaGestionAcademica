@@ -23,7 +23,7 @@ public class Ventana_Lista_Asignatura_Admin extends JDialog {
 	private JTable table;
 
 	/**
-	 * Create the dialog.
+	 * Constructor de la clase Ventana_Lista_Asignatura_Admin
 	 */
 	public Ventana_Lista_Asignatura_Admin(Controlador control)
 	{

@@ -163,4 +163,36 @@ public class GestorEncuestas
 		
 		return elUltimoIndice;
 	}
+	public static Encuesta cargar_preguntas()
+	{
+		
+		Scanner entrada = null;
+		
+		File archivo = new File(Constantes.RUTA + "\\apreguntas.txt");
+		
+		String preguntaAbierta;
+
+		ArrayList<String> lineasTxt = new ArrayList<String>();
+		
+		try {
+			entrada = new Scanner(archivo);
+			while (entrada.hasNext()) { //mientras no se llegue al final del fichero
+                String linea = entrada.nextLine();  //se lee una línea
+                lineasTxt.add(linea);
+                
+            }
+			entrada.close();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+		}
+		preguntaAbierta = lineasTxt.get(lineasTxt.size()-1);
+		lineasTxt.remove(lineasTxt.size()-1);
+		
+		Encuesta encuesta = new Encuesta(lineasTxt , preguntaAbierta);
+		
+		return encuesta;
+	}
 }

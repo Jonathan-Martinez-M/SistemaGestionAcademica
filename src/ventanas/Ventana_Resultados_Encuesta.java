@@ -17,7 +17,7 @@ public class Ventana_Resultados_Encuesta extends JDialog {
 	private JTable table;
 
 	/**
-	 * Create the dialog.
+	 * Constructor de la clase Ventana_Resultados_Encuesta
 	 */
 	public Ventana_Resultados_Encuesta() {
 		setBounds(100, 100, 450, 300);
