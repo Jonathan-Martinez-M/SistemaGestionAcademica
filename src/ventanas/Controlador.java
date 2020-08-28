@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
@@ -17,6 +18,7 @@ import datos.GestorAsignaturas;
 import datos.GestorEncuestas;
 import datos.GestorEstudiantes;
 import mundo.Asignatura;
+import mundo.Barrio;
 import mundo.Ciudad;
 import mundo.Encuesta;
 import mundo.Estudiante;
@@ -316,6 +318,19 @@ public class Controlador implements ActionListener
 				}
 			}
 		}
+		else if(e.getSource().getClass().equals(new JComboBox().getClass())){
+			
+			if(e.getActionCommand().equals(Constantes.COMANDO_BTN_VTNA_LISTA_CIUDADES))
+			{
+				ArrayList<Barrio> barrios = modelo.ver_barrios(ventanaRegistroEstudiante.getComboBox_ciudad()+1 + "");
+				ventanaRegistroEstudiante.reseteo_ComboBox_barrio();
+				
+				for(int i=0; i<barrios.size(); i++) {
+					ventanaRegistroEstudiante.getComboBox_barrio().addItem(barrios.get(i).getNombre());
+					System.out.println(barrios.get(i).getNombre());
+				}
+			}
+		}
 	}
 	/**
 	 * Metodo encargado de listar asignaturas
@@ -399,8 +414,13 @@ public class Controlador implements ActionListener
 		
 	}
 	
-	public ArrayList<Ciudad> listarciudades()
+	public ArrayList<Ciudad> listarCiudades()
 	{
 		return modelo.ver_ciudades();
+	}
+	
+	public ArrayList<Barrio> listarBarrios(String ciudad)
+	{
+		return modelo.ver_barrios(ciudad);
 	}
 }

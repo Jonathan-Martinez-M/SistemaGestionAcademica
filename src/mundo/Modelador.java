@@ -190,4 +190,11 @@ public class Modelador
 	public ArrayList<Ciudad> ver_ciudades(){
 		return GestorEstudiantes.ver_ciudades();
 	}
+	
+	public ArrayList<Barrio> ver_barrios(String ciudad){
+		
+		Ciudad ciudad1 = new Ciudad(ciudad, null);
+				
+		return GestorEstudiantes.ver_barrios_de_una_ciudad(ciudad1);
+	}
 }

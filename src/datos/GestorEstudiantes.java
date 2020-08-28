@@ -317,7 +317,6 @@ public class GestorEstudiantes
 	
 	public static ArrayList<Barrio> ver_barrios_de_una_ciudad(Ciudad ciudad){
 		
-		
 		ArrayList<Barrio> barrios = new ArrayList<Barrio>();
 		
 		ArrayList<Barrio> barriosDeLaCiudad = new ArrayList<Barrio>();
@@ -330,8 +329,8 @@ public class GestorEstudiantes
 			{
 				barriosDeLaCiudad.add(barrios.get(i));
 			}
+			
 		}
-		
 		
 		
 		return barriosDeLaCiudad;
