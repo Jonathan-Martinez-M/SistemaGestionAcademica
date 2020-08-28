@@ -284,4 +284,23 @@ public class Modelador
 		
 		return porcentajes;
 	}
+	
+	public Boolean borrarEncuestas()
+	{
+		Encuesta enuestaVacia = obtetnerEncuestaDummy();
+		ArrayList<Encuesta> lasEncuestas = GestorEncuestas.ver_encuestas();
+		ArrayList<Encuesta> lasRespondidas = encuestasRespondidas(lasEncuestas);
+		ArrayList<Encuesta> lasVacias = new ArrayList<Encuesta>();
+		int encuestasEncointradas = 0;
+		
+		for(Encuesta cadaEncuesta : lasRespondidas)
+		{
+			enuestaVacia.setIdentificador(cadaEncuesta.getIdentificador());
+			
+			GestorEncuestas.modificarEncuesta(cadaEncuesta, enuestaVacia);
+			encuestasEncointradas++;
+		}
+		
+		return true;
+	}
 }

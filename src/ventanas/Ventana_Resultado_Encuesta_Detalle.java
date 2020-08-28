@@ -10,8 +10,15 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.util.ArrayList;
+
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import datos.Constantes;
+import mundo.Ciudad;
+
+import javax.swing.JComboBox;
 
 public class Ventana_Resultado_Encuesta_Detalle extends JDialog {
 
@@ -50,7 +57,7 @@ public class Ventana_Resultado_Encuesta_Detalle extends JDialog {
 		
 		titulo = new JLabel("");
 		titulo.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		titulo.setBounds(10, 23, 414, 24);
+		titulo.setBounds(10, 11, 264, 24);
 		contentPanel.add(titulo);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -66,6 +73,18 @@ public class Ventana_Resultado_Encuesta_Detalle extends JDialog {
 			}
 		));
 		scrollPane.setViewportView(tableAbiertas);
+		
+		JComboBox filtroCiudades = new JComboBox();
+		filtroCiudades.setBounds(290, 11, 134, 35);
+		filtroCiudades.setActionCommand(Constantes.COMANDO_COMO_FILTRO_ENCUESTAS);
+		filtroCiudades.addActionListener(control);
+		
+		ArrayList<Ciudad> ciudades = control.listarCiudades();
+		for(int i=0; i < ciudades.size() ; i++) {
+			filtroCiudades.addItem(ciudades.get(i).getNombre());
+		}
+		
+		contentPanel.add(filtroCiudades);
 	}
 
 	public JTable getTablePorcentajes()

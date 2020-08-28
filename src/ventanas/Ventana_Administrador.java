@@ -90,7 +90,7 @@ public class Ventana_Administrador extends JFrame
 		btnResultados.setActionCommand(Constantes.COMANDO_BTN_VTNA_VER_RESULTADOS_ENCUESTAS);
 		btnResultados.addActionListener(control);
 		btnResultados.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		btnResultados.setBounds(146, 238, 147, 34);
+		btnResultados.setBounds(56, 238, 147, 34);
 		contentPane.add(btnResultados);
 		
 		JButton btnListaDeEstudiantes = new JButton("Lista de Estudiantes");
@@ -99,5 +99,12 @@ public class Ventana_Administrador extends JFrame
 		btnListaDeEstudiantes.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		btnListaDeEstudiantes.setBounds(277, 181, 147, 34);
 		contentPane.add(btnListaDeEstudiantes);
+		
+		JButton borrarEncuestas = new JButton("Limpiar Encuestas");
+		borrarEncuestas.addActionListener(control);
+		borrarEncuestas.setActionCommand(Constantes.COMANDO_LIMPIAR_ENCUESTAS);
+		borrarEncuestas.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		borrarEncuestas.setBounds(229, 238, 147, 34);
+		contentPane.add(borrarEncuestas);
 	}
 }

@@ -362,6 +362,19 @@ public class Controlador implements ActionListener
 					}
 				}
 			}
+			//Borrar Encuestas
+			else if(e.getActionCommand().equals(Constantes.COMANDO_LIMPIAR_ENCUESTAS))
+			{
+				int confirmado = JOptionPane.showConfirmDialog(null, "¿Desea borrar las encuestas?");
+	
+				if (JOptionPane.OK_OPTION == confirmado)
+				{
+					if(modelo.borrarEncuestas())
+						JOptionPane.showMessageDialog(null, "Encuestas borradas con éxito");
+					else
+						JOptionPane.showMessageDialog(null, "No fue posible borrar las encuestas");
+				}
+			}
 		}
 		//Eventos producidos por un JComboBox
 		else if(e.getSource().getClass().equals(new JComboBox().getClass()))
@@ -394,6 +407,11 @@ public class Controlador implements ActionListener
 				{
 					ventanaModAdmin.getComboBarrio().addItem(barrios.get(i).getNombre());
 				}
+			}
+			//Filtro de encuestas
+			else if(e.getActionCommand().equals(Constantes.COMANDO_COMO_FILTRO_ENCUESTAS))
+			{
+				System.out.println("Filtra");
 			}
 		}
 	}

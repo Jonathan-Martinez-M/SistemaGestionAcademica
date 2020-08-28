@@ -29,6 +29,8 @@ public interface Constantes
 	public static final String COMANDO_BTN_REGISTRAR_ENCUESTA = "Registrar encuestas";
 	public static final String COMANDO_BTN_MODIFICAR_ESTU_DESDE_ADMIN = "ModificarDesdeAdmin";
 	public static final String COMANDO_COMBO_CIUDADES_MOD_ADMIN = "Combo ciudad mod admin";
+	public static final String COMANDO_LIMPIAR_ENCUESTAS = "Borrar Encuestas";
+	public static final String COMANDO_COMO_FILTRO_ENCUESTAS = "filtroEncuestas";
 	
 	
 	//Constantes de resolución

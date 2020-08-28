@@ -293,4 +293,9 @@ public class GestorEncuestas
 		
 		return encuestaEncontrada;
 	}
+	
+	public static Boolean vaciarEncuestas()
+	{
+		return true;		
+	}
 }
