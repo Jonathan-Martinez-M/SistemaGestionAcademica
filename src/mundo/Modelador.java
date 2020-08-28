@@ -120,9 +120,9 @@ public class Modelador
 	}
 	
 	/**
-	 * Muestra las matrículas del estudiante 
-	 * @retunr ArrayList<Asignatura>
-	 */
+	* Muestra las matrículas del estudiante 
+	* @retunr ArrayList<Asignatura>
+	*/
 	public ArrayList<Matricula> obtenerMatriculasEstudiantes()
 	{
 		Estudiante elEstudiante = (Estudiante) usuarioLogueado;
@@ -145,5 +145,9 @@ public class Modelador
 	public Usuario getUsuarioLogueado()
 	{
 		return usuarioLogueado;
+	}
+	
+	public ArrayList<Ciudad> ver_ciudades(){
+		return GestorEstudiantes.ver_ciudades();
 	}
 }

@@ -17,6 +17,7 @@ import datos.GestorAsignaturas;
 import datos.GestorEncuestas;
 import datos.GestorEstudiantes;
 import mundo.Asignatura;
+import mundo.Ciudad;
 import mundo.Encuesta;
 import mundo.Estudiante;
 import mundo.Matricula;
@@ -286,6 +287,7 @@ public class Controlador implements ActionListener
 	{
 		return modelo.ver_estudiantes();
 	}
+	
 	/**
 	 * Metodo encargado de listar asignaturas de un estudiante
 	 * @return ArrayList<Asignatura>
@@ -294,6 +296,7 @@ public class Controlador implements ActionListener
 	{
 		return modelo.obtenerMatriculasEstudiantes();
 	}
+	
 	/**
 	 * Metodo encargado recibir la ventana de login
 	 */
@@ -348,5 +351,10 @@ public class Controlador implements ActionListener
 	public void getEncuestasUsuario()
 	{
 		
+	}
+	
+	public ArrayList<Ciudad> listarciudades()
+	{
+		return modelo.ver_ciudades();
 	}
 }

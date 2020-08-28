@@ -24,6 +24,7 @@ import javax.swing.table.TableColumn;
 
 import datos.Constantes;
 import mundo.Asignatura;
+import mundo.Ciudad;
 
 import javax.swing.JScrollPane;
 import java.awt.event.ActionListener;
@@ -99,9 +100,13 @@ public class Ventana_Carga_de_estudiantes extends JDialog {
 		lblContrasea.setHorizontalAlignment(SwingConstants.LEFT);
 		lblContrasea.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
-		JComboBox comboBox = new JComboBox();
+		JComboBox comboBox_ciudad = new JComboBox();
+		ArrayList<Ciudad> ciudades = control.listarciudades();
+		for(int i=0; i < ciudades.size() ; i++) {
+			comboBox_ciudad.addItem(ciudades.get(i).getNombre());
+		}
 		
-		JComboBox comboBox_1 = new JComboBox();
+		JComboBox comboBox_barrio = new JComboBox();
 		
 		JLabel lblNewLabel = new JLabel("Barrio");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -131,14 +136,14 @@ public class Ventana_Carga_de_estudiantes extends JDialog {
 									.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 69, GroupLayout.PREFERRED_SIZE)))
 							.addGap(10)
 							.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
-								.addComponent(comboBox_1, 0, 242, Short.MAX_VALUE)
+								.addComponent(comboBox_ciudad, 0, 242, Short.MAX_VALUE)
 								.addComponent(txtContrasenia, GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
 								.addGroup(gl_contentPanel.createSequentialGroup()
 									.addGap(18)
 									.addComponent(lblAsignatura, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
 									.addPreferredGap(ComponentPlacement.RELATED, 124, Short.MAX_VALUE))
 								.addComponent(txtCodigo, GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
-								.addComponent(comboBox, 0, 242, Short.MAX_VALUE))))
+								.addComponent(comboBox_barrio, 0, 242, Short.MAX_VALUE))))
 					.addGap(31))
 				.addGroup(Alignment.LEADING, gl_contentPanel.createSequentialGroup()
 					.addGap(25)
@@ -167,11 +172,11 @@ public class Ventana_Carga_de_estudiantes extends JDialog {
 					.addGap(20)
 					.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblUbicacin, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-						.addComponent(comboBox_1, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE))
+						.addComponent(comboBox_ciudad, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
-						.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE))
+						.addComponent(comboBox_barrio, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE))
 					.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPanel.createSequentialGroup()
 							.addGap(54)
