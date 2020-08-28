@@ -25,7 +25,8 @@ public interface Constantes
 	public static final String COMANDO_BTN_MODIFICACION_DE_DATOS = "Modificar datos";
 	public static final String COMANDO_BTN_MATRICULAR_DESDE_ESTUDIANTE = "Matricular Asignatura Estudiante";
 	public static final String COMANDO_BTN_REGISTRAR_ENCUESTA = "Registrar encuestas";
-	public static final String COMANDO_BTN_VTNA_LISTA_CIUDADES = "lista de ciudades";
+	public static final String COMANDO_BTN_VTNA_LISTA_CIUDADES_CARGA = "lista de ciudades en carga";
+	public static final String COMANDO_BTN_VTNA_LISTA_CIUDADES_MODIFICAR = "lista de ciudades en modificar";
 	
 	//Constantes de resolución
 	public static final String USUARIO_ADMIN = "Usuario Admin";

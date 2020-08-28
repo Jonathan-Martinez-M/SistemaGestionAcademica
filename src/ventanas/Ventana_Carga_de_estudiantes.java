@@ -105,7 +105,7 @@ public class Ventana_Carga_de_estudiantes extends JDialog {
 		lblContrasea.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		comboBox_ciudad = new JComboBox();
-		comboBox_ciudad.setActionCommand(Constantes.COMANDO_BTN_VTNA_LISTA_CIUDADES);
+		comboBox_ciudad.setActionCommand(Constantes.COMANDO_BTN_VTNA_LISTA_CIUDADES_CARGA);
 		comboBox_ciudad.addActionListener(control);
 		ArrayList<Ciudad> ciudades = control.listarCiudades();
 		for(int i=0; i < ciudades.size() ; i++) {

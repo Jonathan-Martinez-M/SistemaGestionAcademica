@@ -321,13 +321,23 @@ public class Controlador implements ActionListener
 		}
 		else if(e.getSource().getClass().equals(new JComboBox().getClass())){
 			
-			if(e.getActionCommand().equals(Constantes.COMANDO_BTN_VTNA_LISTA_CIUDADES))
+			if(e.getActionCommand().equals(Constantes.COMANDO_BTN_VTNA_LISTA_CIUDADES_CARGA))
 			{
 				ArrayList<Barrio> barrios = modelo.ver_barrios(ventanaRegistroEstudiante.getComboBox_ciudad()+1 + "");
 				ventanaRegistroEstudiante.getComboBox_barrio().setModel(new DefaultComboBoxModel<Barrio>());
 				for(int i=0; i<barrios.size(); i++)
 				{
 					ventanaRegistroEstudiante.getComboBox_barrio().addItem(barrios.get(i).getNombre());
+				}
+			}
+			
+			else if(e.getActionCommand().equals(Constantes.COMANDO_BTN_VTNA_LISTA_CIUDADES_MODIFICAR))
+			{
+				ArrayList<Barrio> barrios = modelo.ver_barrios(ventanamodificardatos.getComboBox_ciudad()+1 + "");
+				ventanamodificardatos.getComboBox_barrio().setModel(new DefaultComboBoxModel<Barrio>());
+				for(int i=0; i<barrios.size(); i++)
+				{
+					ventanamodificardatos.getComboBox_barrio().addItem(barrios.get(i).getNombre());
 				}
 			}
 		}

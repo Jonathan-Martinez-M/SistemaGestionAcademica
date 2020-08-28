@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import datos.Constantes;
+import mundo.Ciudad;
 
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -16,6 +17,7 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 
@@ -26,12 +28,15 @@ public class Ventana_Modificar_Datos extends JDialog {
 	private JTextField txtNombre;
 	private JTextField txtApellido;
 	private JPasswordField txtPass;
+	private JComboBox comboBox_ciudad;
+	private JComboBox comboBox_barrio;
 
 	/**
 	 * Constructor de la clase Ventana_Modificar_Datos
 	 */
 	public Ventana_Modificar_Datos(Controlador control) {
 		this.control = control;
+		comboBox_barrio = new JComboBox();
 		control.setVentanaModificarDatos(this);
 		setTitle("Modificar Datos");
 		setBounds(100, 100, 450, 368);
@@ -92,13 +97,21 @@ public class Ventana_Modificar_Datos extends JDialog {
 		lblIngreseNuevaBarrio.setBounds(9, 176, 158, 30);
 		contentPanel.add(lblIngreseNuevaBarrio);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(182, 130, 242, 30);
-		contentPanel.add(comboBox);
+		comboBox_ciudad = new JComboBox();
+		comboBox_ciudad.setBounds(182, 130, 242, 30);
+		contentPanel.add(comboBox_ciudad);
+		comboBox_ciudad.setActionCommand(Constantes.COMANDO_BTN_VTNA_LISTA_CIUDADES_MODIFICAR);
+		comboBox_ciudad.addActionListener(control);
+		ArrayList<Ciudad> ciudades = control.listarCiudades();
+		for(int i=0; i < ciudades.size() ; i++) {
+			comboBox_ciudad.addItem(ciudades.get(i).getNombre());
+		}
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(182, 176, 242, 30);
-		contentPanel.add(comboBox_1);
+		comboBox_barrio = new JComboBox();
+		comboBox_barrio.setBounds(182, 176, 242, 30);
+		contentPanel.add(comboBox_barrio);
+		
+		
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -143,5 +156,14 @@ public class Ventana_Modificar_Datos extends JDialog {
 		}
 		
 		return contrasenia;
+	}
+	
+	public int getComboBox_ciudad() {
+		return comboBox_ciudad.getSelectedIndex();
+	}
+	
+	public JComboBox getComboBox_barrio()
+	{
+		return comboBox_barrio;
 	}
 }
