@@ -82,12 +82,12 @@ public class Ventana_Encuesta extends JDialog {
 		
 		Encuesta encuestaDummy = control.getEncuestaDummy();
 		
-		String titulos[] = new String[] {"Asignatura", encuestaDummy.getPreguntas_cuantitativas().get(0), encuestaDummy.getPreguntas_cuantitativas().get(1),
+		String titulos[] = new String[] {"ID","Asignatura", encuestaDummy.getPreguntas_cuantitativas().get(0), encuestaDummy.getPreguntas_cuantitativas().get(1),
 				encuestaDummy.getPreguntas_cuantitativas().get(2), encuestaDummy.getPreguntas_cuantitativas().get(3), encuestaDummy.getPregunta_abierta()};
 		
 		DefaultTableModel modeloTabla = new DefaultTableModel(null, titulos){
 				boolean[] columnEditables = new boolean[] {
-					false, true, true, true, true, true  
+					false, false, true, true, true, true, true  
 				};
 				public boolean isCellEditable(int row, int column) {
 					return columnEditables[column];
@@ -101,13 +101,16 @@ public class Ventana_Encuesta extends JDialog {
 			lasAsignaturasMatriculadas.add(control.buscarAsignaturaCod(cadaMatricula.getDe_la_asignatura()));
 		}
 		
-		String registros[] = new String[1];
-			
+		String registros[] = new String[2];
+		
+		int auxiliarAsignEnTAbla = 0;
 		for(Asignatura cadaMatricula : lasAsignaturasMatriculadas)
 		{
-			registros[0] = cadaMatricula.getNombre();
+			registros[0] = lasMatriculas.get(auxiliarAsignEnTAbla).getEncuesta().getIdentificador() + "";
+			registros[1] = cadaMatricula.getNombre();
 			
 			modeloTabla.addRow(registros);
+			auxiliarAsignEnTAbla++;
 		}
 		
 		tablaEncuestas.setModel(modeloTabla);
@@ -134,18 +137,12 @@ public class Ventana_Encuesta extends JDialog {
 		String[][] lasRespuestas = new String[control.listarMatriculasPorEstudiante().size()][6];
 		for(int cadaFila = 0; cadaFila < tablaEncuestas.getRowCount(); cadaFila++)
 		{
-			System.out.println(tablaEncuestas.getValueAt(cadaFila, 0).toString() + " - ");
-			System.out.println(tablaEncuestas.getValueAt(cadaFila, 1).toString() + " - ");
-			System.out.println(tablaEncuestas.getValueAt(cadaFila, 2).toString() + " - ");
-			System.out.println(tablaEncuestas.getValueAt(cadaFila, 3).toString() + " - ");
-			System.out.println(tablaEncuestas.getValueAt(cadaFila, 4).toString() + " - ");
-			//System.out.println(tablaEncuestas.getValueAt(cadaFila, 5) + " - ");
 			lasRespuestas[cadaFila][0] = tablaEncuestas.getValueAt(cadaFila, 0).toString();
 			lasRespuestas[cadaFila][1] = tablaEncuestas.getValueAt(cadaFila, 1).toString();
 			lasRespuestas[cadaFila][2] = tablaEncuestas.getValueAt(cadaFila, 2).toString();
 			lasRespuestas[cadaFila][3] = tablaEncuestas.getValueAt(cadaFila, 3).toString();
 			lasRespuestas[cadaFila][4] = tablaEncuestas.getValueAt(cadaFila, 4).toString();
-			//lasRespuestas[cadaFila][5] = tablaEncuestas.getValueAt(cadaFila, 5).toString();
+			lasRespuestas[cadaFila][5] = tablaEncuestas.getValueAt(cadaFila, 5).toString();
 		}
 		
 		return lasRespuestas;
