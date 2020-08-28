@@ -17,6 +17,7 @@ import datos.GestorAsignaturas;
 import datos.GestorEncuestas;
 import datos.GestorEstudiantes;
 import mundo.Asignatura;
+import mundo.Ciudad;
 import mundo.Encuesta;
 import mundo.Estudiante;
 import mundo.Matricula;
@@ -285,13 +286,17 @@ public class Controlador implements ActionListener
 			else if(e.getActionCommand().equals(Constantes.COMANDO_BTN_REGISTRAR_ENCUESTA))
 			{
 				String[][] lasrespuestas = ventanaEncuestas.obtenerResultadoEncuesta();
-				
+				String[] respuestasCuantitativas = new String[Constantes.CANTIDAD_PREGUNTAS_CUANTITATIVAS];
+				String respuestaAbierta;
+
 				for(int cadaFila = 0; cadaFila < lasrespuestas.length; cadaFila++)
 				{
-					for(int cadaCol = 0; cadaCol < lasrespuestas[cadaFila].length; cadaCol++)
+					for(int cadaCol = 0; cadaCol < lasrespuestas[cadaFila].length - 1; cadaCol++)
 					{
-						System.out.println(lasrespuestas[cadaFila][cadaCol] + " - ");
+						respuestasCuantitativas[cadaCol] = lasrespuestas[cadaFila][cadaCol];
 					}
+					
+					modelo.agregarEncuestaRespondida("1", respuestasCuantitativas, lasrespuestas[cadaFila][5]);
 				}
 			}
 		}
@@ -312,6 +317,7 @@ public class Controlador implements ActionListener
 	{
 		return modelo.ver_estudiantes();
 	}
+	
 	/**
 	 * Metodo encargado de listar asignaturas de un estudiante
 	 * @return ArrayList<Asignatura>
@@ -320,6 +326,7 @@ public class Controlador implements ActionListener
 	{
 		return modelo.obtenerMatriculasEstudiantes();
 	}
+	
 	/**
 	 * Metodo encargado recibir la ventana de login
 	 */
@@ -374,5 +381,10 @@ public class Controlador implements ActionListener
 	public void getEncuestasUsuario()
 	{
 		
+	}
+	
+	public ArrayList<Ciudad> listarciudades()
+	{
+		return modelo.ver_ciudades();
 	}
 }

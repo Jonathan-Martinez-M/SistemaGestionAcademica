@@ -28,7 +28,7 @@ public class GestorEncuestas
 	 */
 	private File archivo;
 	
-	private BufferedWriter buff;
+	private static BufferedWriter buff;
 	
 	private BufferedWriter buffM;
 	//objeto para leer archivos
@@ -219,5 +219,72 @@ public class GestorEncuestas
 		}
 		
 		return encuestasUsuario;
+	}
+	
+	public static Boolean modificarEncuesta(Encuesta encuestaVieja, Encuesta encuestaNueva)
+	{
+		String nombre = encuestaVieja.getIdentificador() + Constantes.PREGUNTA_CUANTITATIVA + "," + encuestaVieja.getPreguntas_cuantitativas().get(0)
+				+ encuestaVieja.getRespuestas_cuantitativas().get(0);
+		Scanner entrada = null;
+		File archivo = new File(Constantes.RUTA + "\\encuestas.txt");
+		int numeroLinea = 0;
+		int almacenarLinea = 0;
+		ArrayList<String> lineasTxt = new ArrayList<String>();
+		
+		try
+		{
+			entrada = new Scanner(archivo);
+			while (entrada.hasNext())//mientras no se llegue al final del fichero
+			{
+                String linea = entrada.nextLine();  //se lee una línea
+                lineasTxt.add(linea);
+                if (linea.contains(nombre))
+                {
+                	almacenarLinea = numeroLinea;
+                }
+                numeroLinea++;
+            }
+			
+			for (int cadaLinea = 0; cadaLinea < encuestaNueva.getPreguntas_cuantitativas().size(); cadaLinea++)
+			{
+				lineasTxt.remove(almacenarLinea + cadaLinea);
+				lineasTxt.add(almacenarLinea + cadaLinea, encuestaNueva.getIdentificador() + Constantes.PREGUNTA_CUANTITATIVA + "," +
+						encuestaNueva.getPreguntas_cuantitativas().get(cadaLinea) + encuestaNueva.getRespuestas_cuantitativas().get(cadaLinea));
+			}
+			
+			lineasTxt.remove(almacenarLinea + 5);
+			lineasTxt.add(almacenarLinea + 5, encuestaNueva.getIdentificador() + Constantes.PREGUNTA_CUANTITATIVA + "," +
+					encuestaNueva.getPregunta_abierta() + encuestaNueva.getRespuesta_abierta());
+			
+			buff = new BufferedWriter(new FileWriter(archivo));
+			for(int i = 0; i < lineasTxt.size() ; i++ )
+			{
+				buff.write(lineasTxt.get(i));
+			}
+			
+			buff.close();
+			return true;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public static Encuesta buscarEncuestaPoId(Encuesta encuesta)
+	{
+		ArrayList<Encuesta> lasEncuestas = ver_encuestas();
+		Encuesta encuestaEncontrada = null;
+		
+		for(Encuesta cadaEncuesta : lasEncuestas)
+		{
+			if(cadaEncuesta.getIdentificador() == encuesta.getIdentificador())
+			{
+				encuestaEncontrada = cadaEncuesta;
+				break;
+			}
+		}
+		
+		return encuestaEncontrada;
 	}
 }

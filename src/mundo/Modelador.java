@@ -4,6 +4,7 @@
 package mundo;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import datos.Constantes;
 import datos.GestorAsignaturas;
@@ -120,9 +121,9 @@ public class Modelador
 	}
 	
 	/**
-	 * Muestra las matrículas del estudiante 
-	 * @retunr ArrayList<Asignatura>
-	 */
+	* Muestra las matrículas del estudiante 
+	* @retunr ArrayList<Asignatura>
+	*/
 	public ArrayList<Matricula> obtenerMatriculasEstudiantes()
 	{
 		Estudiante elEstudiante = (Estudiante) usuarioLogueado;
@@ -138,6 +139,45 @@ public class Modelador
 	{
 		return GestorEncuestas.nuevaEncuestaRetasVacias();
 	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public Boolean agregarEncuestaRespondida(String identificador, String[] respuestas, String respuestaAbiertta)
+	{
+		cargarEncuestasEstudiante();
+		
+		Boolean resppuestasModificadas = true;
+		Encuesta encuestaNueva = new Encuesta(((Estudiante) usuarioLogueado).getMatriculas().get(0).getEncuesta().getPreguntas_cuantitativas(),
+				((Estudiante) usuarioLogueado).getMatriculas().get(0).getEncuesta().getPregunta_abierta());
+		encuestaNueva.setIdentificador(Integer.parseInt(identificador));
+		encuestaNueva.setRespuesta_abierta(respuestaAbiertta);
+		
+		for(int cadaRta = 0; cadaRta < respuestas.length; cadaRta++)
+		{
+			encuestaNueva.agregar_Respuestas_cuantitativas(cadaRta, respuestas[cadaRta]);
+		}
+		
+		for(int cadaMatricula = 0; cadaMatricula < ((Estudiante) usuarioLogueado).getMatriculas().size(); cadaMatricula++)
+		{
+			if(((Estudiante) usuarioLogueado).getMatriculas().get(cadaMatricula).getEncuesta().equals(encuestaNueva.getIdentificador()))
+				GestorEncuestas.modificarEncuesta(((Estudiante) usuarioLogueado).getMatriculas().get(cadaMatricula).getEncuesta(), encuestaNueva);
+		}
+		
+		return resppuestasModificadas;
+	}
+	
+	private void cargarEncuestasEstudiante()
+	{
+		((Estudiante) usuarioLogueado).setMatriculas(this.obtenerMatriculasEstudiantes());
+		
+		for (int cadaMatricula = 0; cadaMatricula < ((Estudiante) usuarioLogueado).getMatriculas().size(); cadaMatricula++)
+		{
+			Encuesta unaEncuesta = ((Estudiante) usuarioLogueado).getMatriculas().get(cadaMatricula).getEncuesta();
+			((Estudiante) usuarioLogueado).getMatriculas().get(cadaMatricula).setEncuesta(GestorEncuestas.buscarEncuestaPoId(unaEncuesta)); 
+		}
+	}
 
 	/**
 	 * Getter usuario logueado 
@@ -145,5 +185,9 @@ public class Modelador
 	public Usuario getUsuarioLogueado()
 	{
 		return usuarioLogueado;
+	}
+	
+	public ArrayList<Ciudad> ver_ciudades(){
+		return GestorEstudiantes.ver_ciudades();
 	}
 }
