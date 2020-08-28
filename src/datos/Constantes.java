@@ -40,7 +40,7 @@ public interface Constantes
 	public static final String CARGA_FALLIDA_ASIGNATURA = "La asignatura no pudo ser creada porque ya existe";
 	public static final String CARGA_FALLIDA_ESTUDIANTE = "El estudiante no fue cargado porque el estudiante ya existe";
 	public static final String MATRICULA_EXITOSA_ESTUDIANTES = "Las matrículas se realizaron exitosamente";
-	
+	public static final String CARGA_FALLIDA_CAMPO_VACIO = "No has llenado todo los campos";
 	//Constantes de título
 	public static final String TITULO_LOGIN_FALLIDO = "Datos erroneos";
 
