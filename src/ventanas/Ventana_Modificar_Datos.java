@@ -124,7 +124,7 @@ public class Ventana_Modificar_Datos extends JDialog {
 	 * @return String
 	 */
 	public String getTextUbicacion() {
-		return null;
+		return "";
 	}
 
 	public String getTxtPass()

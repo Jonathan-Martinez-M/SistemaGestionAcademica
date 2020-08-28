@@ -63,8 +63,9 @@ public class GestorEncuestas
 	 */
 	public static boolean almacenar_encuesta(Encuesta nuevaEncuesta)
 	{
+		nuevaEncuesta.setIdentificador(GestorEncuestas.obtenerUltimoIdentificador() + 1);
 		FileWriter flwriter = null;
-		nuevaEncuesta.setIdentificador(GestorEncuestas.obtenerUltimoIdentificador());
+		
 		try
 		{
 			//además de la ruta del archivo recibe un parámetro de tipo boolean, que le indican que se va añadir más registros 
@@ -74,11 +75,11 @@ public class GestorEncuestas
 			//escribe los datos en el archivo
 			for(int cadaPregunta = 0; cadaPregunta < Constantes.CANTIDAD_PREGUNTAS_CUANTITATIVAS; cadaPregunta++)
 			{
-				bfwriter.write(nuevaEncuesta.getIdentificador() + "," + Constantes.PREGUNTA_CUANTITATIVA + "," + 
+				bfwriter.write(Constantes.PREGUNTA_CUANTITATIVA + "," + nuevaEncuesta.getIdentificador() + "," +  
 						nuevaEncuesta.getPreguntas_cuantitativas().get(cadaPregunta) + "," + nuevaEncuesta.getRespuestas_cuantitativas().get(cadaPregunta) + "\r\n");
 			}
 			
-			bfwriter.write(nuevaEncuesta.getIdentificador() + "," + Constantes.PREGUNTA_ABIERTA + "," + nuevaEncuesta.getPregunta_abierta() + "," +
+			bfwriter.write(Constantes.PREGUNTA_ABIERTA + "," + nuevaEncuesta.getIdentificador() + "," + nuevaEncuesta.getPregunta_abierta() + "," +
 					nuevaEncuesta.getRespuesta_abierta() + "\r\n");
 			
 			bfwriter.close();	
@@ -112,19 +113,21 @@ public class GestorEncuestas
 			{
                 String linea = entrada.nextLine();  //se lee una línea
                 Scanner delimitador = new Scanner(linea);
-                delimitador.useDelimiter("\\\\s*,\\\\s*");
+                delimitador.useDelimiter("\\s*,\\s*");
                 
                 if(preguntaNumero == 0)
-                	encuestaRecuperada = new Encuesta(null, null);
+                	encuestaRecuperada = new Encuesta(new ArrayList<String>(), null);
                 
-                if(delimitador.next().equals(Constantes.PREGUNTA_CUANTITATIVA))
+                String tipoPregunta = delimitador.next();
+                
+                if(tipoPregunta.equals(Constantes.PREGUNTA_CUANTITATIVA))
                 {
                 	encuestaRecuperada.setIdentificador(Integer.parseInt(delimitador.next()));
                 	encuestaRecuperada.agregar_Pregunta_Cuantitativa(preguntaNumero, delimitador.next());
                 	encuestaRecuperada.agregar_Respuestas_cuantitativas(preguntaNumero, delimitador.next());
-                	
+
                 	preguntaNumero++;
-                }else if(delimitador.next().equals(Constantes.PREGUNTA_ABIERTA))
+                }else if(tipoPregunta.equals(Constantes.PREGUNTA_ABIERTA))
                 {
                 	encuestaRecuperada.setIdentificador(Integer.parseInt(delimitador.next()));
                 	encuestaRecuperada.setPregunta_abierta(delimitador.next());
@@ -151,7 +154,7 @@ public class GestorEncuestas
 	public static int obtenerUltimoIdentificador()
 	{
 		ArrayList<Encuesta> encuestasAlmacenadas = GestorEncuestas.ver_encuestas();
-		int elUltimoIndice = 1;
+		int elUltimoIndice = 0;
 		
 		for(Encuesta cadaEncuesta : encuestasAlmacenadas)
 		{
@@ -223,8 +226,8 @@ public class GestorEncuestas
 	
 	public static Boolean modificarEncuesta(Encuesta encuestaVieja, Encuesta encuestaNueva)
 	{
-		String nombre = encuestaVieja.getIdentificador() + Constantes.PREGUNTA_CUANTITATIVA + "," + encuestaVieja.getPreguntas_cuantitativas().get(0)
-				+ encuestaVieja.getRespuestas_cuantitativas().get(0);
+		String nombre = Constantes.PREGUNTA_CUANTITATIVA + "," +encuestaVieja.getIdentificador() + "," + encuestaVieja.getPreguntas_cuantitativas().get(0)
+				+ "," + encuestaVieja.getRespuestas_cuantitativas().get(0);
 		Scanner entrada = null;
 		File archivo = new File(Constantes.RUTA + "\\encuestas.txt");
 		int numeroLinea = 0;
@@ -238,6 +241,7 @@ public class GestorEncuestas
 			{
                 String linea = entrada.nextLine();  //se lee una línea
                 lineasTxt.add(linea);
+
                 if (linea.contains(nombre))
                 {
                 	almacenarLinea = numeroLinea;
@@ -248,23 +252,24 @@ public class GestorEncuestas
 			for (int cadaLinea = 0; cadaLinea < encuestaNueva.getPreguntas_cuantitativas().size(); cadaLinea++)
 			{
 				lineasTxt.remove(almacenarLinea + cadaLinea);
-				lineasTxt.add(almacenarLinea + cadaLinea, encuestaNueva.getIdentificador() + Constantes.PREGUNTA_CUANTITATIVA + "," +
-						encuestaNueva.getPreguntas_cuantitativas().get(cadaLinea) + encuestaNueva.getRespuestas_cuantitativas().get(cadaLinea));
+				lineasTxt.add(almacenarLinea + cadaLinea, Constantes.PREGUNTA_CUANTITATIVA + "," + encuestaNueva.getIdentificador() + "," + 
+						encuestaNueva.getPreguntas_cuantitativas().get(cadaLinea) + "," + encuestaNueva.getRespuestas_cuantitativas().get(cadaLinea));
 			}
 			
-			lineasTxt.remove(almacenarLinea + 5);
-			lineasTxt.add(almacenarLinea + 5, encuestaNueva.getIdentificador() + Constantes.PREGUNTA_CUANTITATIVA + "," +
-					encuestaNueva.getPregunta_abierta() + encuestaNueva.getRespuesta_abierta());
+			lineasTxt.remove(almacenarLinea + 4);
+			lineasTxt.add(almacenarLinea + 4, Constantes.PREGUNTA_ABIERTA + "," + encuestaNueva.getIdentificador() + "," +
+					encuestaNueva.getPregunta_abierta() + "," + encuestaNueva.getRespuesta_abierta());
 			
 			buff = new BufferedWriter(new FileWriter(archivo));
 			for(int i = 0; i < lineasTxt.size() ; i++ )
 			{
-				buff.write(lineasTxt.get(i));
+				buff.write(lineasTxt.get(i) + "\r\n");
 			}
 			
 			buff.close();
 			return true;
-		} catch (IOException e) {
+		} catch (IOException e)
+		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return false;

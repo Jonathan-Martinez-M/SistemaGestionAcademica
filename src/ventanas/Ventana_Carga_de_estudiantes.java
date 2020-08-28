@@ -263,7 +263,7 @@ public class Ventana_Carga_de_estudiantes extends JDialog {
 	 * @return String
 	 */
 	public String getTxtUbicacion() {
-		return null;
+		return "A";
 	}
 	/**
 	 * Metodo que devuelve lo ingresado en el campo contraseña

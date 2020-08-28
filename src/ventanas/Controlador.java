@@ -133,11 +133,20 @@ public class Controlador implements ActionListener
 			//Almacena una asignatura en BD
 			else if(e.getActionCommand().equals(Constantes.COMANDO_BTN_REGISTRAR_ASIGNATURA))
 			{
-				if(modelo.RegistrarAsignatura(ventanaRegistroAsignatura.getTxtCodAsign(), ventanaRegistroAsignatura.getTxtNomAsign()))
+				if(ventanaRegistroAsignatura.getTxtCodAsign().isEmpty()  || ventanaRegistroAsignatura.getTxtNomAsign().isEmpty())
 				{
-					this.ventanaRegistroAsignatura.dispose();
-					JOptionPane.showMessageDialog(null, Constantes.CARGA_EXITOSA_ASIGNATURA);
+					JOptionPane.showMessageDialog(null, Constantes.CARGA_FALLIDA_CAMPO_VACIO);
 				}
+				else
+				{
+					if(modelo.RegistrarAsignatura(ventanaRegistroAsignatura.getTxtCodAsign(), ventanaRegistroAsignatura.getTxtNomAsign()))
+					{
+						this.ventanaRegistroAsignatura.dispose();
+						JOptionPane.showMessageDialog(null, Constantes.CARGA_EXITOSA_ASIGNATURA);
+					}
+				}
+				
+				
 			}
 			//Abre ventana para registrar un nuevo estudiante
 			else if(e.getActionCommand().equals(Constantes.COMANDO_BTN_VTNA_CARGAR_ESTUDIANTE))
@@ -155,24 +164,33 @@ public class Controlador implements ActionListener
 			//Registra a un estudiante nuevo
 			else if(e.getActionCommand().equals(Constantes.COMANDO_BTN_REGISTRAR_ESTUDIANTE))
 			{
-				if(modelo.RegistrarEstudiante(ventanaRegistroEstudiante.getTxtCodigo(), ventanaRegistroEstudiante.getTxtNombre(),
-						ventanaRegistroEstudiante.getTxtApellido(), ventanaRegistroEstudiante.getTxtUbicacion(), ventanaRegistroEstudiante.getTxtContrasenia()))
+				if(ventanaRegistroEstudiante.getTxtCodigo().isEmpty() || ventanaRegistroEstudiante.getTxtNombre().isEmpty()||
+						ventanaRegistroEstudiante.getTxtApellido().isEmpty()|| ventanaRegistroEstudiante.getTxtContrasenia().isEmpty())
 				{
-					String[] asignaturasSeleccionadas = this.ventanaRegistroEstudiante.obtenerAsignaturasSeleccionadas();
-					
-					if(asignaturasSeleccionadas != null)
-						for(int cadaAsignatura = 0; cadaAsignatura < asignaturasSeleccionadas.length; cadaAsignatura++)
-						{
-							modelo.matricular(asignaturasSeleccionadas[cadaAsignatura], ventanaRegistroEstudiante.getTxtCodigo());
-						}
-					
-					this.ventanaRegistroEstudiante.dispose();
-					JOptionPane.showMessageDialog(null, Constantes.CARGA_EXITOSA_ESTUDIANTE);
+					JOptionPane.showMessageDialog(null, Constantes.CARGA_FALLIDA_CAMPO_VACIO);
 				}
 				else
 				{
-					JOptionPane.showMessageDialog(null, Constantes.CARGA_FALLIDA_ESTUDIANTE);
+					if(modelo.RegistrarEstudiante(ventanaRegistroEstudiante.getTxtCodigo(), ventanaRegistroEstudiante.getTxtNombre(),
+							ventanaRegistroEstudiante.getTxtApellido(), ventanaRegistroEstudiante.getTxtUbicacion(), ventanaRegistroEstudiante.getTxtContrasenia()))
+					{
+						String[] asignaturasSeleccionadas = this.ventanaRegistroEstudiante.obtenerAsignaturasSeleccionadas();
+						
+						if(asignaturasSeleccionadas != null)
+							for(int cadaAsignatura = 0; cadaAsignatura < asignaturasSeleccionadas.length; cadaAsignatura++)
+							{
+								modelo.matricular(asignaturasSeleccionadas[cadaAsignatura], ventanaRegistroEstudiante.getTxtCodigo());
+							}
+						
+						this.ventanaRegistroEstudiante.dispose();
+						JOptionPane.showMessageDialog(null, Constantes.CARGA_EXITOSA_ESTUDIANTE);
+					}
+					else
+					{
+						JOptionPane.showMessageDialog(null, Constantes.CARGA_FALLIDA_ESTUDIANTE);
+					}
 				}
+				
 			}
 			//Abre ventana para registrar un nuevo estudiante
 			else if(e.getActionCommand().equals(Constantes.COMANDO_BTN_VTNA_LISTA_ASIGNATURAS))
@@ -222,17 +240,25 @@ public class Controlador implements ActionListener
 			}
 			else if(e.getActionCommand().equals(Constantes.COMANDO_BTN_MODIFICACION_DE_DATOS))
 			{
-				if(modelo.ModificarEstudiante(ventanamodificardatos.getTextNombre(), ventanamodificardatos.getTextApellido(), ventanamodificardatos.getTextUbicacion(), ventanamodificardatos.getTxtPass()))
+				if(ventanamodificardatos.getTextNombre().isEmpty() || ventanamodificardatos.getTextApellido().isEmpty() || ventanamodificardatos.getTextUbicacion().isEmpty() || ventanamodificardatos.getTxtPass().isEmpty() )
 				{
-					this.ventanamodificardatos.dispose();
-					JOptionPane.showMessageDialog(null, Constantes.MODIFICACION_EXITOSA_ESTUDIANTE);
-
+					JOptionPane.showMessageDialog(null, Constantes.CARGA_FALLIDA_CAMPO_VACIO);
 				}
 				else
 				{
-					this.ventanamodificardatos.dispose();
-					JOptionPane.showMessageDialog(null, Constantes.MODIFICACION_FALLIDA_ESTUDIANTE);
+					if(modelo.ModificarEstudiante(ventanamodificardatos.getTextNombre(), ventanamodificardatos.getTextApellido(), ventanamodificardatos.getTextUbicacion(), ventanamodificardatos.getTxtPass()))
+					{
+						this.ventanamodificardatos.dispose();
+						JOptionPane.showMessageDialog(null, Constantes.MODIFICACION_EXITOSA_ESTUDIANTE);
+
+					}
+					else
+					{
+						this.ventanamodificardatos.dispose();
+						JOptionPane.showMessageDialog(null, Constantes.MODIFICACION_FALLIDA_ESTUDIANTE);
+					}
 				}
+				
 			}
 			else if(e.getActionCommand().equals(Constantes.COMANDO_BTN_MATRICULAR_DESDE_ESTUDIANTE))
 			{
@@ -267,12 +293,16 @@ public class Controlador implements ActionListener
 
 				for(int cadaFila = 0; cadaFila < lasrespuestas.length; cadaFila++)
 				{
-					for(int cadaCol = 0; cadaCol < lasrespuestas[cadaFila].length - 1; cadaCol++)
+					for(int cadaCol = 1; cadaCol < lasrespuestas[cadaFila].length - 1; cadaCol++)
 					{
-						respuestasCuantitativas[cadaCol] = lasrespuestas[cadaFila][cadaCol];
+						respuestasCuantitativas[cadaCol - 1] = lasrespuestas[cadaFila][cadaCol];
 					}
 					
-					modelo.agregarEncuestaRespondida("1", respuestasCuantitativas, lasrespuestas[cadaFila][5]);
+					if(modelo.agregarEncuestaRespondida(lasrespuestas[cadaFila][0], respuestasCuantitativas, lasrespuestas[cadaFila][5]))
+					{
+						ventanaEncuestas.dispose();
+						JOptionPane.showMessageDialog(null, Constantes.ENCUESTAS_RESPONDIDAS);
+					}
 				}
 			}
 		}
