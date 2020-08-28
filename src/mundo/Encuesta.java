@@ -45,7 +45,7 @@ public class Encuesta
 	 */
 	public void agregar_Pregunta_Cuantitativa(int posicion, String pregunta)
 	{
-		this.preguntas_cuantitativas.add(posicion, pregunta ) ;
+		this.preguntas_cuantitativas.add(posicion, pregunta);
 	}
 
 

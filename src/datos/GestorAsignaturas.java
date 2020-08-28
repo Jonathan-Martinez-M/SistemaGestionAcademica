@@ -145,8 +145,6 @@ public class GestorAsignaturas
 			e.printStackTrace();
 			return false;
 		}
-		
-		
 	}
 	
 	/**
