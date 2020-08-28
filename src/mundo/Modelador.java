@@ -147,7 +147,7 @@ public class Modelador
 	public Boolean agregarEncuestaRespondida(String identificador, String[] respuestas, String respuestaAbiertta)
 	{
 		cargarEncuestasEstudiante();
-		
+
 		Boolean resppuestasModificadas = true;
 		Encuesta encuestaNueva = new Encuesta(((Estudiante) usuarioLogueado).getMatriculas().get(0).getEncuesta().getPreguntas_cuantitativas(),
 				((Estudiante) usuarioLogueado).getMatriculas().get(0).getEncuesta().getPregunta_abierta());
@@ -161,7 +161,7 @@ public class Modelador
 		
 		for(int cadaMatricula = 0; cadaMatricula < ((Estudiante) usuarioLogueado).getMatriculas().size(); cadaMatricula++)
 		{
-			if(((Estudiante) usuarioLogueado).getMatriculas().get(cadaMatricula).getEncuesta().equals(encuestaNueva.getIdentificador()))
+			if(((Estudiante) usuarioLogueado).getMatriculas().get(cadaMatricula).getEncuesta().getIdentificador() == encuestaNueva.getIdentificador())
 				GestorEncuestas.modificarEncuesta(((Estudiante) usuarioLogueado).getMatriculas().get(cadaMatricula).getEncuesta(), encuestaNueva);
 		}
 		

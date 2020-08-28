@@ -163,7 +163,7 @@ public class Controlador implements ActionListener
 			else if(e.getActionCommand().equals(Constantes.COMANDO_BTN_REGISTRAR_ESTUDIANTE))
 			{
 				if(ventanaRegistroEstudiante.getTxtCodigo().isEmpty() || ventanaRegistroEstudiante.getTxtNombre().isEmpty()||
-						ventanaRegistroEstudiante.getTxtApellido().isEmpty()|| ventanaRegistroEstudiante.getTxtUbicacion().isEmpty()|| ventanaRegistroEstudiante.getTxtContrasenia().isEmpty())
+						ventanaRegistroEstudiante.getTxtApellido().isEmpty()|| ventanaRegistroEstudiante.getTxtContrasenia().isEmpty())
 				{
 					JOptionPane.showMessageDialog(null, Constantes.CARGA_FALLIDA_CAMPO_VACIO);
 				}
@@ -291,12 +291,16 @@ public class Controlador implements ActionListener
 
 				for(int cadaFila = 0; cadaFila < lasrespuestas.length; cadaFila++)
 				{
-					for(int cadaCol = 0; cadaCol < lasrespuestas[cadaFila].length - 1; cadaCol++)
+					for(int cadaCol = 1; cadaCol < lasrespuestas[cadaFila].length - 1; cadaCol++)
 					{
-						respuestasCuantitativas[cadaCol] = lasrespuestas[cadaFila][cadaCol];
+						respuestasCuantitativas[cadaCol - 1] = lasrespuestas[cadaFila][cadaCol];
 					}
 					
-					modelo.agregarEncuestaRespondida("1", respuestasCuantitativas, lasrespuestas[cadaFila][5]);
+					if(modelo.agregarEncuestaRespondida(lasrespuestas[cadaFila][0], respuestasCuantitativas, lasrespuestas[cadaFila][5]))
+					{
+						ventanaEncuestas.dispose();
+						JOptionPane.showMessageDialog(null, Constantes.ENCUESTAS_RESPONDIDAS);
+					}
 				}
 			}
 		}

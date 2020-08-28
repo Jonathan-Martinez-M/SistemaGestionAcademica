@@ -123,7 +123,7 @@ public class Ventana_Encuesta extends JDialog {
 		comboCuantitativo.addItem(5);
 		
 		TableColumn laColumna;
-		for(int cadaColumna = 1; cadaColumna < Constantes.CANTIDAD_PREGUNTAS_CUANTITATIVAS + 1; cadaColumna++)
+		for(int cadaColumna = 2; cadaColumna < Constantes.CANTIDAD_PREGUNTAS_CUANTITATIVAS + 2; cadaColumna++)
 		{
 			laColumna = tablaEncuestas.getColumnModel().getColumn(cadaColumna);
 			laColumna.setCellEditor(new DefaultCellEditor(comboCuantitativo));
@@ -138,11 +138,12 @@ public class Ventana_Encuesta extends JDialog {
 		for(int cadaFila = 0; cadaFila < tablaEncuestas.getRowCount(); cadaFila++)
 		{
 			lasRespuestas[cadaFila][0] = tablaEncuestas.getValueAt(cadaFila, 0).toString();
-			lasRespuestas[cadaFila][1] = tablaEncuestas.getValueAt(cadaFila, 1).toString();
-			lasRespuestas[cadaFila][2] = tablaEncuestas.getValueAt(cadaFila, 2).toString();
-			lasRespuestas[cadaFila][3] = tablaEncuestas.getValueAt(cadaFila, 3).toString();
-			lasRespuestas[cadaFila][4] = tablaEncuestas.getValueAt(cadaFila, 4).toString();
-			lasRespuestas[cadaFila][5] = tablaEncuestas.getValueAt(cadaFila, 5).toString();
+			//lasRespuestas[cadaFila][1] = tablaEncuestas.getValueAt(cadaFila, 1).toString();
+			lasRespuestas[cadaFila][1] = tablaEncuestas.getValueAt(cadaFila, 2).toString();
+			lasRespuestas[cadaFila][2] = tablaEncuestas.getValueAt(cadaFila, 3).toString();
+			lasRespuestas[cadaFila][3] = tablaEncuestas.getValueAt(cadaFila, 4).toString();
+			lasRespuestas[cadaFila][4] = tablaEncuestas.getValueAt(cadaFila, 5).toString();
+			lasRespuestas[cadaFila][5] = tablaEncuestas.getValueAt(cadaFila, 6).toString();
 		}
 		
 		return lasRespuestas;

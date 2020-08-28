@@ -226,8 +226,8 @@ public class GestorEncuestas
 	
 	public static Boolean modificarEncuesta(Encuesta encuestaVieja, Encuesta encuestaNueva)
 	{
-		String nombre = encuestaVieja.getIdentificador() + Constantes.PREGUNTA_CUANTITATIVA + "," + encuestaVieja.getPreguntas_cuantitativas().get(0)
-				+ encuestaVieja.getRespuestas_cuantitativas().get(0);
+		String nombre = Constantes.PREGUNTA_CUANTITATIVA + "," +encuestaVieja.getIdentificador() + "," + encuestaVieja.getPreguntas_cuantitativas().get(0)
+				+ "," + encuestaVieja.getRespuestas_cuantitativas().get(0);
 		Scanner entrada = null;
 		File archivo = new File(Constantes.RUTA + "\\encuestas.txt");
 		int numeroLinea = 0;
@@ -241,6 +241,7 @@ public class GestorEncuestas
 			{
                 String linea = entrada.nextLine();  //se lee una línea
                 lineasTxt.add(linea);
+
                 if (linea.contains(nombre))
                 {
                 	almacenarLinea = numeroLinea;
@@ -251,23 +252,24 @@ public class GestorEncuestas
 			for (int cadaLinea = 0; cadaLinea < encuestaNueva.getPreguntas_cuantitativas().size(); cadaLinea++)
 			{
 				lineasTxt.remove(almacenarLinea + cadaLinea);
-				lineasTxt.add(almacenarLinea + cadaLinea, encuestaNueva.getIdentificador() + Constantes.PREGUNTA_CUANTITATIVA + "," +
-						encuestaNueva.getPreguntas_cuantitativas().get(cadaLinea) + encuestaNueva.getRespuestas_cuantitativas().get(cadaLinea));
+				lineasTxt.add(almacenarLinea + cadaLinea, Constantes.PREGUNTA_CUANTITATIVA + "," + encuestaNueva.getIdentificador() + "," + 
+						encuestaNueva.getPreguntas_cuantitativas().get(cadaLinea) + "," + encuestaNueva.getRespuestas_cuantitativas().get(cadaLinea));
 			}
 			
-			lineasTxt.remove(almacenarLinea + 5);
-			lineasTxt.add(almacenarLinea + 5, encuestaNueva.getIdentificador() + Constantes.PREGUNTA_CUANTITATIVA + "," +
-					encuestaNueva.getPregunta_abierta() + encuestaNueva.getRespuesta_abierta());
+			lineasTxt.remove(almacenarLinea + 4);
+			lineasTxt.add(almacenarLinea + 4, Constantes.PREGUNTA_ABIERTA + "," + encuestaNueva.getIdentificador() + "," +
+					encuestaNueva.getPregunta_abierta() + "," + encuestaNueva.getRespuesta_abierta());
 			
 			buff = new BufferedWriter(new FileWriter(archivo));
 			for(int i = 0; i < lineasTxt.size() ; i++ )
 			{
-				buff.write(lineasTxt.get(i));
+				buff.write(lineasTxt.get(i) + "\r\n");
 			}
 			
 			buff.close();
 			return true;
-		} catch (IOException e) {
+		} catch (IOException e)
+		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return false;
