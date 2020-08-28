@@ -97,7 +97,7 @@ public class Ventana_Carga_Asignatura extends JDialog {
 		contentPanel.add(btnCargar);
 	}
 	/**
-	 * Metodo que devuelve los codigos de las asignaturas seleccionadas
+	 * Método que devuelve los codigos de las asignaturas seleccionadas
 	 * @return String[]
 	 */
 	public String[] obtenerAsignaturasSeleccionadas()

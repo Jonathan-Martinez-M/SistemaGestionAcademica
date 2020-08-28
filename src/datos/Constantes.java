@@ -20,13 +20,16 @@ public interface Constantes
 	public static final String COMANDO_BTN_VTNA_MODIFICACION_DE_DATOS = "Modificación de datos";
 	public static final String COMANDO_BTN_VTNA_REALIZAR_ENCUESTAS = "Llenar encuestas";
 	public static final String COMANDO_BTN_VTNA_VER_RESULTADOS_ENCUESTAS = "Abrir resultados encuestas";
+	public static final String COMANDO_BTN_VTNA_LISTA_CIUDADES_CARGA = "lista de ciudades en carga";
+	public static final String COMANDO_BTN_VTNA_LISTA_CIUDADES_MODIFICAR = "lista de ciudades en modificar";
 	public static final String COMANDO_BTN_REGISTRAR_ASIGNATURA = "Registrar asignatura";
 	public static final String COMANDO_BTN_REGISTRAR_ESTUDIANTE = "Registrar estudiante";
 	public static final String COMANDO_BTN_MODIFICACION_DE_DATOS = "Modificar datos";
 	public static final String COMANDO_BTN_MATRICULAR_DESDE_ESTUDIANTE = "Matricular Asignatura Estudiante";
 	public static final String COMANDO_BTN_REGISTRAR_ENCUESTA = "Registrar encuestas";
-	public static final String COMANDO_BTN_VTNA_LISTA_CIUDADES_CARGA = "lista de ciudades en carga";
-	public static final String COMANDO_BTN_VTNA_LISTA_CIUDADES_MODIFICAR = "lista de ciudades en modificar";
+	public static final String COMANDO_BTN_MODIFICAR_ESTU_DESDE_ADMIN = "ModificarDesdeAdmin";
+	public static final String COMANDO_COMBO_CIUDADES_MOD_ADMIN = "Combo ciudad mod admin";
+	
 	
 	//Constantes de resolución
 	public static final String USUARIO_ADMIN = "Usuario Admin";

@@ -29,9 +29,9 @@ public class  Administrador extends Usuario {
 	* Modifica un la informacion de un estudiante
 	* @return boolean
 	*/
-	public boolean  modificar_estudiante( Estudiante p) 
+	public boolean  modificar_estudiante(Estudiante v, Estudiante n) 
 	{
-		return true;
+		return GestorEstudiantes.modificar_estudiante(v, n);
 	}
 	
 	/**

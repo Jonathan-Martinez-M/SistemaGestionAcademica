@@ -17,7 +17,7 @@ import javax.swing.table.TableColumn;
 import ventanas.Render;
 import mundo.Asignatura;
 
-public class Ventana_Resultados_Encuesta extends JDialog {
+public class VentanaResultadosEncuesta extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTable tableAsignaturas;
@@ -26,7 +26,7 @@ public class Ventana_Resultados_Encuesta extends JDialog {
 	/**
 	 * Constructor de la clase Ventana_Resultados_Encuesta
 	 */
-	public Ventana_Resultados_Encuesta(Controlador control)
+	public VentanaResultadosEncuesta(Controlador control)
 	{
 		this.control = control;
 		setBounds(100, 100, 450, 300);

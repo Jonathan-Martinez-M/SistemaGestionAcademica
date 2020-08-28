@@ -143,10 +143,6 @@ public class Ventana_Modificar_Datos extends JDialog {
 	public String getTxtBarrio() {
 		return comboBox_barrio.getSelectedItem().toString();
 	}
-	
-	/*public String getTextBarrio() {
-		return "";
-	}*/
 
 	public String getTxtPass()
 	{
@@ -164,6 +160,11 @@ public class Ventana_Modificar_Datos extends JDialog {
 		return comboBox_ciudad.getSelectedIndex();
 	}
 	
+	/**
+	 * Retorna la referencia del combobox de barrio
+	 * 
+	 * @return JComboBox
+	 */
 	public JComboBox getComboBox_barrio()
 	{
 		return comboBox_barrio;

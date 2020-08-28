@@ -94,7 +94,7 @@ public class Modelador
 	 * Modifica un estudiante 
 	 * @return boolean
 	 */
-	public boolean ModificarEstudiante(String nombre, String apellido, String ciudad,String barrio, String contrasegna) 
+	public boolean modificarEstudiante(String nombre, String apellido, String ciudad,String barrio, String contrasegna) 
 	{
 		Estudiante nuevoEstudiante = GestorEstudiantes.buscarEstudiante(((Estudiante)usuarioLogueado).getCodigo());
 
@@ -106,12 +106,21 @@ public class Modelador
 		return((Estudiante)usuarioLogueado).modificar_estudiante(GestorEstudiantes.buscarEstudiante(((Estudiante)usuarioLogueado).getCodigo()), nuevoEstudiante);
 	}
 	
+	public boolean modificarEstudianteAdmin(String codViejo, String codNuevo, String nombre, String apellido, String ciudad,String barrio, String contrasegna)
+	{
+		Estudiante viejoEstudiante = GestorEstudiantes.buscarEstudiante(codViejo);
+		Estudiante nuevoEstudiante = new Estudiante(codNuevo, contrasegna, nombre, apellido, ciudad, barrio, null);
+		
+		return((Administrador)usuarioLogueado).modificar_estudiante(viejoEstudiante, nuevoEstudiante);
+	}
+	
 	/**
 	 * matricula una asignatura a un estudiante 
 	 * @return boolean
 	 */
 	public boolean matricular(String asignatura, String estudiante)
 	{
+		System.out.println("Matruclando");
 		Encuesta laEncuesta = GestorEncuestas.nuevaEncuestaRetasVacias();
 		laEncuesta.setIdentificador(GestorEncuestas.obtenerUltimoIdentificador());
 		Matricula nuevaMatricula = new Matricula(estudiante, asignatura, laEncuesta);
@@ -191,10 +200,10 @@ public class Modelador
 		return GestorEstudiantes.ver_ciudades();
 	}
 	
-	public ArrayList<Barrio> ver_barrios(String ciudad){
-		
+	public ArrayList<Barrio> ver_barrios(String ciudad)
+	{
 		Ciudad ciudad1 = new Ciudad(ciudad, null);
-				
+		
 		return GestorEstudiantes.ver_barrios_de_una_ciudad(ciudad1);
 	}
 	

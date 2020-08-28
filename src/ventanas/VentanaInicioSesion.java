@@ -22,7 +22,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class Ventana_Inicial extends JFrame
+public class VentanaInicioSesion extends JFrame
 {
 	private JPanel contentPane;
 	private JTextField txtCod;
@@ -32,7 +32,7 @@ public class Ventana_Inicial extends JFrame
 	/**
 	 * Constructor de la clase Ventana_Inicial
 	 */
-	public Ventana_Inicial(Controlador control)
+	public VentanaInicioSesion(Controlador control)
 	{
 		this.control = control;
 		

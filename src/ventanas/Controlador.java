@@ -38,12 +38,13 @@ import mundo.Modelador;
 public class Controlador implements ActionListener
 {
 	private Modelador modelo;
-	private Ventana_Inicial ventanaLogin;
+	private VentanaInicioSesion ventanaLogin;
 	private Ventana_Carga_Asignatura_Admin ventanaRegistroAsignatura;
 	private Ventana_Carga_de_estudiantes ventanaRegistroEstudiante;
 	private Ventana_Modificar_Datos ventanamodificardatos;
 	private Ventana_Carga_Asignatura ventanaMatriculaEst;
 	private Ventana_Encuesta ventanaEncuestas;
+	private VentanaModificarEstudianteDesdeAdmin ventanaModAdmin;
 	
 	/**
 	 * Contructor de la clase controlador
@@ -68,7 +69,7 @@ public class Controlador implements ActionListener
 					GestorAsignaturas gAs = new GestorAsignaturas();
 					GestorEncuestas gEn = new GestorEncuestas();
 					Controlador controlador = new Controlador();
-					Ventana_Inicial frame = new Ventana_Inicial(controlador);
+					VentanaInicioSesion frame = new VentanaInicioSesion(controlador);
 					controlador.setVentanaLogin(frame);
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -83,7 +84,6 @@ public class Controlador implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
-		System.out.println("Control");
 		//Acción de los botones
 		if(e.getSource().getClass().equals(new JButton().getClass()))
 		{
@@ -213,7 +213,7 @@ public class Controlador implements ActionListener
 			else if(e.getActionCommand().equals(Constantes.COMANDO_BTN_VTNA_LISTA_ESTUDIANTES)) {
 				try
 				{
-					Lista_de_estudiantes dialog = new Lista_de_estudiantes(this);
+					VentanaListaEstudiantes dialog = new VentanaListaEstudiantes(this);
 					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 					dialog.setVisible(true);
 				} catch (Exception e2)
@@ -243,6 +243,7 @@ public class Controlador implements ActionListener
 					e2.printStackTrace();
 				}
 			}
+			//Modificación del estudiante desde estudiante
 			else if(e.getActionCommand().equals(Constantes.COMANDO_BTN_MODIFICACION_DE_DATOS))
 			{
 				if(ventanamodificardatos.getTextNombre().isEmpty() || ventanamodificardatos.getTextApellido().isEmpty() || ventanamodificardatos.getTxtCiudad().isEmpty() || ventanamodificardatos.getTxtBarrio().isEmpty() || ventanamodificardatos.getTxtPass().isEmpty() )
@@ -251,7 +252,7 @@ public class Controlador implements ActionListener
 				}
 				else
 				{
-					if(modelo.ModificarEstudiante(ventanamodificardatos.getTextNombre(), ventanamodificardatos.getTextApellido(), ventanamodificardatos.getTxtCiudad(), ventanamodificardatos.getTxtBarrio(),ventanamodificardatos.getTxtPass()))
+					if(modelo.modificarEstudiante(ventanamodificardatos.getTextNombre(), ventanamodificardatos.getTextApellido(), ventanamodificardatos.getTxtCiudad(), ventanamodificardatos.getTxtBarrio(),ventanamodificardatos.getTxtPass()))
 					{
 						this.ventanamodificardatos.dispose();
 						JOptionPane.showMessageDialog(null, Constantes.MODIFICACION_EXITOSA_ESTUDIANTE);
@@ -263,16 +264,26 @@ public class Controlador implements ActionListener
 						JOptionPane.showMessageDialog(null, Constantes.MODIFICACION_FALLIDA_ESTUDIANTE);
 					}
 				}
-				
 			}
+			//Realizar matrícula desde el lado del estudiante
 			else if(e.getActionCommand().equals(Constantes.COMANDO_BTN_MATRICULAR_DESDE_ESTUDIANTE))
 			{
 				String[] asignaturasSeleccionadas = this.ventanaMatriculaEst.obtenerAsignaturasSeleccionadas();
+				ArrayList<Matricula> matriculas = modelo.obtenerMatriculasEstudiantes(); 
+				Boolean matricular;
 				
 				if(asignaturasSeleccionadas != null)
 					for(int cadaAsignatura = 0; cadaAsignatura < asignaturasSeleccionadas.length; cadaAsignatura++)
 					{
-						modelo.matricular(asignaturasSeleccionadas[cadaAsignatura], ((Estudiante) modelo.getUsuarioLogueado()).getCodigo());
+						matricular = true;
+						for(Matricula cadaMatricula : matriculas)
+						{
+							if(cadaMatricula.getDe_la_asignatura().equals(asignaturasSeleccionadas[cadaAsignatura]))
+								matricular = false;
+						}
+						
+						if(matricular)
+							modelo.matricular(asignaturasSeleccionadas[cadaAsignatura], ((Estudiante) modelo.getUsuarioLogueado()).getCodigo());
 					}
 				
 				this.ventanaMatriculaEst.dispose();
@@ -310,11 +321,12 @@ public class Controlador implements ActionListener
 					}
 				}
 			}
+			//Lanza ventana para ver las asignaturas
 			else if(e.getActionCommand().equals(Constantes.COMANDO_BTN_VTNA_VER_RESULTADOS_ENCUESTAS))
 			{
 				try
 				{
-					Ventana_Resultados_Encuesta dialog = new Ventana_Resultados_Encuesta(this);
+					VentanaResultadosEncuesta dialog = new VentanaResultadosEncuesta(this);
 					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 					dialog.setVisible(true);
 				} catch (Exception e2)
@@ -322,9 +334,38 @@ public class Controlador implements ActionListener
 					e2.printStackTrace();
 				}
 			}
+			//Modificación del estudiante desde la ventana de admin
+			else if(e.getActionCommand().equals(Constantes.COMANDO_BTN_MODIFICAR_ESTU_DESDE_ADMIN))
+			{
+				String nuevoCod = ventanaModAdmin.getTxtcodigo();
+				String nuevoNombre = ventanaModAdmin.getTxtNombre();
+				String nuevoApellido = ventanaModAdmin.getTxtApellido();
+				String nuevaCiudad = ventanaModAdmin.getComboBox_ciudadSelccion();
+				String nuevaBarrio = ventanaModAdmin.getComboBox_barrioSelccion();
+				String pass = ventanaModAdmin.getPasswordField();
+				
+				if(nuevoNombre.isEmpty() ||nuevoApellido.isEmpty() || nuevaCiudad.isEmpty() || nuevaBarrio.isEmpty() || pass.isEmpty() || nuevoCod.isEmpty())
+				{
+					JOptionPane.showMessageDialog(null, Constantes.CARGA_FALLIDA_CAMPO_VACIO);
+				}
+				else
+				{
+					if(modelo.modificarEstudianteAdmin(ventanaModAdmin.getCodigoViejo(), nuevoCod, nuevoNombre, nuevoApellido, nuevaCiudad, nuevaBarrio, pass))
+					{
+						this.ventanaModAdmin.dispose();
+						JOptionPane.showMessageDialog(null, Constantes.MODIFICACION_EXITOSA_ESTUDIANTE);
+					}
+					else
+					{
+						this.ventanaModAdmin.dispose();
+						JOptionPane.showMessageDialog(null, Constantes.MODIFICACION_FALLIDA_ESTUDIANTE);
+					}
+				}
+			}
 		}
-		else if(e.getSource().getClass().equals(new JComboBox().getClass())){
-			
+		//Eventos producidos por un JComboBox
+		else if(e.getSource().getClass().equals(new JComboBox().getClass()))
+		{
 			if(e.getActionCommand().equals(Constantes.COMANDO_BTN_VTNA_LISTA_CIUDADES_CARGA))
 			{
 				ArrayList<Barrio> barrios = modelo.ver_barrios(ventanaRegistroEstudiante.getComboBox_ciudad()+1 + "");
@@ -342,6 +383,16 @@ public class Controlador implements ActionListener
 				for(int i=0; i<barrios.size(); i++)
 				{
 					ventanamodificardatos.getComboBox_barrio().addItem(barrios.get(i).getNombre());
+				}
+			}
+			//
+			else if(e.getActionCommand().equals(Constantes.COMANDO_COMBO_CIUDADES_MOD_ADMIN))
+			{
+				ArrayList<Barrio> barrios = modelo.ver_barrios(ventanaModAdmin.getComboCiudad().getSelectedIndex() + 1 + "");
+				ventanaModAdmin.getComboBarrio().setModel(new DefaultComboBoxModel<Barrio>());
+				for(int i=0; i<barrios.size(); i++)
+				{
+					ventanaModAdmin.getComboBarrio().addItem(barrios.get(i).getNombre());
 				}
 			}
 		}
@@ -375,7 +426,7 @@ public class Controlador implements ActionListener
 	/**
 	 * Metodo encargado recibir la ventana de login
 	 */
-	public void setVentanaLogin(Ventana_Inicial ventanaLogin)
+	public void setVentanaLogin(VentanaInicioSesion ventanaLogin)
 	{
 		this.ventanaLogin = ventanaLogin;
 	}
@@ -406,6 +457,11 @@ public class Controlador implements ActionListener
 	public void setVentanaMatriculaEst(Ventana_Carga_Asignatura ventanaMatriculaEst)
 	{
 		this.ventanaMatriculaEst = ventanaMatriculaEst;
+	}
+	
+	public void setVentanaModAdmin(VentanaModificarEstudianteDesdeAdmin ventanaModAdmin)
+	{
+		this.ventanaModAdmin = ventanaModAdmin;
 	}
 	
 	public void setVentanaEncuestas(Ventana_Encuesta ventanaEncuestas)
