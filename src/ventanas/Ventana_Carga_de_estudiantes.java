@@ -24,6 +24,7 @@ import javax.swing.table.TableColumn;
 
 import datos.Constantes;
 import mundo.Asignatura;
+import mundo.Barrio;
 import mundo.Ciudad;
 
 import javax.swing.JScrollPane;
@@ -40,10 +41,12 @@ public class Ventana_Carga_de_estudiantes extends JDialog {
 	private JTextField txtNombre;
 	private JTextField txtApellido;
 	private JTextField txtCodigo;
+	private JComboBox comboBox_ciudad;
+	private JComboBox comboBox_barrio;
 	private JTable tablaAsignaturas;
 	private Controlador control;	
 	private JTextField txtContrasenia;
-		
+	
 	/**
 	 * Constructor de la clase Ventana_Carga_de_estudiantes
 	 */
@@ -100,13 +103,13 @@ public class Ventana_Carga_de_estudiantes extends JDialog {
 		lblContrasea.setHorizontalAlignment(SwingConstants.LEFT);
 		lblContrasea.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
-		JComboBox comboBox_ciudad = new JComboBox();
-		ArrayList<Ciudad> ciudades = control.listarciudades();
+		comboBox_ciudad = new JComboBox();
+		comboBox_ciudad.setActionCommand(Constantes.COMANDO_BTN_VTNA_LISTA_CIUDADES);
+		comboBox_ciudad.addActionListener(control);
+		ArrayList<Ciudad> ciudades = control.listarCiudades();
 		for(int i=0; i < ciudades.size() ; i++) {
 			comboBox_ciudad.addItem(ciudades.get(i).getNombre());
 		}
-		
-		JComboBox comboBox_barrio = new JComboBox();
 		
 		JLabel lblNewLabel = new JLabel("Barrio");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -301,5 +304,22 @@ public class Ventana_Carga_de_estudiantes extends JDialog {
 		}
 		
 		return asignaturasSeleccionadas;
+	}
+	public int getComboBox_ciudad() {
+		return comboBox_ciudad.getSelectedIndex();
+	}
+	
+	public JComboBox getComboBox_barrio() {
+
+		if(comboBox_barrio == null) {
+			comboBox_barrio = new JComboBox();
+		}
+		return comboBox_barrio;
+	}
+	
+	public void reseteo_ComboBox_barrio() {
+		
+		comboBox_barrio = new JComboBox();
+		
 	}
 }
