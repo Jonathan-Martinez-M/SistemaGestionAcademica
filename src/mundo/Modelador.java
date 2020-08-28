@@ -109,9 +109,9 @@ public class Modelador
 	public boolean modificarEstudianteAdmin(String codViejo, String codNuevo, String nombre, String apellido, String ciudad,String barrio, String contrasegna)
 	{
 		Estudiante viejoEstudiante = GestorEstudiantes.buscarEstudiante(codViejo);
-		Estudiante nuevoEstudiante = new Estudiante(codNuevo, contrasegna, nombre, apellido, ciudad, barrio, null);
+		Estudiante nuevoEstudiante = new Estudiante(codNuevo, viejoEstudiante.getContrasegna(), nombre, apellido, ciudad, barrio, null);
 		
-		return((Administrador)usuarioLogueado).modificar_estudiante(viejoEstudiante, nuevoEstudiante);
+		return((Administrador)usuarioLogueado).modificar_estudiante(viejoEstudiante, nuevoEstudiante, contrasegna);
 	}
 	
 	/**

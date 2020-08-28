@@ -29,9 +29,11 @@ public class  Administrador extends Usuario {
 	* Modifica un la informacion de un estudiante
 	* @return boolean
 	*/
-	public boolean  modificar_estudiante(Estudiante v, Estudiante n) 
+	public boolean  modificar_estudiante(Estudiante v, Estudiante n, String contrasenia) 
 	{
-		return GestorEstudiantes.modificar_estudiante(v, n);
+		System.out.println(v.getNombres());
+		System.out.println(n.getNombres());
+		return GestorEstudiantes.modificar_estudiante(v, n, this.contrasenia, contrasenia);
 	}
 	
 	/**

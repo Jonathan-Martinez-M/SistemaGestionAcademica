@@ -105,10 +105,10 @@ public class GestorEstudiantes
 	* Metodo encargado de modificar un estudiante
 	* @return boolean	
 	*/
-	public static boolean modificar_estudiante(Estudiante estudianteviejo , Estudiante estudiantenuevo) {
-		
-		if(estudianteviejo.getContrasegna().equalsIgnoreCase(estudiantenuevo.getContrasegna()))
-		{
+	public static boolean modificar_estudiante(Estudiante estudianteviejo , Estudiante estudiantenuevo, String contrasenaCompro, String contrasegnaOrig) {
+		System.out.println(estudiantenuevo.getNombres() + " - " + estudianteviejo.getNombres());
+		if(contrasegnaOrig.equalsIgnoreCase(contrasenaCompro))
+		{		
 			String nombre = estudianteviejo.getCodigo() + "," + estudianteviejo.getContrasegna() + "," + estudianteviejo.getNombres() + 
 					"," + estudianteviejo.getApellidos() + "," + estudianteviejo.getCiudad() + "," + estudianteviejo.getBarrio();
 			
@@ -134,6 +134,7 @@ public class GestorEstudiantes
 	                }
 	                
 	            }
+				
 				lineasTxt.remove(almacenarLinea-1);
 				lineasTxt.add(almacenarLinea-1 ,estudiantenuevo.getCodigo() + "," + estudiantenuevo.getContrasegna() + "," + estudiantenuevo.getNombres() + "," + 
 				estudiantenuevo.getApellidos() + "," + estudiantenuevo.getCiudad() + "," + estudiantenuevo.getBarrio());

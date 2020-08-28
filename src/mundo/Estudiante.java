@@ -64,7 +64,7 @@ public class Estudiante extends Usuario
 	 */
 	public boolean modificar_estudiante(Estudiante v, Estudiante n) 
 	{
-		return  GestorEstudiantes.modificar_estudiante(v,n);
+		return  GestorEstudiantes.modificar_estudiante(v,n, v.getContrasegna(), n.getContrasegna());
 	}
 	/**
 	 * Matricula una asignatura 
