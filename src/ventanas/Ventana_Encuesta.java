@@ -138,7 +138,6 @@ public class Ventana_Encuesta extends JDialog {
 		for(int cadaFila = 0; cadaFila < tablaEncuestas.getRowCount(); cadaFila++)
 		{
 			lasRespuestas[cadaFila][0] = tablaEncuestas.getValueAt(cadaFila, 0).toString();
-			//lasRespuestas[cadaFila][1] = tablaEncuestas.getValueAt(cadaFila, 1).toString();
 			lasRespuestas[cadaFila][1] = tablaEncuestas.getValueAt(cadaFila, 2).toString();
 			lasRespuestas[cadaFila][2] = tablaEncuestas.getValueAt(cadaFila, 3).toString();
 			lasRespuestas[cadaFila][3] = tablaEncuestas.getValueAt(cadaFila, 4).toString();

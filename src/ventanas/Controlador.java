@@ -303,6 +303,18 @@ public class Controlador implements ActionListener
 					}
 				}
 			}
+			else if(e.getActionCommand().equals(Constantes.COMANDO_BTN_VTNA_VER_RESULTADOS_ENCUESTAS))
+			{
+				try
+				{
+					Ventana_Resultados_Encuesta dialog = new Ventana_Resultados_Encuesta(this);
+					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+				} catch (Exception e2)
+				{
+					e2.printStackTrace();
+				}
+			}
 		}
 	}
 	/**

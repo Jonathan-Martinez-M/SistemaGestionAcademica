@@ -87,20 +87,8 @@ public class Ventana_Administrador extends JFrame
 		contentPane.add(btnListaDeAsignaturas);
 		
 		JButton btnResultados = new JButton("Resultados de encuesta");
-		btnResultados.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e)
-			{
-				try
-				{
-					Ventana_Resultados_Encuesta dialog = new Ventana_Resultados_Encuesta();
-					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-					dialog.setVisible(true);
-				} catch (Exception e2)
-				{
-					e2.printStackTrace();
-				}
-			}
-		});
+		btnResultados.setActionCommand(Constantes.COMANDO_BTN_VTNA_VER_RESULTADOS_ENCUESTAS);
+		btnResultados.addActionListener(control);
 		btnResultados.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		btnResultados.setBounds(146, 238, 147, 34);
 		contentPane.add(btnResultados);
