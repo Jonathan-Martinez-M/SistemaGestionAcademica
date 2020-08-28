@@ -260,13 +260,17 @@ public class Controlador implements ActionListener
 			else if(e.getActionCommand().equals(Constantes.COMANDO_BTN_REGISTRAR_ENCUESTA))
 			{
 				String[][] lasrespuestas = ventanaEncuestas.obtenerResultadoEncuesta();
-				
+				String[] respuestasCuantitativas = new String[Constantes.CANTIDAD_PREGUNTAS_CUANTITATIVAS];
+				String respuestaAbierta;
+
 				for(int cadaFila = 0; cadaFila < lasrespuestas.length; cadaFila++)
 				{
-					for(int cadaCol = 0; cadaCol < lasrespuestas[cadaFila].length; cadaCol++)
+					for(int cadaCol = 0; cadaCol < lasrespuestas[cadaFila].length - 1; cadaCol++)
 					{
-						System.out.println(lasrespuestas[cadaFila][cadaCol] + " - ");
+						respuestasCuantitativas[cadaCol] = lasrespuestas[cadaFila][cadaCol];
 					}
+					
+					modelo.agregarEncuestaRespondida("1", respuestasCuantitativas, lasrespuestas[cadaFila][5]);
 				}
 			}
 		}
