@@ -53,6 +53,7 @@ public class Ventana_Carga_de_estudiantes extends JDialog {
 	public Ventana_Carga_de_estudiantes(Controlador control)
 	{
 		this.control = control;
+		comboBox_barrio = new JComboBox();
 		control.setVentanaRegistroEstudiante(this);
 		setTitle("Carga de estudiantes");
 		setBounds(100, 100, 414, 636);
@@ -215,10 +216,8 @@ public class Ventana_Carga_de_estudiantes extends JDialog {
 		String registros[] = new String[2];
 		for(Asignatura cadaAsignatura : lasAsignaturas)
 		{
-			Checkbox nuevoCheck = new Checkbox();
 			registros[0] = cadaAsignatura.getNombre();
 			registros[1] = cadaAsignatura.getCodigo();
-			//registros.add(nuevoCheck);
 			
 			modeloTabla.addRow(registros);
 		}
@@ -309,17 +308,8 @@ public class Ventana_Carga_de_estudiantes extends JDialog {
 		return comboBox_ciudad.getSelectedIndex();
 	}
 	
-	public JComboBox getComboBox_barrio() {
-
-		if(comboBox_barrio == null) {
-			comboBox_barrio = new JComboBox();
-		}
+	public JComboBox getComboBox_barrio()
+	{
 		return comboBox_barrio;
-	}
-	
-	public void reseteo_ComboBox_barrio() {
-		
-		comboBox_barrio = new JComboBox();
-		
 	}
 }

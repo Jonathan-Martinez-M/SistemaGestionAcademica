@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
@@ -323,11 +324,10 @@ public class Controlador implements ActionListener
 			if(e.getActionCommand().equals(Constantes.COMANDO_BTN_VTNA_LISTA_CIUDADES))
 			{
 				ArrayList<Barrio> barrios = modelo.ver_barrios(ventanaRegistroEstudiante.getComboBox_ciudad()+1 + "");
-				ventanaRegistroEstudiante.reseteo_ComboBox_barrio();
-				
-				for(int i=0; i<barrios.size(); i++) {
+				ventanaRegistroEstudiante.getComboBox_barrio().setModel(new DefaultComboBoxModel<Barrio>());
+				for(int i=0; i<barrios.size(); i++)
+				{
 					ventanaRegistroEstudiante.getComboBox_barrio().addItem(barrios.get(i).getNombre());
-					System.out.println(barrios.get(i).getNombre());
 				}
 			}
 		}
