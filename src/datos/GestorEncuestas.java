@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import mundo.Asignatura;
 import mundo.Encuesta;
 import mundo.Estudiante;
 

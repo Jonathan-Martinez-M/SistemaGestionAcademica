@@ -12,7 +12,10 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 
 import datos.Constantes;
 import datos.GestorAsignaturas;
@@ -80,6 +83,7 @@ public class Controlador implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
+		System.out.println("Control");
 		//Acción de los botones
 		if(e.getSource().getClass().equals(new JButton().getClass()))
 		{
@@ -419,6 +423,50 @@ public class Controlador implements ActionListener
 		return modelo.buscarAsignaturaPorCodigo(cod);
 	}
 	
+	public void verResultadosEncuestas(String codigoAsign)
+	{
+		ArrayList<Encuesta> lasEncuestasAsign = modelo.obtenerEncuestaPorAsign(codigoAsign);
+		ArrayList<Encuesta> encuestasRespon = modelo.encuestasRespondidas(lasEncuestasAsign);
+		double porcentajes[][] = modelo.calcularPorcentajesEncuestas(encuestasRespon);
+		
+		try
+		{
+			Ventana_Resultado_Encuesta_Detalle dialog = new Ventana_Resultado_Encuesta_Detalle(this);
+			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setVisible(true);
+			
+			String registros[] = new String[5];
+			for (int i = 0; i < porcentajes.length; i++)
+			{
+				registros[0] = (i+1) +"";
+				registros[1] = (int)porcentajes[i][0] + " %";
+				registros[2] = (int)porcentajes[i][1] + " %";
+				registros[3] = (int)porcentajes[i][2] + " %";
+				registros[4] = (int)porcentajes[i][3] + " %";
+				
+				((DefaultTableModel) dialog.getTablePorcentajes().getModel()).addRow(registros);;
+			}
+			
+			String abierta[] = new String[1];
+			for(Encuesta cadaEncuesta : encuestasRespon)
+			{
+				abierta[0] = cadaEncuesta.getRespuesta_abierta();
+				
+				((DefaultTableModel) dialog.getTableAbiertas().getModel()).addRow(abierta);;
+			}
+			
+			dialog.getTitulo().setText("Cantidad de encuestas respondidas: " + encuestasRespon.size());
+			
+			DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+			centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+			dialog.getTablePorcentajes().setDefaultRenderer(String.class, centerRenderer);
+
+		} catch (Exception e2)
+		{
+			e2.printStackTrace();
+		}
+	}
+
 	public ArrayList<Ciudad> listarCiudades()
 	{
 		return modelo.ver_ciudades();

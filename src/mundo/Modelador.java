@@ -114,7 +114,7 @@ public class Modelador
 	{
 		Encuesta laEncuesta = GestorEncuestas.nuevaEncuestaRetasVacias();
 		laEncuesta.setIdentificador(GestorEncuestas.obtenerUltimoIdentificador());
-		Matricula nuevaMatricula = new Matricula(asignatura, estudiante, laEncuesta);
+		Matricula nuevaMatricula = new Matricula(estudiante, asignatura, laEncuesta);
 		
 		GestorEncuestas.almacenar_encuesta(laEncuesta);
 		return GestorAsignaturas.almacenar_matricula(nuevaMatricula);
@@ -196,5 +196,83 @@ public class Modelador
 		Ciudad ciudad1 = new Ciudad(ciudad, null);
 				
 		return GestorEstudiantes.ver_barrios_de_una_ciudad(ciudad1);
+	}
+	
+	public ArrayList<Encuesta> obtenerEncuestaPorAsign(String codigoAsign)
+	{
+		Asignatura asignaturaApoyo = new Asignatura(null, codigoAsign, new ArrayList<Matricula>());
+		ArrayList<Matricula> matriculasPorAsign = GestorAsignaturas.buscarMatriculasAsign(asignaturaApoyo);
+		ArrayList<Encuesta> lasEncuestas = new ArrayList<Encuesta>();
+		
+		for(Matricula cadaMat : matriculasPorAsign)
+		{
+			lasEncuestas.add(GestorEncuestas.buscarEncuestaPoId(cadaMat.getEncuesta()));
+		}
+		
+		return lasEncuestas;
+	}
+	
+	/**
+	 * Evalua sobre un ArrayList de encuestas las encuestas que ya han sido respondidas
+	 * 
+	 * @param lasEncuestas las encuestas a revisar
+	 * @return ArrayList<Encuesta>
+	 */
+	public ArrayList<Encuesta> encuestasRespondidas(ArrayList<Encuesta> lasEncuestas)
+	{
+		ArrayList<Encuesta> respondidas = new ArrayList<Encuesta>();
+		
+		for(Encuesta cadaEncuesta : lasEncuestas)
+		{
+			if(!cadaEncuesta.getRespuesta_abierta().equals(Constantes.PREGUNTA_SIN_RESPONDER))
+			{
+				respondidas.add(cadaEncuesta);
+			}
+		}
+		
+		return respondidas;
+	}
+	
+	public double[][] calcularPorcentajesEncuestas(ArrayList<Encuesta> lasEncuyestas)
+	{
+		double [][] porcentajes = new double[5][4];
+		int cantidadEncuestas = lasEncuyestas.size();
+		
+		for (int cadaEncuesta = 0; cadaEncuesta < lasEncuyestas.size(); cadaEncuesta++)
+		{
+			for(int cadaPregunta = 0; cadaPregunta < Constantes.CANTIDAD_PREGUNTAS_CUANTITATIVAS; cadaPregunta++)
+			{
+				switch (lasEncuyestas.get(cadaEncuesta).getRespuestas_cuantitativas().get(cadaPregunta))
+				{
+				case "1":
+					porcentajes[0][cadaPregunta]++;
+					break;
+				case "2":
+					porcentajes[1][cadaPregunta]++;
+					break;
+				case "3":
+					porcentajes[2][cadaPregunta]++;		
+					break;
+				case "4":
+					porcentajes[3][cadaPregunta]++;
+					break;
+				case "5":
+					porcentajes[4][cadaPregunta]++;
+					break;
+				default:
+					break;
+				}
+			}
+		}
+		
+		for (int i = 0; i < porcentajes.length; i++)
+		{
+			for (int j = 0; j < porcentajes[i].length; j++)
+			{
+				porcentajes[i][j] = (double)(porcentajes[i][j]/cantidadEncuestas) * 100;
+			}
+		}
+		
+		return porcentajes;
 	}
 }
