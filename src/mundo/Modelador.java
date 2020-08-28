@@ -94,14 +94,14 @@ public class Modelador
 	 * Modifica un estudiante 
 	 * @return boolean
 	 */
-	public boolean ModificarEstudiante(String nombre, String apellido, String ubicacion, String contrasegna) 
+	public boolean ModificarEstudiante(String nombre, String apellido, String ciudad,String barrio, String contrasegna) 
 	{
 		Estudiante nuevoEstudiante = GestorEstudiantes.buscarEstudiante(((Estudiante)usuarioLogueado).getCodigo());
 
 		nuevoEstudiante.setNombres(nombre);
 		nuevoEstudiante.setApellidos(apellido);
-		nuevoEstudiante.setCiudad(ubicacion);
-		nuevoEstudiante.setBarrio(ubicacion);
+		nuevoEstudiante.setCiudad(ciudad);
+		nuevoEstudiante.setBarrio(barrio);
 		nuevoEstudiante.setContrasegna(contrasegna);
 		return((Estudiante)usuarioLogueado).modificar_estudiante(GestorEstudiantes.buscarEstudiante(((Estudiante)usuarioLogueado).getCodigo()), nuevoEstudiante);
 	}

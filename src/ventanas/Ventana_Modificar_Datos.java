@@ -136,10 +136,12 @@ public class Ventana_Modificar_Datos extends JDialog {
 	 * Metodo que devuelve lo ingresado en el campo ubicacion
 	 * @return String
 	 */
-	public String getTextUbicacion() {
-		
-		
-		return "A";
+	public String getTxtCiudad() {
+		return comboBox_ciudad.getSelectedItem().toString();
+	}
+	
+	public String getTxtBarrio() {
+		return comboBox_barrio.getSelectedItem().toString();
 	}
 	
 	/*public String getTextBarrio() {

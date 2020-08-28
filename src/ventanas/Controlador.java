@@ -241,13 +241,13 @@ public class Controlador implements ActionListener
 			}
 			else if(e.getActionCommand().equals(Constantes.COMANDO_BTN_MODIFICACION_DE_DATOS))
 			{
-				if(ventanamodificardatos.getTextNombre().isEmpty() || ventanamodificardatos.getTextApellido().isEmpty() || ventanamodificardatos.getTextUbicacion().isEmpty() || ventanamodificardatos.getTxtPass().isEmpty() )
+				if(ventanamodificardatos.getTextNombre().isEmpty() || ventanamodificardatos.getTextApellido().isEmpty() || ventanamodificardatos.getTxtCiudad().isEmpty() || ventanamodificardatos.getTxtBarrio().isEmpty() || ventanamodificardatos.getTxtPass().isEmpty() )
 				{
 					JOptionPane.showMessageDialog(null, Constantes.CARGA_FALLIDA_CAMPO_VACIO);
 				}
 				else
 				{
-					if(modelo.ModificarEstudiante(ventanamodificardatos.getTextNombre(), ventanamodificardatos.getTextApellido(), ventanamodificardatos.getTextUbicacion(), ventanamodificardatos.getTxtPass()))
+					if(modelo.ModificarEstudiante(ventanamodificardatos.getTextNombre(), ventanamodificardatos.getTextApellido(), ventanamodificardatos.getTxtCiudad(), ventanamodificardatos.getTxtBarrio(),ventanamodificardatos.getTxtPass()))
 					{
 						this.ventanamodificardatos.dispose();
 						JOptionPane.showMessageDialog(null, Constantes.MODIFICACION_EXITOSA_ESTUDIANTE);
