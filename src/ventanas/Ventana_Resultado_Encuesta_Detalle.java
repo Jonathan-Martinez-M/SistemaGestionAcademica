@@ -16,13 +16,15 @@ import javax.swing.table.DefaultTableModel;
 public class Ventana_Resultado_Encuesta_Detalle extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-	private JTable table;
-	private JTable table_1;
+	private JTable tablePorcentajes;
+	private JTable tableAbiertas;
+	private JLabel titulo;
 
 	/**
 	 * Constructor de la clase Ventana_Resultado_Encuesta_Detalle
 	 */
-	public Ventana_Resultado_Encuesta_Detalle() {
+	public Ventana_Resultado_Encuesta_Detalle(Controlador control)
+	{
 		setTitle("Resultado de la Encuesta");
 		setBounds(100, 100, 450, 401);
 		getContentPane().setLayout(new BorderLayout());
@@ -34,42 +36,50 @@ public class Ventana_Resultado_Encuesta_Detalle extends JDialog {
 			scrollPane.setBounds(10, 54, 414, 110);
 			contentPanel.add(scrollPane);
 			
-			table = new JTable();
-			table.setModel(new DefaultTableModel(
+			tablePorcentajes = new JTable();
+			tablePorcentajes.setModel(new DefaultTableModel(
 				new Object[][] {
-					{"1", null, null, null, null},
-					{"2", null, null, null, null},
-					{"3", null, null, null, null},
-					{"4", null, null, null, null},
-					{null, null, null, null, null},
 				},
 				new String[] {
 					"/", "Pregunta 1", "Pregunta 2", "Pregunta 3", "Pregunta 4"
 				}
 			));
-			table.getColumnModel().getColumn(0).setPreferredWidth(21);
-			scrollPane.setViewportView(table);
+			tablePorcentajes.getColumnModel().getColumn(0).setPreferredWidth(21);
+			scrollPane.setViewportView(tablePorcentajes);
 		}
 		
-		JLabel lblNewLabel = new JLabel("Nombre de asignatura - C\u00F3digo");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblNewLabel.setBounds(10, 23, 182, 24);
-		contentPanel.add(lblNewLabel);
+		titulo = new JLabel("");
+		titulo.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		titulo.setBounds(10, 23, 414, 24);
+		contentPanel.add(titulo);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(113, 175, 204, 176);
 		contentPanel.add(scrollPane);
 		
-		table_1 = new JTable();
-		table_1.setModel(new DefaultTableModel(
+		tableAbiertas = new JTable();
+		tableAbiertas.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null},
 			},
 			new String[] {
 				"Pregunta 5"
 			}
 		));
-		scrollPane.setViewportView(table_1);
+		scrollPane.setViewportView(tableAbiertas);
 	}
 
+	public JTable getTablePorcentajes()
+	{
+		return tablePorcentajes;
+	}
+
+	public JTable getTableAbiertas()
+	{
+		return tableAbiertas;
+	}
+
+	public JLabel getTitulo()
+	{
+		return titulo;
+	}
 }

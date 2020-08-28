@@ -251,8 +251,8 @@ public class GestorAsignaturas
                 delimitar.useDelimiter("\\s*,\\s*");
                 
                 Matricula matriculaAgregar = new Matricula(null, null, new Encuesta(null, null));
-                matriculaAgregar.setDe_la_asignatura(delimitar.next());
                 matriculaAgregar.setPertenece_a_estudiante(delimitar.next());
+                matriculaAgregar.setDe_la_asignatura(delimitar.next());
                 matriculaAgregar.getEncuesta().setIdentificador(Integer.parseInt(delimitar.next()));
                 
                 matricula.add(matriculaAgregar);
@@ -284,5 +284,20 @@ public class GestorAsignaturas
 			}
 		}
 		return matriculasDelEstudiante;
+	}
+	
+	public static ArrayList<Matricula> buscarMatriculasAsign(Asignatura asignatura)
+	{
+		ArrayList<Matricula> lasMatriculas = GestorAsignaturas.ver_matriculas();
+		ArrayList<Matricula> matriculasDeAsignatra = new ArrayList<Matricula>();
+		
+		for(Matricula cadaMatricula : lasMatriculas)
+		{
+			if(cadaMatricula.getDe_la_asignatura().equals(asignatura.getCodigo()))
+			{
+				matriculasDeAsignatra.add(cadaMatricula);
+			}
+		}
+		return matriculasDeAsignatra;
 	}
 }
