@@ -84,7 +84,7 @@ public class GestorEstudiantes
 			
 				//escribe los datos en el archivo
 				bfwriter.write(nuevoEstudiante.getCodigo() + "," + nuevoEstudiante.getContrasegna() + "," + nuevoEstudiante.getNombres() + 
-						"," + nuevoEstudiante.getApellidos() + "," + nuevoEstudiante.getCiudad() + "," + nuevoEstudiante.getBarrio() + "\r\n");
+						"," + nuevoEstudiante.getApellidos() + "," + nuevoEstudiante.getCiudad() + "," + nuevoEstudiante.getBarrio() + "\r"+"\n");
 				bfwriter.close();
 				return true;
 	 

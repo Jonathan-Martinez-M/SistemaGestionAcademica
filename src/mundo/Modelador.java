@@ -65,9 +65,9 @@ public class Modelador
 	 * Registra un estudiante 
 	 * @return boolean
 	 */
-	public boolean RegistrarEstudiante(String codigo, String nombre, String apellidos, String ubicacion, String contrasenia)
+	public boolean RegistrarEstudiante(String codigo, String nombre, String apellidos, String ciudad,String barrio, String contrasenia)
 	{
-		Estudiante nuevaEstudiante = new Estudiante(codigo, contrasenia, nombre, apellidos, ubicacion, ubicacion, null);
+		Estudiante nuevaEstudiante = new Estudiante(codigo, contrasenia, nombre, apellidos, ciudad, barrio, null);
 		
 		return ((Administrador) usuarioLogueado).agregar_estudiante(nuevaEstudiante);
 	}
