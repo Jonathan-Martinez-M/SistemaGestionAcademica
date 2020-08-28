@@ -124,8 +124,14 @@ public class Ventana_Modificar_Datos extends JDialog {
 	 * @return String
 	 */
 	public String getTextUbicacion() {
-		return "";
+		
+		
+		return "A";
 	}
+	
+	/*public String getTextBarrio() {
+		return "";
+	}*/
 
 	public String getTxtPass()
 	{

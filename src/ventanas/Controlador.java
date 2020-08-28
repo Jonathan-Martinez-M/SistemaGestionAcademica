@@ -173,7 +173,7 @@ public class Controlador implements ActionListener
 				else
 				{
 					if(modelo.RegistrarEstudiante(ventanaRegistroEstudiante.getTxtCodigo(), ventanaRegistroEstudiante.getTxtNombre(),
-							ventanaRegistroEstudiante.getTxtApellido(), ventanaRegistroEstudiante.getTxtUbicacion(), ventanaRegistroEstudiante.getTxtContrasenia()))
+							ventanaRegistroEstudiante.getTxtApellido(), ventanaRegistroEstudiante.getTxtCiudad(),ventanaRegistroEstudiante.getTxtBarrio(), ventanaRegistroEstudiante.getTxtContrasenia()))
 					{
 						String[] asignaturasSeleccionadas = this.ventanaRegistroEstudiante.obtenerAsignaturasSeleccionadas();
 						
@@ -407,11 +407,6 @@ public class Controlador implements ActionListener
 	public Asignatura buscarAsignaturaCod(String cod)
 	{
 		return modelo.buscarAsignaturaPorCodigo(cod);
-	}
-	
-	public void getEncuestasUsuario()
-	{
-		
 	}
 	
 	public ArrayList<Ciudad> listarCiudades()

@@ -261,8 +261,11 @@ public class Ventana_Carga_de_estudiantes extends JDialog {
 	 * Metodo que devuelve lo ingresado en el campo ubicacion
 	 * @return String
 	 */
-	public String getTxtUbicacion() {
-		return "A";
+	public String getTxtCiudad() {
+		return comboBox_ciudad.getSelectedItem().toString();
+	}
+	public String getTxtBarrio() {
+		return comboBox_barrio.getSelectedItem().toString();
 	}
 	/**
 	 * Metodo que devuelve lo ingresado en el campo contraseña
